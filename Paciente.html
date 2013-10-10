@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Paciente</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="stylesheet" href="assets/css/bootstrap.css">
+        <link rel="stylesheet" href="assets/css/normalize.css">
+        <link rel="stylesheet" href="assets/css/jqueryUI.css">
+        <link rel="stylesheet" href="validacionStyle.css">
+        <script src="assets/js/jquery-v1.10.2.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/jquery-ui.js"></script>
+        <script src="assets/js/jquery.validate.js"></script>   
+        <script src="assets/js/modernizr2.6.2.js"></script>
+        <script src="assets/js/holder.js"></script>
+        <script src="assets/js/validarRegEmpleador.js"></script>
+
+        <script>
+            // fallback para el datepicker con jquery
+            Modernizr.load({
+                test: Modernizr.inputtypes.date,
+                nope: ['http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.7/jquery-ui.min.js', 'jquery-ui.css'],
+                complete: function() {
+                    $('input[type=date]').datepicker({
+                        dateFormat: 'yy-mm-dd'
+                    });
+                }
+
+            });
+        </script>
+
+        <style>
+            .container
+            {
+                margin-top: 1%;
+                max-width: 1034px;
+            }
+            .panel panel-primary
+            {
+                margin-top: 1%;
+                display: center;
+                max-width: 1034px;
+            }
+            h2
+            {
+                text-align: center;
+            }
+            #publicarOferta
+            {
+                text-align: right;
+
+            }
+        </style>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- NAVBAR
+     ================================================== -->
+
+        <div id="header" class="navbar navbar-inverse navbar-static-top"></div>
+
+        <div id="error"></div>
+        <!-- // Script para cargar recursos html con jQuery en una pagina -->
+        <script>$(document).ready(function() {
+                $("#header").load("layout/header.html", function(status, xhr) {
+                    if (status == "error")
+                    {
+                        var msg = "Lo lamentamos, ha habido un errror cargando el Menu: ";
+                        $("#error").html(msg + xhr.status + " " + xhr.statusText);
+                    }
+                });
+            });
+        </script> 
+
+        <div id="contenedor" class="container">
+
+
+            <ul class="nav nav-tabs" id="myTab">
+                <li class="active"><a href="#Perfil">Datos</a></li>
+                <li class=""><a href="#Ofertas">Expediente</a></li>
+                <li class=""><a href="#Aplicacion">Cita</a></li>
+                <li class=""><a href="#Quitar">Tratamiento</a></li>
+            </ul>
+
+            <div class="tab-content">
+                <div class="tab-pane active" id="Perfil">
+
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">Paciente</div>
+                        <div class="panel-body">
+
+                            <form action="#" id="paciente" method="POST" class="form-horizontal">
+
+                                <div class="form-group">
+                                    <label for="Nombre" class="col-lg-3 control-label">Nombre</label>
+                                    <div class="col-lg-4">
+                                        <input type="text" name="nombrePaciente" class="form-control" placeholder="Escriba un nombre" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Contrasenia" class="col-lg-3 control-label">Contraseña</label>
+                                    <div class="col-lg-4">
+                                        <input type="password" name="passwordPaciente" class="form-control" placeholder="Contraseña" required>
+                                    </div>  
+                                </div>
+
+    
+
+
+                                <div class="form-group">
+                                    <label for="correo" class="col-lg-3 control-label">Correo</label>
+                                    <div class="col-lg-4">
+                                        <input type="email" name="emailPaciente" placeholder="Ejemplo: ejemplo@dominio.com" class="form-control" id="focusedInput" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="telefono" class="col-lg-3 control-label">Telefono</label>
+                                    <div class="col-lg-4">
+                                        <input type="tel" name="telefonoPaciente" placeholder="Escriba un numero de telefono" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">    
+                                    <label for="direccionPaciente" class="col-lg-3 control-label">Direccion actual</label>
+                                    <div class="col-lg-6">
+                                        <input type="text" name="direcPaciente" class="form-control" placeholder="Escriba la direccion" required>
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="paisEmpresa" class="col-lg-3 control-label">Pais</label>
+                                    <div class="col-lg-4">
+                                        <select name="pais" class="form-control" required="">
+                                            <option value="">Seleccione el Pais:</option>
+                                            <option value="-1">- Seleccione -</option>
+                                            <option>Alemania</option>
+                                            <option>Argentina</option>
+                                            <option>Australia</option>
+                                            <option>Austria</option>
+                                            <option>Bahamas</option>
+                                            <option>Barbados</option>
+                                            <option>Bélgica</option>
+                                            <option>Belice</option>
+                                            <option>Bermudas</option>
+                                            <option>Bolivia</option>
+                                            <option>Brasil</option>
+                                            <option>Canadá</option>
+                                            <option>Chile</option>
+                                            <option>China</option>
+                                            <option>Colombia</option>
+                                            <option>Corea del Sur</option>
+                                            <option>Costa Rica</option>
+                                            <option>Croacia</option>
+                                            <option>Cuba</option>
+                                            <option>Curacao/Aruba</option>
+                                            <option>Dinamarca</option>
+                                            <option>Ecuador</option>
+                                            <option>El Salvador</option>
+                                            <option>Eslovenia</option>
+                                            <option>España</option>
+                                            <option>Estados Unidos</option>
+                                            <option>Filipinas</option>
+                                            <option>Finlandia</option>
+                                            <option>Francia</option>
+                                            <option>Grecia</option>
+                                            <option>Guatemala</option>
+                                            <option>Haití</option>
+                                            <option>Holanda</option>
+                                            <option>Honduras</option>
+                                            <option>Hong Kong</option>
+                                            <option>Hungría</option>
+                                            <option>India</option>
+                                            <option>Irlanda</option>
+                                            <option>Israel</option>
+                                            <option>Italia</option>
+                                            <option>Jamaica</option>
+                                            <option>Japón</option>
+                                            <option>Jordania</option>
+                                            <option>México</option>
+                                            <option>Nicaragua</option>
+                                            <option>Noruega</option>
+                                            <option>Nueva Zelanda</option>
+                                            <option>Panamá</option>
+                                            <option>Paraguay</option>
+                                            <option>Perú</option>
+                                            <option>Polonia</option>
+                                            <option>Portugal</option>
+                                            <option>Uruguay</option>
+                                            <option>Venezuela</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                                
+                                <center><button type="submit" class="btn btn-primary btn-lg">Actualizar Datos</button> </center> 
+                                <br>
+                            </form>
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <div class="tab-pane" id="Ofertas">
+
+                    <div class="panel panel-primary">
+
+                        <div class="panel-heading">Publicar Ofertas</div>
+
+
+                        <div class="panel-body">
+
+                            <form action="#" method="POST" class="form-horizontal" role="form">
+
+                                <div class="form-group">       
+
+                                    <br>      
+
+                                    <center><legend> Detalles de la oferta</legend></center>
+                                    <div class="form-group">  
+                                        <div class="form-group">
+                                            <label for="oferta" class="col-lg-3 control-label">Titulo</label>
+                                            <div class="col-lg-4">
+                                                <input type="text" placeholder="Detalle su oferta" class="form-control" id="focusedInput" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="nivelacademico" class="col-lg-3 control-label">Descripcion de la Oferta</label>
+                                            <div class="col-lg-6">
+                                                <textarea class="form-control" rows="3" required>  </textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="area" class="col-lg-3 control-label">Area de la Empresa</label>
+                                            <div class="col-lg-4">
+                                                <input type="text" placeholder="Detalle su oferta" class="form-control" id="focusedInput" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cargo" class="col-lg-3 control-label">Cargo Solicitado</label>
+                                            <div class="col-lg-4">
+                                                <input type="text" placeholder="Detalle su oferta" class="form-control" id="focusedInput" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group"> 
+                                            <label for="puesto vacantes" class="col-lg-3 control-label">Puestos Vacantes</label>
+                                            <div class="col-lg-4">
+                                                <input type="number" name="num" min="1" max="10" class="form-control" id="focusedInput" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">              
+                                            <label for="tipo contratacion" class="col-lg-3 control-label">Tipo de Contratacion</label>
+                                            <div class="col-lg-4">
+                                                <select name="estadoci" class="form-control" id="focusedInput" required="">
+                                                    <option value="TC">Tiempo Completo</option> 
+                                                    <option value="MT">Medio Tiempo</option>
+                                                    <option value="T">Temporal</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+
+                                        <center><legend>Nivel de Experiencia</legend></center>
+                                        <div class="form-group">   
+                                            <label for="nivel experiencia" class="col-lg-3 control-label">Experiencia en anos</label>
+                                            <div class="col-lg-4">
+                                                <select name="anos" class="form-control" id="focusedInput" required="">
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="mas de 5">mas de 5</option>
+                                                    <option value="Sin experiencia">sin experiencia</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">        
+                                            <label for="edad" class="col-lg-3 control-label">Edad</label>
+                                            <div class="col-lg-4">
+                                                <input type="number" name="num" min="18" max="65" class="form-control" id="focusedInput" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label">Genero</label>
+                                            <div class="col-lg-4">
+                                                <input type="radio" name="optionsRadios" id="focusedInput" checked="">
+                                                Masculino
+                                                <input type="radio" name="optionsRadios" id="focusedInput">
+                                                Femenino   
+                                            </div>  
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label">Vehiculo</label>
+                                            <div class="col-lg-4">
+                                                <input type="radio" name="idioma" value="Si" checked=""> 
+                                                Si
+                                                <input type="radio" name="idioma" value="No"> 
+                                                No
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">        
+                                            <label for="salariom" class="col-lg-3 control-label">Salario Maximo</label>
+                                            <div class="col-lg-4">
+                                                <input type="text" class="form-control" id="focusedInput" placeholder="salariom" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group"> 
+                                            <label for="salariomi" class="col-lg-3 control-label">Salario Minimo</label>
+                                            <div class="col-lg-4">
+                                                <input type="text" class="form-control" id="focusedInput" placeholder="salariomi" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group"> 
+                                            <label for="pais" class="col-lg-3 control-label">Pais</label>
+                                            <div class="col-lg-4">
+                                                <input type="text" class="form-control" id="focusedInput" placeholder="Pais" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group"> 
+                                            <label for="departamento" class="col-lg-3 control-label">Departamento</label>
+                                            <div class="col-lg-4">
+                                                <input type="text" class="form-control" id="focusedInput" placeholder="Departamento" required>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group"> 
+
+                                    <center><legend> Experiencias Requeridas </legend></center>
+
+                                    <div class="form-group">    
+                                        <label for="indispensable" class="col-lg-3 control-label">Indispensable</label>
+                                        <div class="col-lg-6">
+                                            <textarea class="form-control" rows="3"> </textarea>
+                                        </div>
+                                    </div>         
+
+                                </div> 
+
+                                <div class="form-group">
+
+                                    <center><legend> Educacion Superior </legend></center>
+
+                                    <div class="form-group">
+                                        <label for="Titulo" class="col-lg-3 control-label">Titulo en</label>
+                                        <div class="col-lg-4">
+                                            <input type="text" class="form-control" id="focusedInput" placeholder="Detalle " required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="nivel academico" class="col-lg-3 control-label">Nivel Academico </label>
+                                        <div class="col-lg-4">
+                                            <select name="nivel" id="nivel" class="form-control" required="">
+                                                <option value="1">Estudiante Universitario-Graduado</option>
+                                                <option value="2">Estudiante Universitario-mitad de sus estudios</option>
+                                                <option value="3">Estudiante Universitario-empesando sus estudios</option>
+                                                <option value="4">Bachiller</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <center><button type="submit" class="btn btn-primary btn-lg">Enviar</button> </center>  
+
+                            </form>
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="tab-pane" id="Aplicacion">...</div>
+                <div class="tab-pane" id="Quitar">...</div>
+            </div>
+
+            <script>
+                $('#myTab a').click(function(e) {
+                    e.preventDefault();
+                    $(this).tab('show');
+                });
+            </script>
+
+
+        </div>
+
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+
+    </body>
+</html>
