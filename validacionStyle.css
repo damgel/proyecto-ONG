@@ -1,0 +1,101 @@
+/* 
+    Document   : generalStyles
+    Created on : 09-23-2013, 09:50:15 PM
+    Author     : daMgeL
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+body
+{
+    background-color:#f5f5f5; /*  <---- color de fondo de toda la pagina*/
+}
+.container
+{
+    margin-top: 1%;
+
+}
+
+#contenedor
+{
+    display: center;
+}
+
+
+.panel panel-primary
+{
+    margin-top: 1%;
+    display: center;
+    max-width: 1034px;
+}
+
+#tipo_contratacion
+{
+    float:right;       /*tambien puede poner float:right, para que se alineé a la derecha */
+    padding:10px;
+    width:35%;
+    margin:0px;
+    background-color: blue;
+
+
+}
+h2
+{
+    text-align: center;
+
+    /* === HTML5 validation styles === */
+}
+
+.form-horizontal input:required,.form-horizontal text:required , .form-horizontal date:required, .form-horizontal select:required, .form-horizontal textarea:required {
+    background: #fff url(assets/img/red_asterisk.png) no-repeat 98% center;
+
+}
+.form-horizontal input:required:valid, .form-horizontal text:required:valid, .form-horizontal date:required:valid, .form-horizontal select:required:valid, .form-horizontal textarea:required:valid {
+    background: #fff url(assets/img/valid.png) no-repeat 98% center;
+    box-shadow: 0 0 5px #5cd053;
+    border-color: #28921f;
+}
+.form-horizontal input:focus:invalid, .form-horizontal text:focus:invalid, .form-horizontal date:focus:invalid, .form-horizontal select:focus:invalid, .form-horizontal textarea:focus:invalid {
+    background: #fff url(assets/img/invalid.png) no-repeat 98% center;
+    box-shadow: 0 0 5px #d45252;
+    border-color: #b03535
+}  
+
+/* css para las validaciones */
+
+label.valid {
+    width: 40px;
+    height: 28px;
+    background: url(assets/img/valid.png) center center no-repeat;
+    /* float: right; */
+    display: inline-block;
+
+    text-indent: -9999px;
+}
+label.error {
+    font-weight: bold;
+    color: red;
+    display: inline-block;
+    padding: 2px 8px;
+    margin-top: 2px;
+}
+label.lvalid {
+    width: 40px;
+    height: 28px;
+    background: url(assets/img/valid.png) center center no-repeat;
+    /* float: right; */
+    display: inline-block;
+
+    text-indent: -9999px;
+}
+label.lerror {
+    font-weight: bold;
+    color: red;
+    display: inline-block;
+    padding: 2px 8px;
+    margin-top: 2px;
+}
+
+
+
+

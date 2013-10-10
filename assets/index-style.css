@@ -1,0 +1,151 @@
+html
+{
+    height: 100%;
+}
+
+body
+{
+    font-size: 16px;
+    margin: 0;
+    height: 100%;
+    color: #fff ;
+}
+
+#body_bolsa
+{
+    text-align: center;
+    background-image:url('assets/img/back.png');
+   /* background-color: #e3e3e3; */
+    background-size: cover;
+    height: 50%; 
+}
+#contratar_bolsa, #empleos_bolsa
+{
+
+    border-radius: 1em 0; 	
+    color: white;
+    margin: 3px;
+    padding: 2em;
+    text-decoration: none;
+    text-shadow: 2px 3px 0px rgba(147, 150, 150, 1);
+
+}
+#contratar_bolsa:hover, #empleos_bolsa:hover
+{
+    box-shadow: 7px 7px 5px rgba(50, 50, 50, 0.75)
+}
+#contratar_bolsa
+{
+    background: rgb(223,138,47);
+}
+#empleos_bolsa
+{
+    background: rgb(120,171,50);
+}
+h1
+{
+ color: black;   
+}
+
+h2
+{
+    color: black;
+    margin:0;
+    padding: 1em;
+}
+
+header
+{
+    background: rgb(255,153,0);
+
+    width: 100%;
+}
+
+header article
+{
+    display: inline-block;
+    font-family: 'Droid Sans', sans-serif;
+    font-size: 0.8em;
+    color: white;
+    max-height: 124px;
+    top: 0;
+    text-align: center;
+    vertical-align: middle;
+}
+header #iniciar_bolsa
+{
+    background: rgb(0,143,213);
+    color: white;
+    padding: 0.2em 1.2em;
+    border-radius: 0.5em;
+    text-decoration: none;
+
+
+
+}
+#iniciar_gavidia
+{
+    float:right;
+    vertical-align: middle;
+    position: relative;
+    top:3em;
+
+}
+#iniciar_gavidia a
+{
+    color: white;
+
+}
+
+header section #iniciar_gavidia
+{
+    width: 22%;
+    vertical-align: middle;
+    max-width: 115px;
+
+}
+
+header #logo_bolsa
+{
+    display: inline-block;
+    vertical-align: middle;
+    background: rgb(57,193,255);
+    margin-right: 2px;
+
+}
+
+header #logo_gavidia
+{
+    margin: 0.5em;
+    margin-right: 1.5em;
+    max-width: 203px;
+    vertical-align: middle;
+    width: 10%;
+    text-align: center;
+}
+
+header #title_gavidia
+{
+
+    width: 44%;
+    font-family: 'Aldrich', sans-serif;
+}
+
+
+#footer_principal
+{
+
+    background: rgb(170,207,233);
+    bottom: 0px;
+    border-top: solid 1px rgb(117,179,216);
+    color: #A7A7A7;
+    height: 50px;
+    padding: 1em 0;
+    position: fixed;
+    text-align: center;
+    width: 100%;
+
+
+
+}
+
