@@ -89,8 +89,8 @@
             <ul class="nav nav-tabs" id="myTab">
                 <li class="active"><a href="#Perfil">Datos</a></li>
                 <li class=""><a href="#Ofertas">Expediente</a></li>
-                <li class=""><a href="#Aplicacion">Cita</a></li>
-                <li class=""><a href="#Quitar">Tratamiento</a></li>
+                <li class=""><a href="#cita">Cita</a></li>
+                <li class=""><a href="#Tratamiento">Tratamiento</a></li>
             </ul>
 
             <div class="tab-content">
@@ -109,22 +109,21 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="Contrasenia" class="col-lg-3 control-label">Contraseña</label>
-                                    <div class="col-lg-4">
-                                        <input type="password" name="passwordPaciente" class="form-control" placeholder="Contraseña" required>
-                                    </div>  
+                                              <label for="Fecha_Nacimiento" class="col-lg-3 control-label">Fecha de nacimiento:</label>
+                                <div class="col-lg-3">
+                                    <input type="date"  class="form-control"><br>
+                                      </div>
                                 </div>
-
-    
-
-
                                 <div class="form-group">
-                                    <label for="correo" class="col-lg-3 control-label">Correo</label>
-                                    <div class="col-lg-4">
-                                        <input type="email" name="emailPaciente" placeholder="Ejemplo: ejemplo@dominio.com" class="form-control" id="focusedInput" required>
-                                    </div>
-                                </div>
-
+                                            <label class="col-lg-3 control-label">Genero</label>
+                                            <div class="col-lg-4">
+                                                <input type="radio" name="optionsRadios" id="focusedInput" checked="">
+                                                Masculino
+                                                <input type="radio" name="optionsRadios" id="focusedInput">
+                                                Femenino   
+                                            </div>  
+                                        </div>
+  
                                 <div class="form-group">
                                     <label for="telefono" class="col-lg-3 control-label">Telefono</label>
                                     <div class="col-lg-4">
@@ -138,68 +137,26 @@
 
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="paisEmpresa" class="col-lg-3 control-label">Pais</label>
-                                    <div class="col-lg-4">
-                                        <select name="pais" class="form-control" required="">
-                                            <option value="">Seleccione el Pais:</option>
-                                            <option value="-1">- Seleccione -</option>
-                                            <option>Alemania</option>
-                                            <option>Argentina</option>
-                                            <option>Australia</option>
-                                            <option>Austria</option>
-                                            <option>Bahamas</option>
-                                            <option>Barbados</option>
-                                            <option>Bélgica</option>
-                                            <option>Belice</option>
-                                            <option>Bermudas</option>
-                                            <option>Bolivia</option>
-                                            <option>Brasil</option>
-                                            <option>Canadá</option>
-                                            <option>Chile</option>
-                                            <option>China</option>
-                                            <option>Colombia</option>
-                                            <option>Corea del Sur</option>
-                                            <option>Costa Rica</option>
-                                            <option>Croacia</option>
-                                            <option>Cuba</option>
-                                            <option>Curacao/Aruba</option>
-                                            <option>Dinamarca</option>
-                                            <option>Ecuador</option>
-                                            <option>El Salvador</option>
-                                            <option>Eslovenia</option>
-                                            <option>España</option>
-                                            <option>Estados Unidos</option>
-                                            <option>Filipinas</option>
-                                            <option>Finlandia</option>
-                                            <option>Francia</option>
-                                            <option>Grecia</option>
-                                            <option>Guatemala</option>
-                                            <option>Haití</option>
-                                            <option>Holanda</option>
-                                            <option>Honduras</option>
-                                            <option>Hong Kong</option>
-                                            <option>Hungría</option>
-                                            <option>India</option>
-                                            <option>Irlanda</option>
-                                            <option>Israel</option>
-                                            <option>Italia</option>
-                                            <option>Jamaica</option>
-                                            <option>Japón</option>
-                                            <option>Jordania</option>
-                                            <option>México</option>
-                                            <option>Nicaragua</option>
-                                            <option>Noruega</option>
-                                            <option>Nueva Zelanda</option>
-                                            <option>Panamá</option>
-                                            <option>Paraguay</option>
-                                            <option>Perú</option>
-                                            <option>Polonia</option>
-                                            <option>Portugal</option>
-                                            <option>Uruguay</option>
-                                            <option>Venezuela</option>
+                                
+                                   <div class="form-group">    
+                                    <label for="municipioPaciente" class="col-lg-3 control-label">Municipio</label>
+                                    <div class="col-lg-6">
+                                        <input type="text" name="direcPaciente" class="form-control" placeholder="Municipio" required>
 
-                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">    
+                                    <label for="departamentoPaciente" class="col-lg-3 control-label">Departamento</label>
+                                    <div class="col-lg-6">
+                                        <input type="text" name="direcPaciente" class="form-control" placeholder="Departamento" required>
+
+                                    </div>
+                                </div>
+                                 <div class="form-group">    
+                                    <label for="paisPaciente" class="col-lg-3 control-label">Pais</label>
+                                    <div class="col-lg-6">
+                                        <input type="text" name="paisPaciente" class="form-control" placeholder="Pais" required>
+
                                     </div>
                                 </div>
 
@@ -398,9 +355,40 @@
                     </div>
 
                 </div>
-                <div class="tab-pane" id="Aplicacion">...</div>
-                <div class="tab-pane" id="Quitar">...</div>
+                <div class="tab-pane" id="cita">
+                <div id="contenedor" class="container">
+            <div class="panel panel-primary">
+                <div class="panel-heading">PONER UN TITULO</div>
+                <div class="panel-body">
+                 <!-- PONER EL FORMULARIO AQUI Y TODO EL CONTENIDO AQUI-->
+                </div>       
             </div>
+               <div class="panel panel-primary">
+                <div class="panel-heading">PONER UN TITULO</div>
+                <div class="panel-body">
+                 <!-- PONER EL FORMULARIO AQUI Y TODO EL CONTENIDO AQUI-->
+                </div>       
+            </div>
+        </div>
+                </div>
+                
+                <div class="tab-pane" id="Tratamiento">
+                 <div id="contenedor" class="container">
+            <div class="panel panel-primary">
+                <div class="panel-heading">PONER UN TITULO</div>
+                <div class="panel-body">
+                 <!-- PONER EL FORMULARIO AQUI Y TODO EL CONTENIDO AQUI-->
+                </div>       
+            </div>
+               <div class="panel panel-primary">
+                <div class="panel-heading">PONER UN TITULO</div>
+                <div class="panel-body">
+                 <!-- PONER EL FORMULARIO AQUI Y TODO EL CONTENIDO AQUI-->
+                </div>       
+            </div>
+        </div>
+                </div>
+           
 
             <script>
                 $('#myTab a').click(function(e) {
