@@ -220,219 +220,27 @@
   
   
   <ul class="nav nav-tabs" id="myTab">
-                <li class="active"><a href="#Perfil">Información</a></li>
-                <li class=""><a href="#Ofertas">Servicios</a></li>
-                <li class=""><a href="#Aplicacion">Instalaciones</a></li>
-                <li class=""><a href="#Quitar">Ubicación</a></li>
+                <li class="active"><a href="#Información">Información</a></li>
+                <li class=""><a href="#Servicios">Servicios</a></li>
+                <li class=""><a href="#Instalaciones">Instalaciones</a></li>
+                <li class=""><a href="#Ubicación">Ubicación</a></li>
             </ul>
 
             <div class="tab-content">
-                <div class="tab-pane active" id="Perfil">
-
-                    <div class="jumbotron">
-  <h3>Información</h3>
-  <br>
-  <br>
-  <br>
-  <br><br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  
- 
-  
-  </div>
+                <div class="tab-pane active" id="Información">
+ 		 <h3>Información</h3>
+                    
 
 
 
                 </div>
-                <div class="tab-pane" id="Ofertas">
+                <div class="tab-pane" id="Servicios">
 
-                    <div class="panel panel-primary">
-
-                        <div class="panel-heading">Publicar Ofertas</div>
-
-
-                        <div class="panel-body">
-
-                            <form action="#" method="POST" class="form-horizontal" role="form">
-
-                                <div class="form-group">       
-
-                                    <br>      
-
-                                    <center><legend> Detalles de la oferta</legend></center>
-                                    <div class="form-group">  
-                                        <div class="form-group">
-                                            <label for="oferta" class="col-lg-3 control-label">Titulo</label>
-                                            <div class="col-lg-4">
-                                                <input type="text" placeholder="Detalle su oferta" class="form-control" id="focusedInput" required>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="nivelacademico" class="col-lg-3 control-label">Descripcion de la Oferta</label>
-                                            <div class="col-lg-6">
-                                                <textarea class="form-control" rows="3" required>  </textarea>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="area" class="col-lg-3 control-label">Area de la Empresa</label>
-                                            <div class="col-lg-4">
-                                                <input type="text" placeholder="Detalle su oferta" class="form-control" id="focusedInput" required>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="cargo" class="col-lg-3 control-label">Cargo Solicitado</label>
-                                            <div class="col-lg-4">
-                                                <input type="text" placeholder="Detalle su oferta" class="form-control" id="focusedInput" required>
-                                            </div>
-                                        </div>
-                                        <div class="form-group"> 
-                                            <label for="puesto vacantes" class="col-lg-3 control-label">Puestos Vacantes</label>
-                                            <div class="col-lg-4">
-                                                <input type="number" name="num" min="1" max="10" class="form-control" id="focusedInput" required>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">              
-                                            <label for="tipo contratacion" class="col-lg-3 control-label">Tipo de Contratacion</label>
-                                            <div class="col-lg-4">
-                                                <select name="estadoci" class="form-control" id="focusedInput" required="">
-                                                    <option value="TC">Tiempo Completo</option> 
-                                                    <option value="MT">Medio Tiempo</option>
-                                                    <option value="T">Temporal</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-
-                                        <center><legend>Nivel de Experiencia</legend></center>
-                                        <div class="form-group">   
-                                            <label for="nivel experiencia" class="col-lg-3 control-label">Experiencia en anos</label>
-                                            <div class="col-lg-4">
-                                                <select name="anos" class="form-control" id="focusedInput" required="">
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
-                                                    <option value="mas de 5">mas de 5</option>
-                                                    <option value="Sin experiencia">sin experiencia</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">        
-                                            <label for="edad" class="col-lg-3 control-label">Edad</label>
-                                            <div class="col-lg-4">
-                                                <input type="number" name="num" min="18" max="65" class="form-control" id="focusedInput" required>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-lg-3 control-label">Genero</label>
-                                            <div class="col-lg-4">
-                                                <input type="radio" name="optionsRadios" id="focusedInput" checked="">
-                                                Masculino
-                                                <input type="radio" name="optionsRadios" id="focusedInput">
-                                                Femenino   
-                                            </div>  
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-lg-3 control-label">Vehiculo</label>
-                                            <div class="col-lg-4">
-                                                <input type="radio" name="idioma" value="Si" checked=""> 
-                                                Si
-                                                <input type="radio" name="idioma" value="No"> 
-                                                No
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">        
-                                            <label for="salariom" class="col-lg-3 control-label">Salario Maximo</label>
-                                            <div class="col-lg-4">
-                                                <input type="text" class="form-control" id="focusedInput" placeholder="salariom" required>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group"> 
-                                            <label for="salariomi" class="col-lg-3 control-label">Salario Minimo</label>
-                                            <div class="col-lg-4">
-                                                <input type="text" class="form-control" id="focusedInput" placeholder="salariomi" required>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group"> 
-                                            <label for="pais" class="col-lg-3 control-label">Pais</label>
-                                            <div class="col-lg-4">
-                                                <input type="text" class="form-control" id="focusedInput" placeholder="Pais" required>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group"> 
-                                            <label for="departamento" class="col-lg-3 control-label">Departamento</label>
-                                            <div class="col-lg-4">
-                                                <input type="text" class="form-control" id="focusedInput" placeholder="Departamento" required>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                                <div class="form-group"> 
-
-                                    <center><legend> Experiencias Requeridas </legend></center>
-
-                                    <div class="form-group">    
-                                        <label for="indispensable" class="col-lg-3 control-label">Indispensable</label>
-                                        <div class="col-lg-6">
-                                            <textarea class="form-control" rows="3"> </textarea>
-                                        </div>
-                                    </div>         
-
-                                </div> 
-
-                                <div class="form-group">
-
-                                    <center><legend> Educacion Superior </legend></center>
-
-                                    <div class="form-group">
-                                        <label for="Titulo" class="col-lg-3 control-label">Titulo en</label>
-                                        <div class="col-lg-4">
-                                            <input type="text" class="form-control" id="focusedInput" placeholder="Detalle " required>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="nivel academico" class="col-lg-3 control-label">Nivel Academico </label>
-                                        <div class="col-lg-4">
-                                            <select name="nivel" id="nivel" class="form-control" required="">
-                                                <option value="1">Estudiante Universitario-Graduado</option>
-                                                <option value="2">Estudiante Universitario-mitad de sus estudios</option>
-                                                <option value="3">Estudiante Universitario-empesando sus estudios</option>
-                                                <option value="4">Bachiller</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <center><button type="submit" class="btn btn-primary btn-lg">Enviar</button> </center>  
-
-                            </form>
-
-
-
-                        </div>
-                    </div>
+                    ...
 
                 </div>
-                <div class="tab-pane" id="Aplicacion">...</div>
-                <div class="tab-pane" id="Quitar">...</div>
+                <div class="tab-pane" id="Instalaciones">...</div>
+                <div class="tab-pane" id="Ubicación">...</div>
             </div>
 
             <script>
@@ -450,34 +258,7 @@
   
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+
   
   
   </div>
@@ -489,43 +270,13 @@
     <div class="panel-heading">
       <h4 class="panel-title">
         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-         Nosotros
+        Contactenos
         </a>
       </h4>
     </div>
     <div id="collapseOne" class="panel-collapse collapse in">
       <div class="panel-body">
-       ......
-      </div>
-    </div>
-  </div>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-          Número de cuenta para donaciones
-        </a>
-      </h4>
-    </div>
-    <div id="collapseTwo" class="panel-collapse collapse">
-      <div class="panel-body">
-       ......
-      </div>
-    </div>
-  </div>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-          Contactenos
-        </a>
-      </h4>
-    </div>
-    <div id="collapseThree" class="panel-collapse collapse">
-      <div class="panel-body">
-        <div class="panel panel-primary">
-                <div class="panel-heading">Contactenos</div>
-                <div class="panel-body">
+       
                       <form action="#" id="registroUsuario" method="POST" class="form-horizontal">
                 <div class="form-group">
 
@@ -561,9 +312,34 @@
 
                 </div>
             </form>
-                </div>       
-            </div>
+                
       </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+          Número de cuenta para donaciones
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse">
+      <div class="panel-body">
+       ......
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+          Nosotros
+        </a>
+      </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse">
+      
     </div>
   </div>
 </div>
