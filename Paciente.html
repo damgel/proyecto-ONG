@@ -89,7 +89,7 @@
             <ul class="nav nav-tabs" id="myTab">
                 <li class="active"><a href="#Perfil">Datos</a></li>
                 <li class=""><a href="#Ofertas">Expediente</a></li>
-                <li class=""><a href="#cita">Cita</a></li>
+                <li class=""><a href="#citas">Cita</a></li>
                 <li class=""><a href="#Tratamiento">Tratamiento</a></li>
             </ul>
 
@@ -355,25 +355,66 @@
                     </div>
 
                 </div>
-                <div class="tab-pane" id="cita">
-                <div id="contenedor" class="container">
-            <div class="panel panel-primary">
-                <div class="panel-heading">PONER UN TITULO</div>
-                <div class="panel-body">
-                 <!-- PONER EL FORMULARIO AQUI Y TODO EL CONTENIDO AQUI-->
-                </div>       
-            </div>
-               <div class="panel panel-primary">
-                <div class="panel-heading">PONER UN TITULO</div>
-                <div class="panel-body">
-                 <!-- PONER EL FORMULARIO AQUI Y TODO EL CONTENIDO AQUI-->
-                </div>       
-            </div>
-        </div>
-                </div>
                 
-                <div class="tab-pane" id="Tratamiento">
-                 <div id="contenedor" class="container">
+                
+               <div class="tab-pane" id="citas">
+             <div id="contenedor" class="container">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Citas</div>
+                <div class="panel-body">
+
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Seleccione fecha para proxima cita:</h3>
+                        </div>
+                        <div class="panel-body">
+                            <form action="#" id="busquedaCita" class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="Num_exp" class="col-lg-3 control-label">Numero de expediente:</label>
+                                    <div class="col-lg-3">
+                                        <input type="text" name="Nombre_pa" class="form-control "   placeholder="-----------" required>
+                                    </div>
+                                    
+                                    
+                                    
+                                    <a href="#" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-search"></i> Guardar</a>
+                                    <a href="#" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-search"></i> Eliminar</a>
+                                    <a href="#" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-search"></i> Limpiar</a>
+                                </div> 
+                                
+                                <div class="panel-body">
+                                <div class="form-group">
+                                    <label for="Nombre_doc" class="col-lg-3 control-label">Doctor: </label>
+                                    <div class="col-lg-6">
+                                        <input type="text" name="Nombre_doc" class="form-control" placeholder="Escriba nombre" required>
+                                    </div>
+                                </div>
+                  
+                            </form>
+
+                         
+
+                            <form action="" class="form-inline">
+                                <label for="Fecha_Cita" class="col-lg-3 control-label">Proxima Cita:</label>
+                                <div class="col-lg-3">
+                                    <input type="date"  class="form-control"><br>
+                                    <br>
+                                    <label for="hora_Cita" class="col-lg-2 control-label">Hora:</label>
+                                    <div class="col-lg-10">
+                                        <input type="time"  class="form-control">  
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+                </div>
+            </div>
+                  
+                 <div class="tab-pane" id="Tratamiento">
+          <div id="contenedor" class="container">
             <div class="panel panel-primary">
                 <div class="panel-heading">PONER UN TITULO</div>
                 <div class="panel-body">
@@ -387,7 +428,7 @@
                 </div>       
             </div>
         </div>
-                </div>
+         </div>
            
 
             <script>
