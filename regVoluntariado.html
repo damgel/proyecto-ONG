@@ -39,20 +39,55 @@
 
         <!-- TODO EL CODIGO HTML QUE VAYAN A UTILIZA AQUI, NO BORREN NINGUNA LINEA DE CODIGO DE LAS QUE YA ESTAN AQUI -->
         <!-- NO NECESITAN PONER NINGUN SCRIPTS, EXCEPTO LAS PROPIAS CLASES CSS QUE CREEN. -->
-          <div id="contenedor" class="container">
-            <div class="panel panel-primary">
-                <div class="panel-heading">PONER UN TITULO</div>
-                <div class="panel-body">
-                 <!-- PONER EL FORMULARIO AQUI Y TODO EL CONTENIDO AQUI-->
-                </div>       
-            </div>
-               <div class="panel panel-primary">
-                <div class="panel-heading">PONER UN TITULO</div>
-                <div class="panel-body">
-                 <!-- PONER EL FORMULARIO AQUI Y TODO EL CONTENIDO AQUI-->
-                </div>       
-            </div>
+          <div class="tab-content">
+                <div class="tab-pane active" id="regVoluntariado">
+
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">Registro</div>
+                        <div class="panel-body">
+
+                            <form action="#" id="regVoluntariado" method="POST" class="form-horizontal">
+
+                                   <div class="form-group">
+                                    <label for="correo" class="col-lg-3 control-label">Correo</label>
+                                    <div class="col-lg-4">
+  <input type="email" name="email_emp" placeholder="Ejemplo: ejemplo@dominio.com" class="form-control" id="focusedInput" required>
+                                    </div>
+                                </div>
+                                
+                                  
+                                
+                          
+                                <div class="form-group">
+                                    <label for="Contrasenia" class="col-lg-3 control-label">Contraseña</label>
+                                    <div class="col-lg-4">
+                                        <input type="password" name="password_emp" class="form-control" placeholder="Contraseña" required>
+                                    </div> 
+                                    <br>
+                                    <br>
+                                    <br>
+
+          <center><a href="#" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-search"></i> Guardar</a></center>
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>
+               
+
+            <script>
+                $('#myTab a').click(function(e) {
+                    e.preventDefault();
+                    $(this).tab('show');
+                });
+            </script>
+
+
         </div>
+
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 
     </body>
