@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Paciente</title>
+        <title>Perfil Doctor</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -23,6 +23,32 @@
         <script src="assets/js/holder.js"></script>
         <script src="assets/js/validarRegEmpleador.js"></script>
 
+
+  <style>
+            .container
+            {
+                margin-top: 1%;
+                max-width: 1034px;
+            }
+            .panel panel-primary
+            {
+                margin-top: 1%;
+                display: center;
+                max-width: 1034px;
+			
+            }
+            h2
+            {
+                text-align: center;
+            }
+            #publicarOferta
+            {
+                text-align: right;
+
+            }
+        </style>
+
+
         <script>
             // fallback para el datepicker con jquery
             Modernizr.load({
@@ -37,28 +63,6 @@
             });
         </script>
 
-        <style>
-            .container
-            {
-                margin-top: 1%;
-                max-width: 1034px;
-            }
-            .panel panel-primary
-            {
-                margin-top: 1%;
-                display: center;
-                max-width: 1034px;
-            }
-            h2
-            {
-                text-align: center;
-            }
-            #publicarOferta
-            {
-                text-align: right;
-
-            }
-        </style>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -87,16 +91,15 @@
 
 
             <ul class="nav nav-tabs" id="myTab">
-                <li class="active"><a href="#Perfil">Datos</a></li>
+                <li class="active"><a href="#Datos">Datos</a></li>
                 <li class=""><a href="#Expediente">Expediente</a></li>
-                <li class=""><a href="#citas">Cita</a></li>
-                <li class=""><a href="#Tratamiento">Tratamiento</a></li>
+                <li class=""><a href="#Citas">Citas</a></li>
+
             </ul>
 
             <div class="tab-content">
-                <div class="tab-pane active" id="Perfil">
-
-                    <div class="panel panel-primary">
+                <div class="tab-pane active" id="Datos">
+<div class="panel panel-primary">
                         <div class="panel-heading">Paciente</div>
                         <div class="panel-body">
 
@@ -175,44 +178,120 @@
                                      <center>
              <a href="#" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-search"></i> Guardar</a>
              <a href="#" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-search"></i> Modificar</a>
-             </center)
+             </center>
                                 </div>
                            
                             </form>
 
                         </div>
                     </div>
+
+                    
+
+
+
                 </div>
                 
                 
-                    <div class="tab-pane" id="Expediente">
-                    <div class="panel panel-primary">
-                    <div class="panel-heading">PONER UN TITULO</div>
-                <div class="panel-body">
-                 <!-- PONER EL FORMULARIO AQUI Y TODO EL CONTENIDO AQUI-->
-                </div>       
-            </div>
-               <div class="panel panel-primary">
-                <div class="panel-heading">PONER UN TITULO</div>
-                <div class="panel-body">
-                 <!-- PONER EL FORMULARIO AQUI Y TODO EL CONTENIDO AQUI-->
-                </div>       
-            </div>
-        </div>
-        
+                <div class="tab-pane" id="Expediente">
                 
-               <div class="tab-pane" id="citas">
-             <div id="contenedor" class="container">
-            <div class="panel panel-primary">
-                <div class="panel-heading">Citas</div>
-                <div class="panel-body">
-
-                    <div class="panel panel-info">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Seleccione fecha para proxima cita:</h3>
-                        </div>
+                    
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">Ficha</div>
                         <div class="panel-body">
-                            <form action="#" id="busquedaCita" class="form-horizontal">
+                        
+                        <h1 align="center">FICHA PARA DIAGNOSTICO ORAL</h1>
+
+                            <form action="#" id="paciente" method="POST" class="form-horizontal">
+
+                                <div class="form-group">
+                                    <label for="Nombre" class="col-lg-3 control-label">Paciente</label>
+                                    <div class="col-lg-4">
+                                        <input type="text" name="nombrePaciente" class="form-control" placeholder="" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                              <label for="Edad" class="col-lg-3 control-label">Edad</label>
+                                <div class="col-lg-3">
+                                    <input type="text" class="form-control" required><br>
+                                      </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                              <label for="Expediente N°" class="col-lg-3 control-label">Expediente N°</label>
+                                <div class="col-lg-3">
+                                    <input  type="text" class="form-control"required><br>
+                                      </div>
+                                </div>
+                                
+                                 <div class="form-group">
+                                              <label for="Lugar de origen°" class="col-lg-3 control-label">Lugar de origen</label>
+                                <div class="col-lg-3">
+                                    <input  type="text" class="form-control"required><br>
+                                      </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                              <label for="Referido de" class="col-lg-3 control-label">Referido de</label>
+                                <div class="col-lg-3">
+                                    <input  type="text" class="form-control"required><br>
+                                      </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                              <label for="Referido de" class="col-lg-3 control-label">Fecha</label>
+                                <div class="col-lg-3">
+                                    <input  type="date" class="form-control"required><br>
+                                      </div>
+                                </div>
+                                
+                                
+                                
+                                <div class="form-group">    
+                        <label for="Mensaje" class="col-lg-3 control-label">Motivo de consulta</label>
+                        <div class="col-lg-6">
+                            <textarea name="textarea" class="form-control col-lg-6" rows="4" required> </textarea>
+
+                                </div>
+                             </div>
+                                
+                                
+                                 <div class="form-group">    
+                        <label for="Mensaje" class="col-lg-3 control-label">Antecedentes medicos</label>
+                        <div class="col-lg-6">
+                            <textarea name="textarea" class="form-control col-lg-6" rows="4" required> </textarea>
+
+                                </div>
+                             </div>
+                   
+                                    
+                                    <br>
+                                     <br>
+                                      <br>
+                                     <br>
+                                     <center>
+             <a href="#" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-search"></i> Guardar</a>
+             <a href="#" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-search"></i> Modificar</a>
+             </center>
+                              
+                           
+                            </form>
+
+                        </div>
+                    </div>
+                    
+                    
+         </div>
+                
+                <div class="tab-pane" id="Citas">
+
+                    
+                    <div class="panel panel-primary">
+  
+  <div class="panel-heading">Seleccione fecha para proxima cita</div>
+  <div class="panel-body">
+                
+                <form action="#" id="busquedaCita" class="form-horizontal">
                                 <div class="form-group">
                                     <label for="Num_exp" class="col-lg-3 control-label">Numero de expediente:</label>
                                     <div class="col-lg-3">
@@ -227,14 +306,11 @@
                                     <div class="col-lg-6">
                                         <input type="text" name="Nombre_doc" class="form-control" placeholder="Escriba nombre" required>
                                     </div>
-                                  
+                                  </div>
                                 </div>
-                  
-                            </form>
 
-                         
 
-                            <form action="" class="form-inline">
+                           
                                 <label for="Fecha_Cita" class="col-lg-3 control-label">Proxima Cita:</label>
                                 <div class="col-lg-3">
                                     <input type="date"  class="form-control"><br>
@@ -244,36 +320,18 @@
                                         <input type="time"  class="form-control">  
                                     </div>
                                      <br>
-                                    <br>
+                                     <br>
+                                   
                        <a href="#" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-search"></i> Guardar</a>
                        <a href="#" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-search"></i> Limpiar</a>
                                 </div>
                             </form>
-                        </div>
-                    </div>
                 </div>
-            </div>
-         </div>
                 </div>
-            </div>
-                  
-                 <div class="tab-pane" id="Tratamiento">
-          <div id="contenedor" class="container">
-            <div class="panel panel-primary">
-                <div class="panel-heading">PONER UN TITULO</div>
-                <div class="panel-body">
-                 <!-- PONER EL FORMULARIO AQUI Y TODO EL CONTENIDO AQUI-->
-                </div>       
-            </div>
-               <div class="panel panel-primary">
-                <div class="panel-heading">PONER UN TITULO</div>
-                <div class="panel-body">
-                 <!-- PONER EL FORMULARIO AQUI Y TODO EL CONTENIDO AQUI-->
-                </div>       
-            </div>
-        </div>
+
+                    
          </div>
-           
+         
 
             <script>
                 $('#myTab a').click(function(e) {
@@ -285,7 +343,7 @@
 
         </div>
 
-
+</div>
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 
     </body>
