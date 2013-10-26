@@ -7,7 +7,7 @@
         <meta name="author" content="">
         <link rel="shortcut icon" href="assets/ico/favicon.png">
 
-        <title>COCIDES</title>
+        <title>Bienvenidos a COCIDES</title>
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -23,14 +23,16 @@
         <script src="assets/js/holder.js"></script>
 
         <style>
-            p{
+            p
+            {
                 text-align: justify;
-            }</style>
+            }
+        </style>
 
         <script>
             // MENU LOADER
             $(document).ready(function() {
-                $("#header1").load("layout/header1.html", function(status, xhr) {
+                $("#header1").load("layout/public-header.html", function(status, xhr) {
                     if (status === "error") {
                         var msg = "Lo lamentamos, ha habido un errror cargando el Menu: ";
                         $("#error").html(msg + xhr.status + " " + xhr.statusText);
@@ -82,7 +84,7 @@
                         <div class="carousel-caption">
 
                             <h1>Bienvenido a Cocides</h1>
-                            <p>Tu Clinica Dental Amiga</p>
+                            <h3>Tu Clinica Dental Amiga</h3>
                         </div>
                     </div>
                 </div>
@@ -121,10 +123,6 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-8">
-
-
-
-
 
                     <ul class="nav nav-tabs" id="myTab">
                         <li class="active"><a href="#QuienesSomos">¿Quienes Somos?</a></li>
@@ -179,14 +177,6 @@
                             $(this).tab('show');
                         });
                     </script>
-
-
-
-
-
-
-
-
 
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-4">

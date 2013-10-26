@@ -11,21 +11,21 @@
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
-              <script src="assets/js/html5shiv.js"></script>
-              <script src="assets/js/respond.min.js"></script>
+              <script src="../assets/js/html5shiv.js"></script>
+              <script src="../assets/js/respond.min.js"></script>
             <![endif]-->
 
         <!-- Custom styles for this template -->
-        <link href="assets/carousel.css" rel="stylesheet">
-        <link rel="stylesheet" href="assets/css/bootstrap.css">
-        <script src="assets/js/jquery-v1.10.2.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
-        <script src="assets/js/holder.js"></script>
+        <link href="../assets/carousel.css" rel="stylesheet">
+        <link rel="stylesheet" href="../assets/css/bootstrap.css">
+        <script src="../assets/js/jquery-v1.10.2.js"></script>
+        <script src="../assets/js/bootstrap.min.js"></script>
+        <script src="../assets/js/holder.js"></script>
 
         <script>
             // MENU LOADER
             $(document).ready(function() {
-                $("#header").load("layout/header.html", function(status, xhr) {
+                $("#header").load("layout/private-header.html", function(status, xhr) {
                     if (status === "error") {
                         var msg = "Lo lamentamos, ha habido un errror cargando el Menu: ";
                         $("#error").html(msg + xhr.status + " " + xhr.statusText);
@@ -71,7 +71,7 @@
             </ol>
             <div class="carousel-inner">
                 <div class="item active">
-                    <img src="assets/img/banner1.jpg" alt="First slide">
+                    <img src="../assets/img/banner1.jpg" alt="First slide">
                     <!-- EN EL DIV QUE CONTIEME LA CLASE "item active"DEBEN AGREGARSE LAS IMAGENES -->
                     <div class="container">
                         <div class="carousel-caption">
@@ -82,7 +82,7 @@
                     </div>
                 </div>
                 <div class="item">
-                    <img src="assets/img/banner2.jpg" alt="Second slide">
+                    <img src="../assets/img/banner2.jpg" alt="Second slide">
 
                     <div class="container">
                         <div class="carousel-caption">
@@ -93,7 +93,7 @@
                     </div>
                 </div>
                 <div class="item">
-                    <img src="assets/img/banner3.jpg" alt="Second slide">
+                    <img src="../assets/img/banner3.jpg" alt="Second slide">
                     <div class="container">
                         <div class="carousel-caption">
 

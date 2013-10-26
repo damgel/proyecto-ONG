@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title> Template </title>
+        <title> Requerimientos para los voluntarios </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -17,7 +17,7 @@
         <script src="assets/js/bootstrap.min.js"></script>
         <script src="assets/js/modernizr2.6.2.js"></script>
 
-<style>
+        <style>
             .container
             {
                 margin-top: 2%;
@@ -30,9 +30,13 @@
                 border-radius: 10px;
 
             }
+            .jumbotron
+            {
+                background: white;
+            }
 
         </style>
-        
+
     </head>
     <body>
         <!-- NAVBAR
@@ -42,7 +46,7 @@
         <div id="error"></div>
         <!-- // Script para cargar recursos html con jQuery en una pagina -->
         <script>$(document).ready(function() {
-                $("#header1").load("layout/header1.html", function(status, xhr) {
+                $("#header1").load("layout/public-header.html", function(status, xhr) {
                     if (status == "error")
                     {
                         var msg = "Lo lamentamos, ha habido un errror cargando el Menu: ";
@@ -56,27 +60,27 @@
 
         <!-- TODO EL CODIGO HTML QUE VAYAN A UTILIZA AQUI, NO BORREN NINGUNA LINEA DE CODIGO DE LAS QUE YA ESTAN AQUI -->
         <!-- NO NECESITAN PONER NINGUN SCRIPTS, EXCEPTO LAS PROPIAS CLASES CSS QUE CREEN. -->
-            
+
         <div class="container">
-      <br>
+            <br>
 
-      <div class="jumbotron">
-        <center><h1>¿Quieres Formar parte de Nuestro voluntariado?</h1></center>
-        <br>
-        <br>
-        <p class="lead">Es muy sencillos poder formar parte de nuestro equipo de trabajo solo de bedes de: </p>
-        <br>
-      <p class="lead">1. Debes de ser mayor de edad.</p>
-     <p class="lead">2. Conocer a que se dedica esta organizacion.</p>
-     <p class="lead">3. Estar dipuesto a colaborar en tus tiempos libres.</p>
-     <p class="lead">4. Debes de comunicarte con nosotros para poder brindarte acesorias.</p>
-      <p class="lead">5. Entregar tus docuementos en la fecha que se establesca.</p>
-      <p class="lead">6. Cuando tu soliicitud sea aceptada, recibiras tu usuario para que puedas acceder sin mayor complicacion.</p>
+            <div class="jumbotron">
+                <center><h1>¿Quieres Formar parte de Nuestro voluntariado?</h1></center>
+                <br>
+                <br>
+                <p class="lead">Es muy sencillos poder formar parte de nuestro equipo de trabajo solo de bedes de: </p>
+                <br>
+                <p class="lead">1. Debes de ser mayor de edad.</p>
+                <p class="lead">2. Conocer a que se dedica esta organizacion.</p>
+                <p class="lead">3. Estar dipuesto a colaborar en tus tiempos libres.</p>
+                <p class="lead">4. Debes de comunicarte con nosotros para poder brindarte acesorias.</p>
+                <p class="lead">5. Entregar tus docuementos en la fecha que se establesca.</p>
+                <p class="lead">6. Cuando tu soliicitud sea aceptada, recibiras tu usuario para que puedas acceder sin mayor complicacion.</p>
 
-      
-      </div>
-<br>
-    </div>
+
+            </div>
+            <br>
+        </div>
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 
     </body>

@@ -11,17 +11,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-        <link rel="stylesheet" href="assets/css/bootstrap.css">
-        <link rel="stylesheet" href="assets/css/normalize.css">
-        <link rel="stylesheet" href="assets/css/jqueryUI.css">
+        <link rel="stylesheet" href="../assets/css/bootstrap.css">
+        <link rel="stylesheet" href="../assets/css/normalize.css">
+        <link rel="stylesheet" href="../assets/css/jqueryUI.css">
         <link rel="stylesheet" href="validacionStyle.css">
-        <script src="assets/js/jquery-v1.10.2.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
-        <script src="assets/js/jquery-ui.js"></script>
-        <script src="assets/js/jquery.validate.js"></script>   
-        <script src="assets/js/modernizr2.6.2.js"></script>
-        <script src="assets/js/holder.js"></script>
-        <script src="assets/js/validarRegEmpleador.js"></script>
+        <script src="../assets/js/jquery-v1.10.2.js"></script>
+        <script src="../assets/js/bootstrap.min.js"></script>
+        <script src="../assets/js/jquery-ui.js"></script>
+        <script src="../assets/js/jquery.validate.js"></script>   
+        <script src="../assets/js/modernizr2.6.2.js"></script>
+        <script src="../assets/js/holder.js"></script>
+        <script src="../assets/js/validarRegEmpleador.js"></script>
 
 
         <style>
@@ -77,7 +77,7 @@
         <div id="error"></div>
         <!-- // Script para cargar recursos html con jQuery en una pagina -->
         <script>$(document).ready(function() {
-                $("#header").load("layout/header.html", function(status, xhr) {
+                $("#header").load("layout/private-header.html", function(status, xhr) {
                     if (status == "error")
                     {
                         var msg = "Lo lamentamos, ha habido un errror cargando el Menu: ";
