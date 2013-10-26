@@ -84,8 +84,6 @@
         </script> 
 
         <div id="contenedor" class="container">
-
-
             <ul class="nav nav-tabs" id="myTab">
                 <li class="active"><a href="#Perfil">Perfil</a></li>
                 <li class=""><a href="#Agenda">Agenda de Trabajo</a></li>
@@ -107,20 +105,20 @@
                                         <input type="text" name="Nombre_doc" class="form-control" placeholder="Escriba nombre" required>
                                     </div>
                                 </div>
-                                
-                                       <div class="form-group">
+
+                                <div class="form-group">
                                     <label for="JVPO" class="col-lg-3 control-label">J.V.P.O</label>
                                     <div class="col-lg-4">
                                         <input type="text" name="Nombre_doc" class="form-control" placeholder="Escriba el numero de J.V.P.O" required>
-                                      
+
                                     </div>
                                 </div>
-                                
-                                  <div class="form-group">
-                                              <label for="Fecha_Nacimiento" class="col-lg-3 control-label">Fecha de nacimiento:</label>
-                                <div class="col-lg-3">
-                                    <input type="date"  class="form-control"><br>
-                                      </div>
+
+                                <div class="form-group">
+                                    <label for="Fecha_Nacimiento" class="col-lg-3 control-label">Fecha de nacimiento:</label>
+                                    <div class="col-lg-3">
+                                        <input type="date"  class="form-control"><br>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="Contrasenia" class="col-lg-3 control-label">Contraseña</label>
@@ -161,7 +159,7 @@
                                     <label for="departamento" class="col-lg-3 control-label">departamento</label>
                                     <div class="col-lg-4">
                                         <select name="departamento" class="form-control" required="">
-                                          
+
                                             <option value="-1">- Seleccione -</option>
                                             <option>San Salvador</option>
                                             <option>La Paz</option>
@@ -177,19 +175,19 @@
                                             <option>Cuscatlan</option>
                                             <option>Usulutan</option>
                                             <option>Morazan</option>
-                                           
+
                                         </select>
                                     </div>
                                 </div>
 
-                                   <br>
-                                    <br>
-                                      <br>
-                                     <br>
-                                     <center>
-             <a href="#" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-search"></i> Guardar</a>
-             <a href="#" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-search"></i> Modificar</a>
-             </center> 
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <center>
+                                    <a href="#" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-search"></i> Guardar</a>
+                                    <a href="#" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-search"></i> Modificar</a>
+                                </center> 
                                 <br>
                             </form>
 
@@ -209,47 +207,48 @@
                         <div class="panel-body">
 
                             <form action="#" method="POST" class="form-horizontal" role="form">
-                            
-                            <div class="form-group">       
 
-                            <br>      
-                            <fieldset>
-                                <center><legend> Detalles de la Agenda</legend></center>
-                                  <label for="Fecha_Cita" class="col-lg-3 control-label">Fecha:</label>
-                                <div class="col-lg-3">
-                                    <input type="date"  class="form-control"><br>
-                                    <br>
-                                    <label for="hora_Cita" class="col-lg-2 control-label">Hora:</label>
-                                    <div class="col-lg-10">
-                                        <input type="time"  class="form-control">  
-                                    </div>
+                                <div class="form-group">       
+
+                                    <br>      
+                                    <fieldset>
+                                        <center><legend> Detalles de la Agenda</legend></center>
+                                        <label for="Fecha_Cita" class="col-lg-3 control-label">Fecha:</label>
+                                        <div class="col-lg-3">
+                                            <input type="date"  class="form-control"><br>
+                                            <br>
+                                            <label for="hora_Cita" class="col-lg-2 control-label">Hora:</label>
+                                            <div class="col-lg-10">
+                                                <input type="time"  class="form-control">  
+                                            </div>
+                                        </div>
+                                    </fieldset>
                                 </div>
-                </fieldset>
-                </div>
-                <center><button type="submit" class="btn btn-primary btn-lg">Buscar</button></center>  
-                
-
-                               
+                                <center><button type="submit" class="btn btn-primary btn-lg">Buscar</button></center>  
 
 
-                        </form>
+
+
+
+                            </form>
+                        </div>
+
                     </div>
 
+
+                    <script>
+                        $('#myTab a').click(function(e) {
+                            e.preventDefault();
+                            $(this).tab('show');
+                        });
+                    </script>
+
+
                 </div>
-            
-
-            <script>
-                $('#myTab a').click(function(e) {
-                    e.preventDefault();
-                    $(this).tab('show');
-                });
-            </script>
 
 
-        </div>
-
-
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-
+                <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+            </div>
+            </div>
     </body>
 </html>

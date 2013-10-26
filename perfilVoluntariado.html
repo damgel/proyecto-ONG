@@ -83,104 +83,104 @@
             });
         </script> 
 
-            <div class="tab-content">
-                <div class="tab-pane active" id="Perfil_volun">
+        <div class="tab-content">
+            <div class="tab-pane active" id="Perfil_volun">
 
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">Perfil voluntariado</div>
-                        <div class="panel-body">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Perfil voluntariado</div>
+                    <div class="panel-body">
 
-                            <form action="#" id="perfilVoluntariado" method="POST" class="form-horizontal">
+                        <form action="#" id="perfilVoluntariado" method="POST" class="form-horizontal">
 
-                                <div class="form-group">
-                                    <label for="Nombre_doc" class="col-lg-3 control-label">Nombre</label>
-                                    <div class="col-lg-4">
-                                        <input type="text" name="Nombre_doc" class="form-control" placeholder="Escriba nombre" required>
-                                    </div>
+                            <div class="form-group">
+                                <label for="Nombre_doc" class="col-lg-3 control-label">Nombre</label>
+                                <div class="col-lg-4">
+                                    <input type="text" name="Nombre_doc" class="form-control" placeholder="Escriba nombre" required>
                                 </div>
-                                
-                                  
-                                
-                                  <div class="form-group">
-                                              <label for="Fecha_Nacimiento" class="col-lg-3 control-label">Fecha de nacimiento:</label>
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <label for="Fecha_Nacimiento" class="col-lg-3 control-label">Fecha de nacimiento:</label>
                                 <div class="col-lg-3">
                                     <input type="date"  class="form-control"><br>
-                                      </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="Contrasenia" class="col-lg-3 control-label">Contraseña</label>
-                                    <div class="col-lg-4">
-                                        <input type="password" name="password_emp" class="form-control" placeholder="Contraseña" required>
-                                    </div>  
+                            </div>
+                            <div class="form-group">
+                                <label for="Contrasenia" class="col-lg-3 control-label">Contraseña</label>
+                                <div class="col-lg-4">
+                                    <input type="password" name="password_emp" class="form-control" placeholder="Contraseña" required>
+                                </div>  
+                            </div>
+
+                            <div class="form-group">
+                                <label for="ConfirmContrasenia" class="col-lg-3 control-label">Confirme contraseña</label>
+                                <div class="col-lg-4">
+                                    <input type="password" name="confirm_password" class="form-control" placeholder="Confirme su contraseña" required>
+                                </div>  
+                            </div>    
+
+
+                            <div class="form-group">
+                                <label for="correo" class="col-lg-3 control-label">Correo</label>
+                                <div class="col-lg-4">
+                                    <input type="email" name="email_emp" placeholder="Ejemplo: ejemplo@dominio.com" class="form-control" id="focusedInput" required>
                                 </div>
+                            </div>
 
-                                <div class="form-group">
-                                    <label for="ConfirmContrasenia" class="col-lg-3 control-label">Confirme contraseña</label>
-                                    <div class="col-lg-4">
-                                        <input type="password" name="confirm_password" class="form-control" placeholder="Confirme su contraseña" required>
-                                    </div>  
-                                </div>    
-
-
-                                <div class="form-group">
-                                    <label for="correo" class="col-lg-3 control-label">Correo</label>
-                                    <div class="col-lg-4">
-                                        <input type="email" name="email_emp" placeholder="Ejemplo: ejemplo@dominio.com" class="form-control" id="focusedInput" required>
-                                    </div>
+                            <div class="form-group">
+                                <label for="telefono" class="col-lg-3 control-label">Telefono</label>
+                                <div class="col-lg-4">
+                                    <input type="tel" name="telefono_emp" placeholder="Escriba un numero de telefono" class="form-control" required>
                                 </div>
+                            </div>
+                            <div class="form-group">    
+                                <label for="direccion" class="col-lg-3 control-label">Direccion</label>
+                                <div class="col-lg-6">
+                                    <input type="text" name="direcccion_doc" class="form-control" placeholder="Escriba la direccion" required>
 
-                                <div class="form-group">
-                                    <label for="telefono" class="col-lg-3 control-label">Telefono</label>
-                                    <div class="col-lg-4">
-                                        <input type="tel" name="telefono_emp" placeholder="Escriba un numero de telefono" class="form-control" required>
-                                    </div>
                                 </div>
-                                <div class="form-group">    
-                                    <label for="direccion" class="col-lg-3 control-label">Direccion</label>
-                                    <div class="col-lg-6">
-                                        <input type="text" name="direcccion_doc" class="form-control" placeholder="Escriba la direccion" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="Departamento" class="col-lg-3 control-label">Departamento</label>
+                                <div class="col-lg-4">
+                                    <select name="departamento" class="form-control" required="">
 
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="Departamento" class="col-lg-3 control-label">Departamento</label>
-                                    <div class="col-lg-4">
-                                        <select name="departamento" class="form-control" required="">
-                                          
-                                            <option value="-1">- Seleccione -</option>
-                                            <option>San Salvador</option>
-                                            <option>La Paz</option>
-                                            <option>San Miguel</option>
-                                            <option>La Union</option>
-                                            <option>La Libertad</option>
-                                            <option>Santa Ana</option>
-                                            <option>Sonsonate</option>
-                                            <option>Aguachapan</option>
-                                            <option>San Vicente</option>
-                                            <option>Chalatenango</option>
-                                            <option>Cabañas</option>
-                                            <option>Cuscatlan</option>
-                                            <option>Usulutan</option>
-                                            <option>Morazan</option>
-                                           
-                                        </select>
-                                    </div>
-                                    <br>
-                                     <br>
-                                      <br>
-                                     <br>
-                                     <center>
-             <a href="#" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-search"></i> Guardar</a>
-             <a href="#" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-search"></i> Modificar</a>
-             </center>
-                                </div>
-                            </form>
+                                        <option value="-1">- Seleccione -</option>
+                                        <option>San Salvador</option>
+                                        <option>La Paz</option>
+                                        <option>San Miguel</option>
+                                        <option>La Union</option>
+                                        <option>La Libertad</option>
+                                        <option>Santa Ana</option>
+                                        <option>Sonsonate</option>
+                                        <option>Aguachapan</option>
+                                        <option>San Vicente</option>
+                                        <option>Chalatenango</option>
+                                        <option>Cabañas</option>
+                                        <option>Cuscatlan</option>
+                                        <option>Usulutan</option>
+                                        <option>Morazan</option>
 
-                        </div>
+                                    </select>
+                                </div>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <center>
+                                    <a href="#" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-search"></i> Guardar</a>
+                                    <a href="#" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-search"></i> Modificar</a>
+                                </center>
+                            </div>
+                        </form>
+
                     </div>
-
                 </div>
-               
+
+            </div>
+
 
             <script>
                 $('#myTab a').click(function(e) {
@@ -191,9 +191,5 @@
 
 
         </div>
-
-
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-
     </body>
 </html>
