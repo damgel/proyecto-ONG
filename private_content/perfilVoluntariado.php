@@ -65,7 +65,7 @@
         //include database configuration
         include '../clases/db_connect.php';
 
-        if ($_POST['action'] == 'create') {
+        if ($_POST['action'] == 'Guardar') {
 
             //sql insert statement
             $sql = "insert into voluntariado(nombre_vo, apellido_vo, fecha_na_vo, edad_vo, genero_vo, telefono_vo, direccion_vo,departamento_vo, cod_aso, email_vo)
@@ -73,8 +73,12 @@
             //insert query to the database
             if (mysql_query($sql)) {
                 //if successful query
-                echo "New record was saved.";
+                echo "<script>alert('registro guardado correctamente!')</script>";
                 $sql = "";
+                session_start();
+                $_SESSION['nombre'] = $_POST['nombre_vo'];
+                header("Location: http://localhost:8000/private_content/index.php"); /* Redirect browser */
+                exit();
             } else {
                 //if query failed
                 die($sql . ">>" . mysql_error());
@@ -82,11 +86,14 @@
         }
         ?>
 
-        <div id="header" class="navbar navbar-default navbar-static-top"></div>
-
+        <div id="header" class="navbar navbar-default navbar-static-top">
+            <?php
+            include 'layout/private-header.php';
+            ?>
+        </div>
         <div id="error"></div>
         <!-- // Script para cargar recursos html con jQuery en una pagina -->
-        <script>$(document).ready(function() {
+<!--        <script>$(document).ready(function() {
                 $("#header").load("layout/private-header.html", function(status, xhr) {
                     if (status == "error")
                     {
@@ -95,7 +102,7 @@
                     }
                 });
             });
-        </script> 
+        </script> -->
 
         <div class="tab-content">
             <div class="tab-pane active" id="Perfil_volun">
@@ -192,13 +199,9 @@
                                 <br>
                                 <br>
                                 <center>
-                                    <div class="alert-message success">
-                                        <a class="close" href="#">×</a>
-                                        <p><strong>Well done!</strong> You successfully <a href="#">read this</a> alert message.</p>
-                                    </div>
-                                    <input type='hidden' name='action' value='create' />
-                                    <input type='submit' value='Save' />
-                                    <a href="#" class="btn btn-default btn-large"><i class="glyphicon glyphicon-floppy-disk"></i></a>
+
+                                    <input type='submit' name='action' class="btn btn-default btn-large" value='Guardar' />
+
                                     <a href="#" class="btn btn-default btn-large"><i class="glyphicon glyphicon-floppy-open"></i> Modificar</a>
                                 </center>
                             </div>
