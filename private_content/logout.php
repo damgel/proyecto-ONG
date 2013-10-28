@@ -9,5 +9,5 @@ session_start();
 session_destroy();
 session_unset();
 echo '<h1>Cerrando Sesion</h1>';
-header("Location: http://localhost:8000/home.html"); /* Redirect browser */
+header("Location: http://localhost:8000/home.html"); /* redireccionar navegador */
 ?>
