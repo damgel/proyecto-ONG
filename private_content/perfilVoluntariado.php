@@ -61,12 +61,25 @@
         </style>
     </head>
     <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+        <?php
+        //include database configuration
+        include '../clases/db_connect.php';
 
-        <!-- NAVBAR
-     ================================================== -->
+        if ($_POST['action'] == 'create') {
+
+            //sql insert statement
+            $sql = "insert into voluntariado(nombre_vo, apellido_vo, fecha_na_vo, edad_vo, genero_vo, telefono_vo, direccion_vo,departamento_vo, cod_aso, email_vo)
+                values('{$_POST['nombre_vo']}', '{$_POST['apellido_vo']}', '{$_POST['fecha_na_vo']}', '{$_POST['edad_vo']}', '{$_POST['genero_vo']}', '{$_POST['telefono_vo']}', '{$_POST['direccion_vo']}', '{$_POST['departamento_vo']}','1','{$_POST['email_vo']}')";
+            //insert query to the database
+            if (mysql_query($sql)) {
+                //if successful query
+                echo "New record was saved.";
+            } else {
+                //if query failed
+                die($sql . ">>" . mysql_error());
+            }
+        }
+        ?>
 
         <div id="header" class="navbar navbar-default navbar-static-top"></div>
 
@@ -87,24 +100,34 @@
             <div class="tab-pane active" id="Perfil_volun">
 
                 <div class="panel panel-primary">
-                    <div class="panel-heading">Perfil voluntariado</div>
+                    <div class="panel-heading">Perfil voluntariado
+
+                    </div>
                     <div class="panel-body">
 
-                        <form action="#" id="perfilVoluntariado" method="POST" class="form-horizontal">
-
+                        <form action="#" method="POST" class="form-horizontal">
                             <div class="form-group">
                                 <label for="Nombre_doc" class="col-lg-3 control-label">Nombre</label>
                                 <div class="col-lg-4">
-                                    <input type="text" name="Nombre_doc" class="form-control" placeholder="Escriba nombre" required>
+                                    <input type="text" name="nombre_vo" class="form-control" placeholder="Escriba un nombre" required>
                                 </div>
                             </div>
-
-
-
+                            <div class="form-group">
+                                <label for="apellido_doc" class="col-lg-3 control-label">Apellido</label>
+                                <div class="col-lg-4">
+                                    <input type="text" name="apellido_vo" class="form-control" placeholder="Escriba un apellido" required>
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <label for="Fecha_Nacimiento" class="col-lg-3 control-label">Fecha de nacimiento:</label>
                                 <div class="col-lg-3">
-                                    <input type="date"  class="form-control"><br>
+                                    <input type="date" name="fecha_na_vo" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="Edad" class="col-lg-3 control-label">Edad:</label>
+                                <div class="col-lg-3">
+                                    <input type="number" name="edad_vo" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -121,47 +144,45 @@
                                 </div>  
                             </div>    
 
-
-                            <div class="form-group">
-                                <label for="correo" class="col-lg-3 control-label">Correo</label>
-                                <div class="col-lg-4">
-                                    <input type="email" name="email_emp" placeholder="Ejemplo: ejemplo@dominio.com" class="form-control" id="focusedInput" required>
-                                </div>
-                            </div>
-
                             <div class="form-group">
                                 <label for="telefono" class="col-lg-3 control-label">Telefono</label>
                                 <div class="col-lg-4">
-                                    <input type="tel" name="telefono_emp" placeholder="Escriba un numero de telefono" class="form-control" required>
+                                    <input type="tel" name="telefono_vo" placeholder="Escriba un numero de telefono" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="correo" class="col-lg-3 control-label">Correo</label>
+                                <div class="col-lg-4">
+                                    <input type="email" name="email_vo" placeholder="Ejemplo: ejemplo@dominio.com" class="form-control" id="focusedInput" required>
                                 </div>
                             </div>
                             <div class="form-group">    
                                 <label for="direccion" class="col-lg-3 control-label">Direccion</label>
                                 <div class="col-lg-6">
-                                    <input type="text" name="direcccion_doc" class="form-control" placeholder="Escriba la direccion" required>
+                                    <input type="text" name="direcccion_vo" class="form-control" placeholder="Escriba la direccion" required>
 
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="Departamento" class="col-lg-3 control-label">Departamento</label>
                                 <div class="col-lg-4">
-                                    <select name="departamento" class="form-control" required>
+                                    <select name="departamento_vo" class="form-control" required>
 
                                         <option value="-1">- Seleccione -</option>
-                                        <option>San Salvador</option>
-                                        <option>La Paz</option>
-                                        <option>San Miguel</option>
-                                        <option>La Union</option>
-                                        <option>La Libertad</option>
-                                        <option>Santa Ana</option>
-                                        <option>Sonsonate</option>
-                                        <option>Aguachapan</option>
-                                        <option>San Vicente</option>
-                                        <option>Chalatenango</option>
-                                        <option>Cabañas</option>
-                                        <option>Cuscatlan</option>
-                                        <option>Usulutan</option>
-                                        <option>Morazan</option>
+                                        <option value="san salvador">San Salvador</option>
+                                        <option value="la paz">La Paz</option>
+                                        <option value="san miguel">San Miguel</option>
+                                        <option value="la union">La Union</option>
+                                        <option value="la libertad">La Libertad</option>
+                                        <option value="santa ana">Santa Ana</option>
+                                        <option value="sonsonate">Sonsonate</option>
+                                        <option value="ahuachapan">Aguachapan</option>
+                                        <option value="san vicente">San Vicente</option>
+                                        <option value="chalatenango">Chalatenango</option>
+                                        <option value="cabanias">Cabañas</option>
+                                        <option value="cuscatlan">Cuscatlan</option>
+                                        <option value="usulutan">Usulutan</option>
+                                        <option value="morazan">Morazan</option>
 
                                     </select>
                                 </div>
@@ -170,8 +191,14 @@
                                 <br>
                                 <br>
                                 <center>
-                                    <a href="#" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-search"></i> Guardar</a>
-                                    <a href="#" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-search"></i> Modificar</a>
+                                    <div class="alert-message success">
+                                        <a class="close" href="#">×</a>
+                                        <p><strong>Well done!</strong> You successfully <a href="#">read this</a> alert message.</p>
+                                    </div>
+                                    <input type='hidden' name='action' value='create' />
+                                    <input type='submit' value='Save' />
+                                    <a href="#" class="btn btn-default btn-large"><i class="glyphicon glyphicon-floppy-disk"></i></a>
+                                    <a href="#" class="btn btn-default btn-large"><i class="glyphicon glyphicon-floppy-open"></i> Modificar</a>
                                 </center>
                             </div>
                         </form>
