@@ -74,6 +74,7 @@
             if (mysql_query($sql)) {
                 //if successful query
                 echo "New record was saved.";
+                $sql = "";
             } else {
                 //if query failed
                 die($sql . ">>" . mysql_error());
