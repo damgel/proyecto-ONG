@@ -61,18 +61,16 @@
         </style>
     </head>
     <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
 
-        <!-- NAVBAR
-     ================================================== -->
 
-        <div id="header" class="navbar navbar-default navbar-static-top"></div>
-
+        <div id="header" class="navbar navbar-default navbar-static-top">
+            <?php
+            include 'layout/private-header.php';
+            ?>
+        </div>
         <div id="error"></div>
         <!-- // Script para cargar recursos html con jQuery en una pagina -->
-        <script>$(document).ready(function() {
+<!--        <script>$(document).ready(function() {
                 $("#header").load("layout/private-header.html", function(status, xhr) {
                     if (status == "error")
                     {
@@ -81,7 +79,7 @@
                     }
                 });
             });
-        </script> 
+        </script> -->
 
         <div id="contenedor" class="container">
             <ul class="nav nav-tabs" id="myTab">

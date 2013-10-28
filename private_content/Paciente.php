@@ -72,11 +72,14 @@
         <!-- NAVBAR
      ================================================== -->
 
-        <div id="header" class="navbar navbar-default navbar-static-top"></div>
-
+        <div id="header" class="navbar navbar-default navbar-static-top">
+            <?php
+            include 'layout/private-header.php';
+            ?>
+        </div>
         <div id="error"></div>
         <!-- // Script para cargar recursos html con jQuery en una pagina -->
-        <script>$(document).ready(function() {
+<!--        <script>$(document).ready(function() {
                 $("#header").load("layout/private-header.html", function(status, xhr) {
                     if (status == "error")
                     {
@@ -85,7 +88,7 @@
                     }
                 });
             });
-        </script> 
+        </script> -->
 
         <div id="contenedor" class="container">
 
