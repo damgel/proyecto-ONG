@@ -141,15 +141,6 @@
                             $(this).tab('show');
                         });
                     </script>
-
-
-
-
-
-
-
-
-
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-4">
 
