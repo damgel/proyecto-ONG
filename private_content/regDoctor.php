@@ -66,7 +66,7 @@
 
         <div id="header" class="navbar navbar-default navbar-static-top">
             <?php
-            include 'layout/private-header.php';
+            include_once 'layout/private-header.php';
             ?>
         </div>
         <?php
@@ -225,7 +225,7 @@
                                 <style>
                                     tr:hover
                                     {
-                                        background: whitesmoke;
+                                        background: #ddeeff;
                                     }
 
                                 </style>
@@ -327,4 +327,17 @@
             </div>
         </div>
     </body>
+    <div class="footer">
+        <style>
+            .footer
+            {
+
+                padding: 10px;
+                margin: 10px;
+            }
+        </style>
+        <?php
+        include_once 'layout/private-footer.php';
+        ?>
+    </div>
 </html>

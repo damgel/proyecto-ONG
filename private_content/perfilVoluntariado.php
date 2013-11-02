@@ -226,4 +226,17 @@
             </div>
         </div>
     </body>
+    <div class="footer">
+        <style>
+            .footer
+            {
+
+                padding: 10px;
+                margin: 10px;
+            }
+        </style>
+        <?php
+        include_once 'layout/private-footer.php';
+        ?>
+    </div>
 </html>
