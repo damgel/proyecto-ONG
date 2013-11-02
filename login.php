@@ -41,7 +41,7 @@
             {
                 text-align: center;
             }
-            #frm-login
+            .frm-login
             {
                 float:left;    /*tambien puede poner float:right, para que se alineé a la derecha */
                 padding:10px;
@@ -51,19 +51,19 @@
             }
             #registrarse-container
             {
-                float:left;       /*tambien puede poner float:right, para que se alineé a la derecha */
+                float:right;       /*tambien puede poner float:right, para que se alineé a la derecha */
                 padding:10px;
-                width:400px;
-                margin:40px;
+                margin:auto;
 
 
             }
 
 
+
         </style>
 
 
-    </head>
+    </head> 
     <body>
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -114,56 +114,57 @@
                 <div class="panel-heading">Login</div>
                 <div class="panel-body">
 
-                    <form id="frm-login" action="#" method="POST" class="form-horizontal">
+                    <div class="col-md-6 col-md-offset-2">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Acceder como Doctor/a</h3>
+                            </div>
+                            <div class="panel-body">
+                                <form id="frm-login" action="#" method="POST">
+                                    <div class="row-fluid">
+                                        <fieldset>
+                                            <div class="span6"> 
+                                                <div class="form-group">
+                                                    <input type="text" name="JVPO" class="form-control" placeholder="JVPO" required="">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="password" name="password_doc" class="form-control" placeholder="Password"  required pattern=".{6,25}">
+                                                </div>
 
-                        <fieldset>
-                            <div class="form-group">
-
-                                <legend><center><h3>Acceso Doctor/a</h3></center></legend>
-                                <br>
-                                <div class="form-group">
-                                    <label  class="col-lg-3 control-label" for="email">JVPO</label>
-                                    <div class="col-lg-8">
-                                        <input type="text" name="JVPO" class="form-control"  placeholder="Escriba su codigo JVPO" required>
-
+                                                <input type='submit' name='action' value="Entrar" class="btn btn-lg btn-info btn-block">
+                                            </div>
+                                        </fieldset>  
                                     </div>
-                                </div>  
+                                </form> <!-- END THE FORM -->
+                            </div>
 
-                                <div class="form-group">
-                                    <label  class="col-lg-3 control-label" for="password_doc">Password</label>
-                                    <div class="col-lg-8">
-                                        <input type="password" name="password_doc" class="form-control"  placeholder="Escriba su contrasenia" required  pattern=".{8,25}">
-
-                                    </div>
-                                </div>
-
-                                <center>
-                                    <input type='submit' name='action' value="Entrar" class="btn btn-info btn-large" />
-
-                                </center>
-                                <br>
-                                <br>
-                                <br>
-
-
-                            </div> 
-                        </fieldset>
-
-                    </form>
-
-                    <div id="registrarse-container">
-                        <h4><p class="text-center">Ingresar como voluntario</p></h4>
-
-                        <p class="text-center">
-                            <a href="LoginVoluntario.php">
-                                <button type="submit" class="btn btn-info">Acces como voluntario</button> 
-                            </a>
-                        </p>
-                        <br>
+                        </div>
                     </div>
 
-                </div>       
+
+                    <div id="registrarse-container">
+                        <div class="col-md-2 col-md-offset-0">
+                            <form action="">
+                                <fieldset>
+
+                                    <h4 class="text-center">Ingresar como voluntario</h4>
+                                    <a href="LoginVoluntario.php" class="btn btn-info">Acceder como volunario </a>
+
+
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div> 
+                </div>
             </div>
+
         </div>
-    </body>
+    </div>
+
+
+
+</div>       
+</div>
+</div>
+</body>
 </html>
