@@ -23,15 +23,6 @@
         <script src="../assets/js/holder.js"></script>
 
         <script>
-            // MENU LOADER
-//            $(document).ready(function() {
-//                $("#header").load("layout/private-header.php", function(status, xhr) {
-//                    if (status === "error") {
-//                        var msg = "Lo lamentamos, ha habido un errror cargando el Menu: ";
-//                        $("#error").html(msg + xhr.status + " " + xhr.statusText);
-//                    }
-//                });
-//            });
 
             //JS PARA INICIALIZAR EL CARUSEL
             // INTEVAL = TIEMPO QUE DURA CADA SLIDE
@@ -194,8 +185,6 @@
                 </div>
 
             </div>
-
-
             <!-- FOOTER -->
             <footer>
                 <br>
@@ -205,9 +194,6 @@
             </footer>
 
         </div>
-        <!-- /.container -->
-
-
         <!-- Bootstrap core JavaScript
             ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
