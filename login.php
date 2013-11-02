@@ -84,7 +84,31 @@
                     }
                 });
             });</script> 
+        <?php
+        if ($_POST['action'] === 'Entrar') {
+            echo 'hola desde IF EN POST';
+            $usuario_doc = $_POST['JVPO'];
+            $pass_doc = $_POST['password_doc'];
 
+            if (isset($usuario_doc) && !empty($pass_doc)) {
+                include "clases/db_connect.php";
+                $result = mysql_query("SELECT cod_doc, nombre_doc, apellido_doc FROM doctor 
+                    where JVPO='$usuario_doc' and password_doc='$pass_doc'");
+                while ($row = mysql_fetch_array($result)) {
+                    $nombre = $row{'nombre_doc'};
+                    $apellido = $row{'apellido_doc'};
+                    $cod_doc = $row{'cod_doc'};
+                    session_start();
+                    $_SESSION['nombre'] = $nombre . " " . $apellido;
+                    $_SESSION['cod_doc'] = $cod_doc;
+                    echo $_SESSION['nombre'];
+                    header("Location: http://localhost:8000/private_content/updateDoctor.php"); /* Redirect browser */
+                }
+            } else {
+                echo "Por favor introduzca un usuario y contrasenia correctos";
+            }
+        }
+        ?>
         <div class="container">
             <div class="panel panel-primary">
                 <div class="panel-heading">Login</div>
@@ -95,26 +119,27 @@
                         <fieldset>
                             <div class="form-group">
 
-                                <legend><center><h3>Login</h3></center></legend>
+                                <legend><center><h3>Acceso Doctor/a</h3></center></legend>
                                 <br>
                                 <div class="form-group">
-                                    <label  class="col-lg-3 control-label" for="email">Voluntariado</label>
+                                    <label  class="col-lg-3 control-label" for="email">JVPO</label>
                                     <div class="col-lg-8">
-                                        <input type="email" name="email" class="form-control"  placeholder="Escriba un correo" required>
+                                        <input type="text" name="JVPO" class="form-control"  placeholder="Escriba su codigo JVPO" required>
 
                                     </div>
                                 </div>  
 
                                 <div class="form-group">
-                                    <label  class="col-lg-3 control-label" for="passwordm">Password</label>
+                                    <label  class="col-lg-3 control-label" for="password_doc">Password</label>
                                     <div class="col-lg-8">
-                                        <input type="password" name="passwordm" class="form-control"  placeholder="Escriba una contrasenia" required  pattern=".{8,25}">
+                                        <input type="password" name="password_doc" class="form-control"  placeholder="Escriba su contrasenia" required  pattern=".{8,25}">
 
                                     </div>
                                 </div>
 
                                 <center>
-                                    <button type="submit" class="btn btn-info">Ingresar</button>   
+                                    <input type='submit' name='action' value="Entrar" class="btn btn-info btn-large" />
+
                                 </center>
                                 <br>
                                 <br>
@@ -127,11 +152,11 @@
                     </form>
 
                     <div id="registrarse-container">
-                        <h4><p class="text-center">Registrarse como Voluntario</p></h4>
+                        <h4><p class="text-center">Ingresar como voluntario</p></h4>
 
                         <p class="text-center">
                             <a href="LoginVoluntario.php">
-                                <button type="submit" class="btn btn-info">Registrarse</button> 
+                                <button type="submit" class="btn btn-info">Acces como voluntario</button> 
                             </a>
                         </p>
                         <br>
