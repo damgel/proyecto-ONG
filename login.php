@@ -102,7 +102,7 @@
                     $_SESSION['nombre'] = $nombre . " " . $apellido;
                     $_SESSION['cod_doc'] = $cod_doc;
                     echo $_SESSION['nombre'];
-                    header("Location: http://localhost:8000/private_content/updateDoctor.php"); /* Redirect browser */
+                    header("Location: http://localhost:8000/private_content/regDoctor.php"); /* Redirect browser */
                 }
             } else {
                 echo "Por favor introduzca un usuario y contrasenia correctos";
