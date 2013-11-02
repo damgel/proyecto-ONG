@@ -360,7 +360,7 @@ CREATE TABLE `doctor` (
   `departamento_doc` varchar(20) NOT NULL,
   `cod_as` int(11) NOT NULL,
   PRIMARY KEY (`cod_doc`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -369,6 +369,7 @@ CREATE TABLE `doctor` (
 
 LOCK TABLES `doctor` WRITE;
 /*!40000 ALTER TABLE `doctor` DISABLE KEYS */;
+INSERT INTO `doctor` VALUES (2,'DOCTOR01','HERNANDEZ','789514524','M','0000-00-00','destiny','79263016','La libertad, el salvador','san salvador',2),(5,'DAMGEL','KRAUTZ','8718787781','Masculino','2013-11-11','destiny','79263016','La libertad, el salvador','La Libertad',0),(6,'Jose Manuel','Guillen Ramirez','132002','M','0000-00-00','destiny','79263016','La libertad, el salvador','san salvador',1),(8,'angel','leonardo','00005','F','2013-11-20','destiny','79263016','La libertad, el salvador','La Libertad',0),(9,'LEONARDO ANGEL','KRAUTZER','15454584','M','2013-11-16','destiny','78981715','La libertad, el salvador','Chalatenango',0);
 /*!40000 ALTER TABLE `doctor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -455,34 +456,6 @@ LOCK TABLES `pass` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `users`
---
-
-DROP TABLE IF EXISTS `users`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `firstname` varchar(32) NOT NULL,
-  `lastname` varchar(32) NOT NULL,
-  `username` varchar(32) NOT NULL,
-  `password` varchar(32) NOT NULL,
-  `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `users`
---
-
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (52,'angel','leonardo','21','destiny','2013-10-28 03:06:15'),(53,'angel','leonardo','21','destiny','2013-10-28 03:14:53');
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `usuario`
 --
 
@@ -525,9 +498,10 @@ CREATE TABLE `voluntariado` (
   `direccion_vo` varchar(50) DEFAULT NULL,
   `departamento_vo` varchar(20) DEFAULT NULL,
   `cod_aso` int(11) NOT NULL,
-  `email_vo` varchar(45) DEFAULT NULL,
+  `email_vo` varchar(45) NOT NULL,
+  `password_vo` varchar(20) NOT NULL,
   PRIMARY KEY (`cod_vo`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -536,7 +510,7 @@ CREATE TABLE `voluntariado` (
 
 LOCK TABLES `voluntariado` WRITE;
 /*!40000 ALTER TABLE `voluntariado` DISABLE KEYS */;
-INSERT INTO `voluntariado` VALUES (9,'Jose','Guillen','2013-10-15','21','','79263016','','san miguel',1,'deakill@hotmail.com'),(10,'Jose','Guillen','2013-10-15','21','','79263016','','san miguel',1,'deakill@hotmail.com'),(11,'angel','lopez','2013-10-16','21','','79263016','','san salvador',1,'deakill@hotmail.com'),(12,'Karla Lisseth','Varela','1992-10-10','21','','23319047','','san vicente',1,'deakill@hotmail.com'),(13,'Karla Lisseth','Varela','1992-10-10','21','','23319047','','san vicente',1,'deakill@hotmail.com');
+INSERT INTO `voluntariado` VALUES (9,'Jose','Guillen','2013-10-15','21','','79263016','','san miguel',1,'deakill@hotmail.com','destiny'),(13,'Karla Lisseth','Varela','1992-10-10','21','','23319047','','san vicente',1,'kari@hotmail.com','destiny'),(14,'JD','SALLINGER','2013-11-20','21','','79263016','','la paz',1,'jdamgel@hotmail.com',''),(15,'angel','leonardo','0000-00-00','21','','79263016','','san salvador',1,'jangel@hotmail.com',''),(16,'','','0000-00-00','','','','','',1,'',''),(17,'','','0000-00-00','','','','','',1,'','');
 /*!40000 ALTER TABLE `voluntariado` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -553,4 +527,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-10-28 15:34:27
+-- Dump completed on 2013-11-02  0:28:06
