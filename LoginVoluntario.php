@@ -40,89 +40,91 @@
 
         <!-- TODO EL CODIGO HTML QUE VAYAN A UTILIZA AQUI, NO BORREN NINGUNA LINEA DE CODIGO DE LAS QUE YA ESTAN AQUI -->
         <!-- NO NECESITAN PONER NINGUN SCRIPTS, EXCEPTO LAS PROPIAS CLASES CSS QUE CREEN. -->
-        <div class="tab-content">
-            <div class="tab-pane active" id="regVoluntariado">
+        <div class="container">
+            <div class="tab-content">
+                <div class="tab-pane active" id="regVoluntariado">
 
-                <div class="panel panel-primary">
-                    <div class="panel-heading">Registro</div>
-                    <div class="panel-body">
-                        <?php
-                        //echo "hola mundo";
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">Registro</div>
+                        <div class="panel-body">
+                            <?php
+                            //echo "hola mundo";
 
-                        if ($_POST['action'] === 'Entrar') {
-                            $usuario_vo = $_POST['email_vo'];
-                            $pass_vo = $_POST['password_vo'];
+                            if ($_POST['action'] === 'Entrar') {
+                                $usuario_vo = $_POST['email_vo'];
+                                $pass_vo = $_POST['password_vo'];
 
-                            if (isset($usuario_vo) && !empty($pass_vo)) {
-//                                echo "$usuario_vo" . "<br>";
-//                                echo "$pass_vo" . "<br>";
-                                // echo "Hay POST y usuario y pass entran en el IF.";
-                                include "clases/db_connect.php";
-
-                                $result = mysql_query("SELECT nombre_vo FROM voluntariado where email_vo='$usuario_vo' and password_vo='$pass_vo'");
-                                while ($row = mysql_fetch_array($result)) {
-                                    $nombre = $row{'nombre_vo'};
-                                    session_start();
-                                    $_SESSION['nombre'] = $nombre;
-                                    echo $_SESSION['nombre'];
-                                    header("Location: http://localhost:8000/private_content/index.php"); /* Redirect browser */
+                                if (isset($usuario_vo) && !empty($pass_vo)) {
+                                    include "clases/db_connect.php";
+                                    $result = mysql_query("SELECT nombre_vo FROM voluntariado where email_vo='$usuario_vo' and password_vo='$pass_vo'");
+                                    if ($result === 0) {
+                                        session_start();
+                                        $_SESSION['error'] = "<P>Por favor introduzca un usuario y contrasenia validos</P>";
+                                    } elseif ($result >= 0) {
+                                        while ($row = mysql_fetch_array($result)) {
+                                            $nombre = $row{'nombre_vo'};
+                                            session_start();
+                                            $_SESSION['nombre'] = $nombre;
+                                            echo $_SESSION['nombre'];
+                                            header("Location: http://localhost:8000/private_content/index.php"); /* Redirect browser */
+                                        }
+                                    }
                                 }
                             } else {
-                                echo "Por favor introduzca un usuario y contrasenia correctos";
+                                $_SESSION['error'] = "<P>Por favor introduzca un usuario y contrasenia validos</P>";
                             }
+                            ?>
+                            <div class="col-md-6 col-md-offset-2">
+                                <form action="#" method="POST" class="form-horizontal">
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label for="correo" class="col-lg-3 control-label">Correo</label>
+                                            <div class="col-lg-6">
+                                                <input type="email" name="email_vo" placeholder="Ejemplo: ejemplo@dominio.com" class="form-control" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="Contrasenia" class="col-lg-3 control-label">Contraseña</label>
+                                            <div class="col-lg-6">
+                                                <input type="password" name="password_vo" class="form-control" placeholder="Contraseña" required>
+                                            </div>
+                                        </div>
+                                        <div class="errorS">
+                                            <style>
+                                                .errorS
+                                                {
+                                                    color:red;
 
-
-//                            }
-////                            $result2 = mysql_query("SELECT nombre_us, cod_aso FROM usuario");
-////                            while ($row = mysql_fetch_array($result2)) {
-////                                echo "Nombre: " . $row{'nombre_us'} . "<br>";
-////                                echo "Nombre: " . $row{'cod_aso'} . "<br>";
-////                            }
-//
-//                            if (!empty($row['nombre_vo'])) {
-////                                header("Location: http://localhost:8000/private_content/index.php"); /* Redirect browser */
-//                            } else {
-//                                // if query failed
-//                                die($result . ">>" . mysql_error());
-//                            }
-                        }
-                        ?>
-                        <form action="#" method="POST" class="form-horizontal">
-
-                            <div class="form-group">
-                                <label for="correo" class="col-lg-3 control-label">Correo</label>
-                                <div class="col-lg-4">
-                                    <input type="email" name="email_vo" placeholder="Ejemplo: ejemplo@dominio.com" class="form-control">
-                                </div>
+                                                    font-weight: bold;
+                                                }
+                                                .errorS p
+                                                {
+                                                    text-align: center;
+                                                }
+                                            </style>
+                                            <?php
+                                            echo $_SESSION['error'];
+                                            ?>
+                                        </div>
+                                        <center><input type='submit' name='action' class="btn btn-info btn-large" value='Entrar' /></center>
+                                    </fieldset>
+                                </form>
                             </div>
-                            <div class="form-group">
-                                <label for="Contrasenia" class="col-lg-3 control-label">Contraseña</label>
-                                <div class="col-lg-4">
-                                    <input type="password" name="password_vo" class="form-control" placeholder="Contraseña">
-                                </div>
-                                <br>
-                                <br>
-                                <br>
-
-                                <center><input type='submit' name='action' class="btn btn-default btn-large" value='Entrar' /></center>
-                            </div>
-
-                        </form>
-
+                        </div>
                     </div>
+
                 </div>
 
+
+                <script>
+                    $('#myTab a').click(function(e) {
+                        e.preventDefault();
+                        $(this).tab('show');
+                    });
+                </script>
+
+
             </div>
-
-
-            <script>
-                $('#myTab a').click(function(e) {
-                    e.preventDefault();
-                    $(this).tab('show');
-                });
-            </script>
-
-
         </div>
     </body>
 </html>
