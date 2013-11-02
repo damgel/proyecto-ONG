@@ -58,6 +58,11 @@
                 text-align: right;
 
             }
+            tr:hover
+            {
+                background: #ddeeff;
+            }
+
 
         </style>
     </head>
@@ -221,14 +226,6 @@
                                 <br>
                             </form>
                             <div class="table-responsive">
-
-                                <style>
-                                    tr:hover
-                                    {
-                                        background: #ddeeff;
-                                    }
-
-                                </style>
                                 <?php
                                 include_once '../clases/db_connect.php';
                                 $tabla = "table ";
