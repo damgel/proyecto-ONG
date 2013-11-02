@@ -48,7 +48,6 @@
             }
         </style>
 
-
         <script>
             // fallback para el datepicker con jquery
             Modernizr.load({
@@ -65,33 +64,13 @@
 
     </head>
     <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-
-        <!-- NAVBAR
-     ================================================== -->
 
         <div id="header" class="navbar navbar-default navbar-static-top">
             <?php
-            include 'layout/private-header.php';
+            include_once 'layout/private-header.php';
             ?>
         </div>
-        <div id="error"></div>
-        <!-- // Script para cargar recursos html con jQuery en una pagina -->
-<!--        <script>$(document).ready(function() {
-                $("#header").load("layout/private-header.html", function(status, xhr) {
-                    if (status == "error")
-                    {
-                        var msg = "Lo lamentamos, ha habido un errror cargando el Menu: ";
-                        $("#error").html(msg + xhr.status + " " + xhr.statusText);
-                    }
-                });
-            });
-        </script> -->
-
         <div id="contenedor" class="container">
-
 
             <ul class="nav nav-tabs" id="myTab">
                 <li class="active"><a href="#Datos">Datos</a></li>
@@ -99,7 +78,6 @@
                 <li class=""><a href="#Citas">Citas</a></li>
 
             </ul>
-
             <div class="tab-content">
                 <div class="tab-pane active" id="Datos">
                     <div class="panel panel-primary">
@@ -107,15 +85,20 @@
                         <div class="panel-body">
 
                             <form action="#" id="paciente" method="POST" class="form-horizontal">
-
                                 <div class="form-group">
                                     <label for="Nombre" class="col-lg-3 control-label">Nombre</label>
                                     <div class="col-lg-4">
-                                        <input type="text" name="nombrePaciente" class="form-control" placeholder="Escriba un nombre" required>
+                                        <input type="text" name="nombre_pa" class="form-control" placeholder="Escriba un nombre" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="Fecha_Nacimiento" class="col-lg-3 control-label">Fecha de nacimiento:</label>
+                                    <label for="Apellido" class="col-lg-3 control-label">Apellido</label>
+                                    <div class="col-lg-4">
+                                        <input type="text" name="apellido_pa" class="form-control" placeholder="Escriba un nombre" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="fecha_na_pa" class="col-lg-3 control-label">Fecha de nacimiento:</label>
                                     <div class="col-lg-3">
                                         <input type="date"  class="form-control"><br>
                                     </div>
@@ -123,9 +106,9 @@
                                 <div class="form-group">
                                     <label class="col-lg-3 control-label">Genero</label>
                                     <div class="col-lg-4">
-                                        <input type="radio" name="optionsRadios" id="focusedInput" checked="">
+                                        <input type="radio" name="geneno_pa" checked="" value="M">
                                         Masculino
-                                        <input type="radio" name="optionsRadios" id="focusedInput">
+                                        <input type="radio" name="genero_pa" value="F">
                                         Femenino   
                                     </div>  
                                 </div>
@@ -133,13 +116,13 @@
                                 <div class="form-group">
                                     <label for="telefono" class="col-lg-3 control-label">Telefono</label>
                                     <div class="col-lg-4">
-                                        <input type="tel" name="telefonoPaciente" placeholder="Escriba un numero de telefono" class="form-control" required>
+                                        <input type="tel" name="telefono_pa" placeholder="Escriba un numero de telefono" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="form-group">    
                                     <label for="direccionPaciente" class="col-lg-3 control-label">Direccion actual</label>
                                     <div class="col-lg-6">
-                                        <input type="text" name="direcPaciente" class="form-control" placeholder="Escriba la direccion" required>
+                                        <input type="text" name="direccion_pa" class="form-control" placeholder="Escriba la direccion" required>
 
                                     </div>
                                 </div>
@@ -147,31 +130,29 @@
                                 <div class="form-group">    
                                     <label for="municipioPaciente" class="col-lg-3 control-label">Municipio</label>
                                     <div class="col-lg-6">
-                                        <input type="text" name="direcPaciente" class="form-control" placeholder="Municipio" required>
+                                        <input type="text" name="municipio_pa" class="form-control" placeholder="Municipio" required>
 
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="departamento" class="col-lg-3 control-label">Departamento</label>
                                     <div class="col-lg-4">
-                                        <select name="departamento" class="form-control" required="">
-
-                                            <option value="-1">- Seleccione -</option>
-                                            <option>San Salvador</option>
-                                            <option>La Paz</option>
-                                            <option>San Miguel</option>
-                                            <option>La Union</option>
-                                            <option>La Libertad</option>
-                                            <option>Santa Ana</option>
-                                            <option>Sonsonate</option>
-                                            <option>Aguachapan</option>
-                                            <option>San Vicente</option>
-                                            <option>Chalatenango</option>
-                                            <option>Cabañas</option>
-                                            <option>Cuscatlan</option>
-                                            <option>Usulutan</option>
-                                            <option>Morazan</option>
-
+                                        <select name="departamento_pa" class="form-control" required="">
+                                            <option value="NONE">- Seleccione -</option>
+                                            <option value="San Salvador">San Salvador</option>
+                                            <option value="La Paz">La Paz</option>
+                                            <option value="San Miguel">San Miguel</option>
+                                            <option value="La Union">La Union</option>
+                                            <option value="La Libertad">La Libertad</option>
+                                            <option value="Santa Ana">Santa Ana</option>
+                                            <option value="Sonsonate">Sonsonate</option>
+                                            <option value="Ahuachapan">Aguachapan</option>
+                                            <option value="San Vicente">San Vicente</option>
+                                            <option value="Chalatenango">Chalatenango</option>
+                                            <option value="Cabanias">Cabañas</option>
+                                            <option value="Cuscatlan">Cuscatlan</option>
+                                            <option value="Usulutan">Usulutan</option>
+                                            <option value="Morazan">Morazan</option>
                                         </select>
                                     </div>
                                     <br>
@@ -188,17 +169,8 @@
 
                         </div>
                     </div>
-
-
-
-
-
                 </div>
-
-
                 <div class="tab-pane" id="Expediente">
-
-
                     <div class="panel panel-primary">
                         <div class="panel-heading">Ficha</div>
                         <div class="panel-body">
@@ -210,50 +182,47 @@
                                 <div class="form-group">
                                     <label for="Nombre" class="col-lg-3 control-label">Paciente</label>
                                     <div class="col-lg-4">
-                                        <input type="text" name="nombrePaciente" class="form-control" placeholder="" required>
+                                        <input type="text" name="nombre_pa" class="form-control" placeholder="" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="Edad" class="col-lg-3 control-label">Edad</label>
+                                    <label for="Edad Paciente" class="col-lg-3 control-label">Edad</label>
                                     <div class="col-lg-3">
-                                        <input type="text" class="form-control" required><br>
+                                        <input type="text" name="edad_pa" class="form-control" required><br>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="Expediente N°" class="col-lg-3 control-label">Expediente N°</label>
                                     <div class="col-lg-3">
-                                        <input  type="text" class="form-control"required><br>
+                                        <input  type="text" name="no_ex" class="form-control"required><br>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="Lugar de origen°" class="col-lg-3 control-label">Lugar de origen</label>
                                     <div class="col-lg-3">
-                                        <input  type="text" class="form-control"required><br>
+                                        <input  type="text" name="direccion_pa"class="form-control"required><br>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="Referido de" class="col-lg-3 control-label">Referido de</label>
                                     <div class="col-lg-3">
-                                        <input  type="text" class="form-control"required><br>
+                                        <input  type="text" name="referido" class="form-control"required><br>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="Referido de" class="col-lg-3 control-label">Fecha</label>
+                                    <label for="Fecha" class="col-lg-3 control-label">Fecha</label>
                                     <div class="col-lg-3">
-                                        <input  type="date" class="form-control"required><br>
+                                        <input  type="date" name="fecha_consulta" class="form-control"required><br>
                                     </div>
                                 </div>
-
-
-
                                 <div class="form-group">    
                                     <label for="Mensaje" class="col-lg-3 control-label">Motivo de consulta</label>
                                     <div class="col-lg-6">
-                                        <textarea name="textarea" class="form-control col-lg-6" rows="4" required> </textarea>
+                                        <textarea name="textarea" name="motivo_consulta" class="form-control col-lg-6" rows="4" required> </textarea>
 
                                     </div>
                                 </div>
@@ -266,8 +235,6 @@
 
                                     </div>
                                 </div>
-
-
                                 <br>
                                 <br>
                                 <br>
@@ -276,44 +243,33 @@
                                     <a href="#" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-search"></i> Guardar</a>
                                     <a href="#" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-search"></i> Modificar</a>
                                 </center>
-
-
                             </form>
 
                         </div>
                     </div>
-
-
                 </div>
 
                 <div class="tab-pane" id="Citas">
-
-
                     <div class="panel panel-primary">
 
                         <div class="panel-heading">Seleccione fecha para proxima cita</div>
                         <div class="panel-body">
-
                             <form action="#" id="busquedaCita" class="form-horizontal">
                                 <div class="form-group">
-                                    <label for="Num_exp" class="col-lg-3 control-label">Numero de expediente:</label>
+                                    <label for="numero_expediente" class="col-lg-3 control-label">Numero de expediente:</label>
                                     <div class="col-lg-3">
-                                        <input type="text" name="Nombre_pa" class="form-control "   placeholder="-----------" required>
+                                        <input type="text" name="numero_exp" class="form-control "   placeholder="-----------" required>
                                     </div>
 
                                 </div> 
-
                                 <div class="panel-body">
                                     <div class="form-group">
                                         <label for="Nombre_doc" class="col-lg-3 control-label">Doctor: </label>
                                         <div class="col-lg-6">
-                                            <input type="text" name="Nombre_doc" class="form-control" placeholder="Escriba nombre" required>
+                                            <input type="text" name="nombre_doc" class="form-control" placeholder="Escriba nombre" required>
                                         </div>
                                     </div>
                                 </div>
-
-
-
                                 <label for="Fecha_Cita" class="col-lg-3 control-label">Proxima Cita:</label>
                                 <div class="col-lg-3">
                                     <input type="date"  class="form-control"><br>
@@ -331,11 +287,7 @@
                             </form>
                         </div>
                     </div>
-
-
                 </div>
-
-
                 <script>
                     $('#myTab a').click(function(e) {
                         e.preventDefault();
@@ -343,11 +295,7 @@
                     });
                 </script>
 
-
             </div>
-
         </div>
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-
     </body>
 </html>
