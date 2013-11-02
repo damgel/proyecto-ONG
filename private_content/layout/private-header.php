@@ -43,7 +43,7 @@
         session_start();
         if (isset($_SESSION['nombre'])) {
 
-            echo 'Bienvenido: ' . $_SESSION['nombre'];
+            echo 'Bienvenido: ' . $_SESSION['nombre'] . " ";
             echo '<a href="../private_content/logout.php">Cerrar Sesion</a>';
         } else {
             //session_start();
