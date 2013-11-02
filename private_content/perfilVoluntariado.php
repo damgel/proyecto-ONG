@@ -65,7 +65,7 @@
         <?php
         //include database configuration
 
-        if ($_POST['action'] == 'Guardar') {
+        if (isset($_POST['Guardar'])) {
 
             include_once '../clases/db_connect.php';
             //sql insert statement
@@ -202,7 +202,7 @@
                                     <br>
                                     <center>
 
-                                        <input type='submit' name='action' class="btn btn-default btn-large" value='Guardar' />
+                                        <input type='submit' name='Guardar' class="btn btn-default btn-large" />
 
                                         <a href="#" class="btn btn-default btn-large"><i class="glyphicon glyphicon-floppy-open"></i> Modificar</a>
                                     </center>
