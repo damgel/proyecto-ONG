@@ -40,12 +40,15 @@
     <form class="navbar-form navbar-right" role="search">
 
         <?php
-        if (empty($_SESSION['nombre'])) {
-            header("Location: http://localhost:8000/home.html"); /* Redirect browser */
-        } else {
-            session_start();
-            echo 'Bienvenida: ' . $_SESSION['nombre'];
+        session_start();
+        if (isset($_SESSION['nombre'])) {
+
+            echo 'Bienvenido: ' . $_SESSION['nombre'];
             echo '<a href="../private_content/logout.php">Cerrar Sesion</a>';
+        } else {
+            //session_start();
+            //echo '<h1>HOLA MUNDOOOOOOOOOOO</h1>';
+            header("Location: http://localhost:8000/index.html"); /* Redirect browser */
         }
         ?>
 
