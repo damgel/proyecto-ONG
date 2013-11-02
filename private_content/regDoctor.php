@@ -58,106 +58,7 @@
                 text-align: right;
 
             }
-            .CSSTableGenerator {
-                margin:0px;padding:0px;
-                width:100%;
-                box-shadow: 10px 10px 5px #888888;
-                border:1px solid #e00000;
 
-                -moz-border-radius-bottomleft:0px;
-                -webkit-border-bottom-left-radius:0px;
-                border-bottom-left-radius:0px;
-
-                -moz-border-radius-bottomright:0px;
-                -webkit-border-bottom-right-radius:0px;
-                border-bottom-right-radius:0px;
-
-                -moz-border-radius-topright:0px;
-                -webkit-border-top-right-radius:0px;
-                border-top-right-radius:0px;
-
-                -moz-border-radius-topleft:0px;
-                -webkit-border-top-left-radius:0px;
-                border-top-left-radius:0px;
-            }.CSSTableGenerator table{
-                width:100%;
-                height:100%;
-                margin:0px;padding:0px;
-            }.CSSTableGenerator tr:last-child td:last-child {
-                -moz-border-radius-bottomright:0px;
-                -webkit-border-bottom-right-radius:0px;
-                border-bottom-right-radius:0px;
-            }
-            .CSSTableGenerator table tr:first-child td:first-child {
-                -moz-border-radius-topleft:0px;
-                -webkit-border-top-left-radius:0px;
-                border-top-left-radius:0px;
-            }
-            .CSSTableGenerator table tr:first-child td:last-child {
-                -moz-border-radius-topright:0px;
-                -webkit-border-top-right-radius:0px;
-                border-top-right-radius:0px;
-            }.CSSTableGenerator tr:last-child td:first-child{
-                -moz-border-radius-bottomleft:0px;
-                -webkit-border-bottom-left-radius:0px;
-                border-bottom-left-radius:0px;
-            }.CSSTableGenerator tr:hover td{
-                background-color:#ffffff;
-
-
-            }
-            .CSSTableGenerator td{
-                vertical-align:middle;
-                background:-o-linear-gradient(bottom, #e5e5e5 5%, #ffffff 100%);	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #e5e5e5), color-stop(1, #ffffff) ); 
-                background:-moz-linear-gradient( center top, #e5e5e5 5%, #ffffff 100% );
-                filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#e5e5e5", endColorstr="#ffffff");	background: -o-linear-gradient(top,#e5e5e5,ffffff);
-
-                background-color:#e5e5e5;
-
-                border:1px solid #e00000;
-                border-width:0px 1px 1px 0px;
-                text-align:left;
-                padding:10px;
-                font-size:14px;
-                font-family:Arial;
-                font-weight:normal;
-                color:#000000;
-            }.CSSTableGenerator tr:last-child td{
-                border-width:0px 1px 0px 0px;
-            }.CSSTableGenerator tr td:last-child{
-                border-width:0px 0px 1px 0px;
-            }.CSSTableGenerator tr:last-child td:last-child{
-                border-width:0px 0px 0px 0px;
-            }
-            .CSSTableGenerator tr:first-child td{
-                background:-o-linear-gradient(bottom, #56aaff 5%, #56aaff 100%);	
-                background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #56aaff), color-stop(1, #56aaff) );
-                background:-moz-linear-gradient( center top, #56aaff 5%, #56aaff 100% );
-                filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#56aaff", endColorstr="#56aaff");	
-                background: -o-linear-gradient(top,#56aaff,56aaff);
-                background-color:#56aaff;
-                border:0px solid #e00000;
-                text-align:center;
-                border-width:0px 0px 1px 1px;
-                font-size:14px;
-                font-family:Arial;
-                font-weight:bold;
-                color:#ffffff;
-            }
-            .CSSTableGenerator tr:first-child:hover td{
-                background:-o-linear-gradient(bottom, #56aaff 5%, #56aaff 100%);	
-                background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #56aaff), color-stop(1, #56aaff) );
-                background:-moz-linear-gradient( center top, #56aaff 5%, #56aaff 100% );
-                filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#56aaff", endColorstr="#56aaff");	
-                background: -o-linear-gradient(top,#56aaff,56aaff);
-                background-color:#56aaff;
-            }
-            .CSSTableGenerator tr:first-child td:first-child{
-                border-width:0px 0px 1px 0px;
-            }
-            .CSSTableGenerator tr:first-child td:last-child{
-                border-width:0px 0px 1px 1px;
-            }
         </style>
     </head>
     <body>
@@ -319,13 +220,22 @@
                                 </center> 
                                 <br>
                             </form>
-                            <div class="CSSTableGenerator">
+                            <div class="table-responsive">
 
+                                <style>
+                                    tr:hover
+                                    {
+                                        background: whitesmoke;
+                                    }
+
+                                </style>
                                 <?php
                                 include_once '../clases/db_connect.php';
-                                echo "<table border=1 >";
+                                $tabla = "table ";
+
+                                echo "<table class=" . $tabla . ">";
                                 echo "<tr>";
-                                echo "<td><b>Codigo</b></td>";
+                                echo "<td><b>#</b></td>";
                                 echo "<td><b>Nombre</b></td>";
                                 echo "<td><b>Apellido</b></td>";
                                 echo "<td><b>JVPO</b></td>";
@@ -356,7 +266,6 @@
                                 }
                                 echo "</table>";
                                 ?>
-
                             </div>
                         </div>
                     </div>
