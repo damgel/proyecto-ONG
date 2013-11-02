@@ -40,6 +40,7 @@
         <style>
             .container
             {
+                width: 90%;
                 margin-top: 1%;
                 max-width: 1034px;
             }
@@ -63,19 +64,20 @@
     <body>
         <?php
         //include database configuration
-        include '../clases/db_connect.php';
 
         if ($_POST['action'] == 'Guardar') {
 
+            include_once '../clases/db_connect.php';
             //sql insert statement
             $sql = "insert into voluntariado(nombre_vo, apellido_vo, fecha_na_vo, edad_vo, genero_vo, telefono_vo, direccion_vo,departamento_vo, cod_aso, email_vo)
                 values('{$_POST['nombre_vo']}', '{$_POST['apellido_vo']}', '{$_POST['fecha_na_vo']}', '{$_POST['edad_vo']}', '{$_POST['genero_vo']}', '{$_POST['telefono_vo']}', '{$_POST['direccion_vo']}', '{$_POST['departamento_vo']}','1','{$_POST['email_vo']}')";
             //insert query to the database
             if (mysql_query($sql)) {
+                session_start();
                 //if successful query
                 echo "<script>alert('registro guardado correctamente!')</script>";
                 $sql = "";
-                session_start();
+
                 $_SESSION['nombre'] = $_POST['nombre_vo'];
                 header("Location: http://localhost:8000/private_content/index.php"); /* Redirect browser */
                 exit();
@@ -88,7 +90,7 @@
 
         <div id="header" class="navbar navbar-default navbar-static-top">
             <?php
-            include 'layout/private-header.php';
+            include_once 'layout/private-header.php';
             ?>
         </div>
         <div id="error"></div>
@@ -103,124 +105,125 @@
                 });
             });
         </script> -->
+        <div class="container">
+            <div class="tab-content">
+                <div class="tab-pane active" id="Perfil_volun">
 
-        <div class="tab-content">
-            <div class="tab-pane active" id="Perfil_volun">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">Perfil voluntariado
 
-                <div class="panel panel-primary">
-                    <div class="panel-heading">Perfil voluntariado
+                        </div>
+                        <div class="panel-body">
 
+                            <form action="#" method="POST" class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="Nombre_doc" class="col-lg-3 control-label">Nombre</label>
+                                    <div class="col-lg-4">
+                                        <input type="text" name="nombre_vo" class="form-control" placeholder="Escriba un nombre" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="apellido_doc" class="col-lg-3 control-label">Apellido</label>
+                                    <div class="col-lg-4">
+                                        <input type="text" name="apellido_vo" class="form-control" placeholder="Escriba un apellido" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Fecha_Nacimiento" class="col-lg-3 control-label">Fecha de nacimiento:</label>
+                                    <div class="col-lg-3">
+                                        <input type="date" name="fecha_na_vo" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Edad" class="col-lg-3 control-label">Edad:</label>
+                                    <div class="col-lg-3">
+                                        <input type="number" name="edad_vo" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Contrasenia" class="col-lg-3 control-label">Contraseña</label>
+                                    <div class="col-lg-4">
+                                        <input type="password" name="password_emp" class="form-control" placeholder="Contraseña" required>
+                                    </div>  
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="ConfirmContrasenia" class="col-lg-3 control-label">Confirme contraseña</label>
+                                    <div class="col-lg-4">
+                                        <input type="password" name="confirm_password" class="form-control" placeholder="Confirme su contraseña" required>
+                                    </div>  
+                                </div>    
+
+                                <div class="form-group">
+                                    <label for="telefono" class="col-lg-3 control-label">Telefono</label>
+                                    <div class="col-lg-4">
+                                        <input type="tel" name="telefono_vo" placeholder="Escriba un numero de telefono" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="correo" class="col-lg-3 control-label">Correo</label>
+                                    <div class="col-lg-4">
+                                        <input type="email" name="email_vo" placeholder="Ejemplo: ejemplo@dominio.com" class="form-control" id="focusedInput" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">    
+                                    <label for="direccion" class="col-lg-3 control-label">Direccion</label>
+                                    <div class="col-lg-6">
+                                        <input type="text" name="direcccion_vo" class="form-control" placeholder="Escriba la direccion" required>
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Departamento" class="col-lg-3 control-label">Departamento</label>
+                                    <div class="col-lg-4">
+                                        <select name="departamento_vo" class="form-control" required>
+
+                                            <option value="-1">- Seleccione -</option>
+                                            <option value="san salvador">San Salvador</option>
+                                            <option value="la paz">La Paz</option>
+                                            <option value="san miguel">San Miguel</option>
+                                            <option value="la union">La Union</option>
+                                            <option value="la libertad">La Libertad</option>
+                                            <option value="santa ana">Santa Ana</option>
+                                            <option value="sonsonate">Sonsonate</option>
+                                            <option value="ahuachapan">Aguachapan</option>
+                                            <option value="san vicente">San Vicente</option>
+                                            <option value="chalatenango">Chalatenango</option>
+                                            <option value="cabanias">Cabañas</option>
+                                            <option value="cuscatlan">Cuscatlan</option>
+                                            <option value="usulutan">Usulutan</option>
+                                            <option value="morazan">Morazan</option>
+
+                                        </select>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <center>
+
+                                        <input type='submit' name='action' class="btn btn-default btn-large" value='Guardar' />
+
+                                        <a href="#" class="btn btn-default btn-large"><i class="glyphicon glyphicon-floppy-open"></i> Modificar</a>
+                                    </center>
+                                </div>
+                            </form>
+
+                        </div>
                     </div>
-                    <div class="panel-body">
 
-                        <form action="#" method="POST" class="form-horizontal">
-                            <div class="form-group">
-                                <label for="Nombre_doc" class="col-lg-3 control-label">Nombre</label>
-                                <div class="col-lg-4">
-                                    <input type="text" name="nombre_vo" class="form-control" placeholder="Escriba un nombre" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="apellido_doc" class="col-lg-3 control-label">Apellido</label>
-                                <div class="col-lg-4">
-                                    <input type="text" name="apellido_vo" class="form-control" placeholder="Escriba un apellido" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="Fecha_Nacimiento" class="col-lg-3 control-label">Fecha de nacimiento:</label>
-                                <div class="col-lg-3">
-                                    <input type="date" name="fecha_na_vo" class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="Edad" class="col-lg-3 control-label">Edad:</label>
-                                <div class="col-lg-3">
-                                    <input type="number" name="edad_vo" class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="Contrasenia" class="col-lg-3 control-label">Contraseña</label>
-                                <div class="col-lg-4">
-                                    <input type="password" name="password_emp" class="form-control" placeholder="Contraseña" required>
-                                </div>  
-                            </div>
-
-                            <div class="form-group">
-                                <label for="ConfirmContrasenia" class="col-lg-3 control-label">Confirme contraseña</label>
-                                <div class="col-lg-4">
-                                    <input type="password" name="confirm_password" class="form-control" placeholder="Confirme su contraseña" required>
-                                </div>  
-                            </div>    
-
-                            <div class="form-group">
-                                <label for="telefono" class="col-lg-3 control-label">Telefono</label>
-                                <div class="col-lg-4">
-                                    <input type="tel" name="telefono_vo" placeholder="Escriba un numero de telefono" class="form-control" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="correo" class="col-lg-3 control-label">Correo</label>
-                                <div class="col-lg-4">
-                                    <input type="email" name="email_vo" placeholder="Ejemplo: ejemplo@dominio.com" class="form-control" id="focusedInput" required>
-                                </div>
-                            </div>
-                            <div class="form-group">    
-                                <label for="direccion" class="col-lg-3 control-label">Direccion</label>
-                                <div class="col-lg-6">
-                                    <input type="text" name="direcccion_vo" class="form-control" placeholder="Escriba la direccion" required>
-
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="Departamento" class="col-lg-3 control-label">Departamento</label>
-                                <div class="col-lg-4">
-                                    <select name="departamento_vo" class="form-control" required>
-
-                                        <option value="-1">- Seleccione -</option>
-                                        <option value="san salvador">San Salvador</option>
-                                        <option value="la paz">La Paz</option>
-                                        <option value="san miguel">San Miguel</option>
-                                        <option value="la union">La Union</option>
-                                        <option value="la libertad">La Libertad</option>
-                                        <option value="santa ana">Santa Ana</option>
-                                        <option value="sonsonate">Sonsonate</option>
-                                        <option value="ahuachapan">Aguachapan</option>
-                                        <option value="san vicente">San Vicente</option>
-                                        <option value="chalatenango">Chalatenango</option>
-                                        <option value="cabanias">Cabañas</option>
-                                        <option value="cuscatlan">Cuscatlan</option>
-                                        <option value="usulutan">Usulutan</option>
-                                        <option value="morazan">Morazan</option>
-
-                                    </select>
-                                </div>
-                                <br>
-                                <br>
-                                <br>
-                                <br>
-                                <center>
-
-                                    <input type='submit' name='action' class="btn btn-default btn-large" value='Guardar' />
-
-                                    <a href="#" class="btn btn-default btn-large"><i class="glyphicon glyphicon-floppy-open"></i> Modificar</a>
-                                </center>
-                            </div>
-                        </form>
-
-                    </div>
                 </div>
 
+
+                <script>
+                    $('#myTab a').click(function(e) {
+                        e.preventDefault();
+                        $(this).tab('show');
+                    });
+                </script>
+
+
             </div>
-
-
-            <script>
-                $('#myTab a').click(function(e) {
-                    e.preventDefault();
-                    $(this).tab('show');
-                });
-            </script>
-
-
         </div>
     </body>
 </html>
