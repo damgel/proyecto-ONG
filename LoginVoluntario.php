@@ -13,7 +13,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/bootstrap.css">
         <link rel="stylesheet" href="assets/css/normalize.css">
         <script src="assets/js/jquery-v1.10.2.js"></script>
         <script src="assets/js/bootstrap.js"></script>
