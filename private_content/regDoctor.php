@@ -38,6 +38,10 @@
         </script>
 
         <style>
+            body
+            {
+                background: whitesmoke;
+            }
             .container
             {
                 margin-top: 1%;

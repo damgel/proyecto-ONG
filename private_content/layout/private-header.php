@@ -28,11 +28,10 @@
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Paciente <b class="caret"></b></a>
             <ul class="dropdown-menu">
-                <li><a href="PerfilUsuario.html">Perfil Usuario</a></li>
-                <li><a href="PerfilEmpleador.html">Perfil Empleador</a></li>
+                <li><a href="#">Sub Item</a></li>
+                <li><a href="#">Sub Item</a></li>
             </ul> 
         </li> 
-        <li><a href="#">Asociacion</a></li>
         <li><a href="perfilVoluntariado.php">Voluntariados</a></li>
     </ul>
     <form class="navbar-form navbar-left">
