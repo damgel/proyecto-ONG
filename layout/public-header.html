@@ -20,7 +20,7 @@
 </div>
 <div class="navbar-collapse collapse">
     <ul class="nav navbar-nav">
-        <li><a href="index.html">Inicio</a></li>
+        <li><a href="index.html"><span class="glyphicon glyphicon-home"></span> Inicio</a></li>
         <!-- <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Paciente <b class="caret"></b></a>
             <ul class="dropdown-menu">
@@ -32,9 +32,17 @@
         <li><a href="#">Donaciones</a></li>
         <li><a href="contactenos.html">Contactenos</a></li>
     </ul>
-    <form class="navbar-form navbar-right">
-        <a class="btn btn-info btn-large" href="login.php" role="button">Entrar</a>
-    </form>  
+    <div class="navbar-form navbar-right">
+        <ul>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in"></span> Entrar <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="login.php"><span class="glyphicon glyphicon-star"></span> Doctores</a></li>
+                    <li><a href="LoginVoluntario.php"><span class="glyphicon glyphicon-user"></span> Voluntarios</a></li>
+                </ul> 
+            </li> 
+        </ul>
+    </div>  
 
     <form class="navbar-form navbar-right" role="search">
         <!--   <div class="form-group">
