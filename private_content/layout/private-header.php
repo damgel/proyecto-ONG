@@ -22,15 +22,17 @@
 <div class="navbar-collapse collapse">
     <ul class="nav navbar-nav">
         <li><a href="index.php">Inicio</a></li>
-        <li><a href="paciente.php">Paciente</a><li>
-            <!-- <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Paciente <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    <li><a href="PerfilUsuario.html">Perfil Usuario</a></li>
-                    <li><a href="PerfilEmpleador.html">Perfil Empleador</a></li>
-                </ul> 
-            </li> -->
+        <li><a href="#">Administracion</a><li>
         <li><a href="regDoctor.php">Doctores</a></li>
+        <li><a href="paciente.php">Pacientes</a><li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Paciente <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                <li><a href="PerfilUsuario.html">Perfil Usuario</a></li>
+                <li><a href="PerfilEmpleador.html">Perfil Empleador</a></li>
+            </ul> 
+        </li> 
+        <li><a href="#">Asociacion</a></li>
         <li><a href="perfilVoluntariado.php">Voluntariados</a></li>
     </ul>
     <form class="navbar-form navbar-left">
@@ -44,7 +46,7 @@
         if (isset($_SESSION['nombre'])) {
 
             echo 'Bienvenido: ' . $_SESSION['nombre'] . " ";
-            echo '<a href="../private_content/logout.php">Cerrar Sesion</a>';
+            echo '<a href="../private_content/logout.php" class="logout"><span class="glyphicon glyphicon-log-out"></span> Salir</a>';
         } else {
             //session_start();
             //echo '<h1>HOLA MUNDOOOOOOOOOOO</h1>';
