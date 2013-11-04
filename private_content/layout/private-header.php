@@ -42,8 +42,7 @@
 
         <?php
         session_start();
-        if (isset($_SESSION['nombre'])) {
-
+        if (!empty($_SESSION['nombre'])) {
             echo 'Bienvenido: ' . $_SESSION['nombre'] . " ";
             echo '<a href="../private_content/logout.php" class="logout"><span class="glyphicon glyphicon-log-out"></span> Salir</a>';
         } else {

@@ -78,8 +78,28 @@
             include_once 'layout/private-header.php';
             ?>
         </div>
+
         <?php
-        if (isset($_POST['addDoctor'])) {
+        include_once '../clases/db_connect.php';
+        // LLENAR EL FORMULARIO DE regDoctor con los datos del dr actual para facililar el UPDATE
+        //si los campos estan llenos, el update sera mas sencillo y amigable.
+        $codToGet = $_SESSION['cod_doc'];
+        $getDoctor = mysql_query("SELECT * FROM doctor 
+                    where cod_doc=$codToGet");
+        while ($row = mysql_fetch_array($getDoctor)) {
+            $nombre = $row{'nombre_doc'};
+            $apellido = $row{'apellido_doc'};
+            $JVPO = $row{'JVPO'};
+            $genero = $row{'genero_doc'};
+            $fechaNa = $row{'fecha_na_doc'};
+            $password = $row{'password_doc'};
+            $telefono = $row{'telefono_doc'};
+            $direccion = $row{'direccion_doc'};
+            $departamento = $row{'departamento_doc'};
+        }
+        //
+// END FINALIZA EL LLENADO DE LOS CAMPOS
+        if (isset($_POST['Guardar'])) {
             include_once '../clases/db_connect.php';
             foreach ($_POST AS $key => $value) {
                 $_POST[$key] = mysql_real_escape_string($value);
@@ -88,15 +108,15 @@
             mysql_query($sql) or die(mysql_error());
             echo "Added row.<br />";
             //echo "<a href='verDoctores.php'>Back To Listing</a>";
-        } elseif (isset($_POST['editDoctor'])) {
+        } elseif (isset($_POST['Modificar'])) {
             include_once '../clases/db_connect.php';
             if (isset($_SESSION['cod_doc'])) {
-                $id = (int) $_SESSION['id_doc'];
+                $id = (int) $_SESSION['cod_doc'];
                 if (isset($_POST['updateDoctor'])) {
                     foreach ($_POST AS $key => $value) {
                         $_POST[$key] = mysql_real_escape_string($value);
                     }
-                    $sql = "UPDATE `doctor` SET `nombre_doc` =  '{$_POST['nombre_doc']}' ,  `apellido_doc` =  '{$_POST['apellido_doc']}' ,  `JVPO` =  '{$_POST['JVPO']}' ,  `genero_doc` =  '{$_POST['genero_doc']}' ,  `fecha_na_doc` =  '{$_POST['fecha_na_doc']}' ,  `password_doc` =  '{$_POST['password_doc']}' ,  `telefono_doc` =  '{$_POST['telefono_doc']}' ,  `direccion_doc` =  '{$_POST['direccion_doc']}' ,  `departamento_doc` =  '{$_POST['departamento_doc']}' ,  `cod_as` =  '{$_POST['cod_as']}'   WHERE `cod_doc` = {$_SESSION['cod_doc']} ";
+                    $sql = "UPDATE `doctor` SET `nombre_doc` =  '{$_POST['nombre_doc']}' ,  `apellido_doc` =  '{$_POST['apellido_doc']}' ,  `JVPO` =  '{$_POST['JVPO']}' ,  `genero_doc` =  '{$_POST['genero_doc']}' ,  `fecha_na_doc` =  '{$_POST['fecha_na_doc']}' ,  `password_doc` =  '{$_POST['password_doc']}' ,  `telefono_doc` =  '{$_POST['telefono_doc']}' ,  `direccion_doc` =  '{$_POST['direccion_doc']}' ,  `departamento_doc` =  '{$_POST['departamento_doc']}' ,  `cod_as` =  '{$_POST['cod_as']}'   WHERE `cod_doc` = $id ";
                     mysql_query($sql) or die(mysql_error());
                     echo (mysql_affected_rows()) ? "Edited row.<br />" : "Nothing changed. <br />";
                     echo "<a href='verDoctores.php'>Back To Listing</a>";
@@ -118,7 +138,7 @@
                 <div class="tab-pane active" id="Perfil">
 
                     <div class="panel panel-primary">
-                        <div class="panel-heading"><?php echo 'ID DOCTOR: ' . $_SESSION['id_doc']; ?></div>
+                        <div class="panel-heading"><?php echo 'ID DOCTOR: ' . $_SESSION['cod_doc']; ?></div>
                         <div class="panel-body">
 
                             <form action="#" id="perfilDoctor" method="POST" class="form-horizontal">
@@ -126,20 +146,20 @@
                                 <div class="form-group">
                                     <label for="Nombre_doc" class="col-lg-3 control-label">Nombre del Doctor</label>
                                     <div class="col-lg-4">
-                                        <input type="text" name="nombre_doc" class="form-control" placeholder="Escriba su nombre" required>
+                                        <input type="text" name="nombre_doc" value="<?php echo $nombre ?>" class="form-control" placeholder="Escriba su nombre" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="Apellido_doc" class="col-lg-3 control-label">Apellido del Doctor</label>
+                                    <label for="Apellido_doc"  class="col-lg-3 control-label">Apellido del Doctor</label>
                                     <div class="col-lg-4">
-                                        <input type="text" name="apellido_doc" class="form-control" placeholder="Escriba su apellido" required>
+                                        <input type="text" name="apellido_doc" value="<?php echo $apellido ?>" class="form-control" placeholder="Escriba su apellido" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="sexo" class="col-lg-3 control-label">Sexo</label>
                                     <div class="col-lg-4">
                                         <select name="genero_doc" class="form-control" required="">
-                                            <option value="NONE">- Seleccione -</option>
+                                            <option value="<?php echo $genero ?>" >- Seleccione -</option>
                                             <option value="M">Masculino</option>
                                             <option value="F">Femenino</option>
                                         </select>
@@ -149,7 +169,7 @@
                                 <div class="form-group">
                                     <label for="JVPO" class="col-lg-3 control-label">J.V.P.O</label>
                                     <div class="col-lg-4">
-                                        <input type="text" name="JVPO" class="form-control" placeholder="Escriba el numero de J.V.P.O" required>
+                                        <input type="text" name="JVPO" value="<?php echo $JVPO ?>"  class="form-control" placeholder="Escriba el numero de J.V.P.O" required>
 
                                     </div>
                                 </div>
@@ -157,13 +177,13 @@
                                 <div class="form-group">
                                     <label for="Fecha_Nacimiento" class="col-lg-3 control-label">Fecha de nacimiento:</label>
                                     <div class="col-lg-3">
-                                        <input type="date" name="fecha_na_doc" class="form-control">
+                                        <input type="date" name="fecha_na_doc" value="<?php echo $fechaNa ?>"  class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="Contrasenia" class="col-lg-3 control-label">Contraseña</label>
                                     <div class="col-lg-4">
-                                        <input type="password" name="password_doc" class="form-control" placeholder="Contraseña" required>
+                                        <input type="password" name="password_doc" value="<?php echo $password ?>"  class="form-control" placeholder="Contraseña" required>
                                     </div>  
                                 </div>
 
@@ -176,14 +196,14 @@
                                 <div class="form-group">
                                     <label for="telefono" class="col-lg-3 control-label">Telefono</label>
                                     <div class="col-lg-4">
-                                        <input type="tel" name="telefono_doc" placeholder="Escriba un numero de telefono" class="form-control" required>
+                                        <input type="tel" name="telefono_doc" value="<?php echo $telefono ?>"  placeholder="Escriba un numero de telefono" class="form-control" required>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="correo" class="col-lg-3 control-label">Correo</label>
                                     <div class="col-lg-4">
-                                        <input type="email" name="email_emp" placeholder="Ejemplo: ejemplo@dominio.com" class="form-control" id="focusedInput" required>
+                                        <input type="email" name="email_emp" value=""  placeholder="Ejemplo: ejemplo@dominio.com" class="form-control" id="focusedInput" required>
                                     </div>
                                 </div>
 
@@ -191,7 +211,7 @@
                                 <div class="form-group">    
                                     <label for="direccion" class="col-lg-3 control-label">Direccion</label>
                                     <div class="col-lg-6">
-                                        <input type="text" name="direccion_doc" class="form-control" placeholder="Escriba la direccion" required>
+                                        <input type="text" name="direccion_doc" value="<?php echo $direccion ?>"  class="form-control" placeholder="Escriba la direccion" required>
 
                                     </div>
                                 </div>
@@ -200,7 +220,7 @@
                                     <div class="col-lg-4">
                                         <select name="departamento_doc" class="form-control" required="">
 
-                                            <option value="NONE">- Seleccione -</option>
+                                            <option value="<?php echo $departamento ?>">- Seleccione -</option>
                                             <option value="San Salvador">San Salvador</option>
                                             <option value="La Paz">La Paz</option>
                                             <option value="San Miguel">San Miguel</option>
@@ -223,8 +243,8 @@
                                 <br>
 
                                 <center>
-                                    <input type='submit' value='Guardar' class="btn btn-info btn-large" /><input type='hidden' value='1' name='addDoctor' /> 
-                                    <input type='submit' value='Modificar' class="btn btn-info btn-large" /><input type='hidden' value='1' name='editDoctor' /> 
+                                    <input type='submit' name="Guardar" value='guardar' class="btn btn-info btn-large" />
+                                    <input type='submit' name="Modificar" value='modificar' class="btn btn-info btn-large" /> 
 
                                 </center> 
                                 <br>
@@ -236,7 +256,7 @@
                                 $tabla = "table ";
                                 echo "<table class=" . $tabla . ">";
                                 echo "<tr>";
-                                echo "<td><b>#</b></td>";
+                                echo "<td><b>Id</b></td>";
                                 echo "<td><b>Nombre</b></td>";
                                 echo "<td><b>Apellido</b></td>";
                                 echo "<td><b>JVPO</b></td>";
