@@ -232,8 +232,8 @@
                             <div class="table-responsive">
                                 <?php
                                 include_once '../clases/db_connect.php';
+                                $SetPermiso;
                                 $tabla = "table ";
-
                                 echo "<table class=" . $tabla . ">";
                                 echo "<tr>";
                                 echo "<td><b>#</b></td>";
@@ -241,10 +241,11 @@
                                 echo "<td><b>Apellido</b></td>";
                                 echo "<td><b>JVPO</b></td>";
                                 echo "<td><b>Fecha Nacimiento</b></td>";
-                                echo "<td><b>Password</b></td>";
+
                                 echo "<td><b>Telefono</b></td>";
                                 echo "<td><b>Direccion</b></td>";
-                                echo "<td><b>Asociacion</b></td>";
+                                echo "<td><b>Activo</b></td>";
+                                echo "<td><b>Admin</b></td>";
                                 echo "<td><b>Eliminar</b></td>";
                                 echo "</tr>";
                                 $result = mysql_query("SELECT * FROM `doctor`") or trigger_error(mysql_error());
@@ -252,17 +253,23 @@
                                     foreach ($row AS $key => $value) {
                                         $row[$key] = stripslashes($value);
                                     }
+                                    $permiso_doc = $_SESSION['permiso_doc'];
+                                    if ($permiso_doc === "S") {
+                                        $SetPermiso = "<a href=eliminarDoctor.php?id={$row['cod_doc']}>Eliminar</a>";
+                                    } elseif ($permiso_doc === "N") {
+                                        $SetPermiso = "No Permitido";
+                                    }
                                     echo "<tr>";
                                     echo "<td valign='top'>" . nl2br($row['cod_doc']) . "</td>";
                                     echo "<td valign='top'>" . nl2br($row['nombre_doc']) . "</td>";
                                     echo "<td valign='top'>" . nl2br($row['apellido_doc']) . "</td>";
                                     echo "<td valign='top'>" . nl2br($row['JVPO']) . "</td>";
                                     echo "<td valign='top'>" . nl2br($row['fecha_na_doc']) . "</td>";
-                                    echo "<td valign='top'>" . nl2br($row['password_doc']) . "</td>";
                                     echo "<td valign='top'>" . nl2br($row['telefono_doc']) . "</td>";
                                     echo "<td valign='top'>" . nl2br($row['direccion_doc']) . "</td>";
-                                    echo "<td valign='top'>" . nl2br($row['cod_as']) . "</td>";
-                                    echo "<td valign='top'><a href=eliminarDoctor.php?id={$row['cod_doc']}>Eliminar</a></td> ";
+                                    echo "<td valign='top'>" . nl2br($row['activo']) . "</td>";
+                                    echo "<td valign='top'>" . nl2br($row['permiso']) . "</td>";
+                                    echo "<td valign='top'>    " . $SetPermiso . "    </td> ";
                                     echo "</tr>";
                                 }
                                 echo "</table>";
