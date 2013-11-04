@@ -84,23 +84,34 @@
                     }
                 });
             });</script> 
+        <style>
+            .loginError
+            {
+                text-align: center;
+                font-weight: bold;
+                font-size: 20px;
+                color:red;
+            }
+        </style>
         <?php
         if ($_POST['action'] === 'Entrar') {
-            echo 'hola desde IF EN POST';
+            echo '<p class="loginError">Usuario o Contrasenia erroneo!.</p>';
             $usuario_doc = $_POST['JVPO'];
             $pass_doc = $_POST['password_doc'];
 
             if (isset($usuario_doc) && !empty($pass_doc)) {
                 include "clases/db_connect.php";
-                $result = mysql_query("SELECT cod_doc, nombre_doc, apellido_doc FROM doctor 
+                $result = mysql_query("SELECT cod_doc, nombre_doc, apellido_doc, permiso FROM doctor 
                     where JVPO='$usuario_doc' and password_doc='$pass_doc'");
                 while ($row = mysql_fetch_array($result)) {
                     $nombre = $row{'nombre_doc'};
                     $apellido = $row{'apellido_doc'};
                     $cod_doc = $row{'cod_doc'};
+                    $permiso_doc = $row{'permiso'};
                     session_start();
                     $_SESSION['nombre'] = $nombre . " " . $apellido;
                     $_SESSION['cod_doc'] = $cod_doc;
+                    $_SESSION['permiso_doc'] = $permiso_doc;
                     echo $_SESSION['nombre'];
                     header("Location: http://localhost:8000/private_content/regDoctor.php"); /* Redirect browser */
                 }
