@@ -21,6 +21,23 @@
 
     </head>
     <body>
+        <?php 
+
+if(isset($_POST['Guardar'])) {
+$para= $_POST['email'];
+$titulo = 'Hola mundo, prueba de email';
+$mensaje = 'Esta es una prueba de concepto, usando las funciones de php para enviar mensajes.';
+$cabeceras = 'From:'. $_POST['email'] . "\r\n" .'Reply-To: admin@cocides.com' . "\r\n";
+
+mail($para, $titulo, $mensaje, $cabeceras);
+ echo "llega email";
+
+}else
+    {
+   // echo "no llega email";
+    }
+
+        ?>
 
         <div id="header1" class="navbar navbar-default navbar-static-top"></div>
 
@@ -41,7 +58,7 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">Contactenos</div>
                 <div class="panel-body">
-                    <form action="#" id="registroUsuario" method="POST" class="form-horizontal" >
+                    <form action="#" name="contact" method="POST" class="form-horizontal" >
                         <div class="form-group">
 
 
@@ -72,8 +89,8 @@
 
                                 </div>
                             </div>
-                            <center><button type="submit" class="btn btn-primary btn-lg">Enviar</button></center>
-
+                            <center><button type="submit" name="asdfEnviar" value="Enviar" class="btn btn-primary btn-lg" >Enviar</button></center>
+                            <input type='submit' name='Enviar' class="btn btn-default btn-large" />
                         </div>
                     </form>
                 </div>       
