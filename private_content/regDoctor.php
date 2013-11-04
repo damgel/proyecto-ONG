@@ -1,3 +1,9 @@
+<?php
+session_start();
+$verifica = 1;
+$_SESSION["verifica"] = $verifica;
+?> 
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -80,50 +86,62 @@
         </div>
 
         <?php
-        include_once '../clases/db_connect.php';
-        // LLENAR EL FORMULARIO DE regDoctor con los datos del dr actual para facililar el UPDATE
-        //si los campos estan llenos, el update sera mas sencillo y amigable.
-        $codToGet = $_SESSION['cod_doc'];
-        $getDoctor = mysql_query("SELECT * FROM doctor 
+        session_start();
+
+        $verifica = $_SESSION["verifica"];
+        if ($verifica == 1) {
+            unset($_SESSION['verifica']);
+            include_once '../clases/db_connect.php';
+            // LLENAR EL FORMULARIO DE regDoctor con los datos del dr actual para facililar el UPDATE
+            //si los campos estan llenos, el update sera mas sencillo y amigable.
+            $codToGet = $_SESSION['cod_doc'];
+            $getDoctor = mysql_query("SELECT * FROM doctor 
                     where cod_doc=$codToGet");
-        while ($row = mysql_fetch_array($getDoctor)) {
-            $nombre = $row{'nombre_doc'};
-            $apellido = $row{'apellido_doc'};
-            $JVPO = $row{'JVPO'};
-            $genero = $row{'genero_doc'};
-            $fechaNa = $row{'fecha_na_doc'};
-            $password = $row{'password_doc'};
-            $telefono = $row{'telefono_doc'};
-            $direccion = $row{'direccion_doc'};
-            $departamento = $row{'departamento_doc'};
-        }
-        //
+            while ($row = mysql_fetch_array($getDoctor)) {
+                $nombre = $row{'nombre_doc'};
+                $apellido = $row{'apellido_doc'};
+                $JVPO = $row{'JVPO'};
+                $genero = $row{'genero_doc'};
+                $fechaNa = $row{'fecha_na_doc'};
+                $password = $row{'password_doc'
+                        };
+                $telefono = $row{'telefono_doc'};
+                $direccion = $row{'direccion_doc'};
+                $departamento = $row{'departamento_doc'};
+            }
+            //
 // END FINALIZA EL LLENADO DE LOS CAMPOS
-        if (isset($_POST['Guardar'])) {
-            include_once '../clases/db_connect.php';
-            foreach ($_POST AS $key => $value) {
-                $_POST[$key] = mysql_real_escape_string($value);
-            }
-            $sql = "INSERT INTO `doctor` ( `cod_doc` ,  `nombre_doc` ,  `apellido_doc` ,  `JVPO` ,  `genero_doc` ,  `fecha_na_doc` ,  `password_doc` ,  `telefono_doc` ,  `direccion_doc` ,  `departamento_doc` ,  `cod_as`  ) VALUES(  '{$_POST['cod_doc']}' ,  '{$_POST['nombre_doc']}' ,  '{$_POST['apellido_doc']}' , '{$_POST['JVPO']}' ,  '{$_POST['genero_doc']}' ,  '{$_POST['fecha_na_doc']}' ,  '{$_POST['password_doc']}' ,'{$_POST['telefono_doc']}' ,  '{$_POST['direccion_doc']}' ,  '{$_POST['departamento_doc']}' , '{$_POST['cod_as']}'  ) ";
-            mysql_query($sql) or die(mysql_error());
-            echo "Added row.<br />";
-            //echo "<a href='verDoctores.php'>Back To Listing</a>";
-        } elseif (isset($_POST['Modificar'])) {
-            include_once '../clases/db_connect.php';
-            if (isset($_SESSION['cod_doc'])) {
-                $id = (int) $_SESSION['cod_doc'];
-                if (isset($_POST['updateDoctor'])) {
-                    foreach ($_POST AS $key => $value) {
-                        $_POST[$key] = mysql_real_escape_string($value);
-                    }
-                    $sql = "UPDATE `doctor` SET `nombre_doc` =  '{$_POST['nombre_doc']}' ,  `apellido_doc` =  '{$_POST['apellido_doc']}' ,  `JVPO` =  '{$_POST['JVPO']}' ,  `genero_doc` =  '{$_POST['genero_doc']}' ,  `fecha_na_doc` =  '{$_POST['fecha_na_doc']}' ,  `password_doc` =  '{$_POST['password_doc']}' ,  `telefono_doc` =  '{$_POST['telefono_doc']}' ,  `direccion_doc` =  '{$_POST['direccion_doc']}' ,  `departamento_doc` =  '{$_POST['departamento_doc']}' ,  `cod_as` =  '{$_POST['cod_as']}'   WHERE `cod_doc` = $id ";
-                    mysql_query($sql) or die(mysql_error());
-                    echo (mysql_affected_rows()) ? "Edited row.<br />" : "Nothing changed. <br />";
-                    echo "<a href='verDoctores.php'>Back To Listing</a>";
+            if (isset($_POST['Guardar'])) {
+                include_once '../clases/db_connect.php';
+                foreach ($_POST AS $key => $value) {
+                    $_POST[$key] = mysql_real_escape_string($value);
                 }
+                $sql = "INSERT INTO `doctor` ( `cod_doc` ,  `nombre_doc` ,  `apellido_doc` ,  `JVPO` ,  `genero_doc` ,  `fecha_na_doc` ,  `password_doc` ,  `telefono_doc` ,  `direccion_doc` ,  `departamento_doc` ,  `cod_as`  ) VALUES(  '{$_POST['cod_doc']}' ,  '{$_POST['nombre_doc']}' ,  '{$_POST['apellido_doc']}' , '{$_POST['JVPO']}' ,  '{$_POST['genero_doc']}' ,  '{$_POST['fecha_na_doc']}' ,  '{$_POST['password_doc']}' ,'{$_POST ['telefono_doc']}' ,  '{$_POST['direccion_doc']}' ,  '{$_POST['departamento_doc']
+                        }' , '{$_POST['cod_as']
+                        }'  ) ";
+                mysql_query($sql) or die(mysql_error());
+                echo "Added row.<br />";
+                //echo "<a href='verDoctores.php'>Back To Listing</a>";
+            } elseif (isset($_POST['Modificar'])) {
+                include_once '../clases/db_connect.php';
+                if (isset($_SESSION['cod_doc'])) {
+
+                    $id = (int) $_SESSION['cod_doc'];
+                    if (isset($_POST['updateDoctor'])) {
+                        foreach ($_POST AS $key => $value) {
+                            $_POST[$key] = mysql_real_escape_string($value);
+                        }
+                        $sql = "UPDATE `doctor` SET `nombre_doc` =  '{$_POST['nombre_doc']}' ,  `apellido_doc` =  '{$_POST['apellido_doc']}' ,  `JVPO` =  '{$_POST['JVPO']}' ,  `genero_doc` =  '{$_POST['genero_doc']}' ,  `fecha_na_doc` =  '{$_POST['fecha_na_doc']}' ,  `password_doc` =  '{$_POST['password_doc']}' ,  `telefono_doc` =  '{$_POST['telefono_doc']}' ,  `direccion_doc` =  '{$_POST['direccion_doc']}' ,  `departamento_doc` =  '{$_POST['departamento_doc']}' ,  `cod_as` =  '{$_POST['cod_as']}'   WHERE `cod_doc` = $id ";
+                        mysql_query($sql) or die(mysql_error());
+                        echo (mysql_affected_rows()) ? "Edited row.<br />" : "Nothing changed. <br />";
+                        echo "<a href='verDoctores.php'>Back To Listing</a>";
+                    }
+                }
+                $row = mysql_fetch_array(mysql_query("SELECT * FROM `doctor` WHERE `id` = '$id' "));
+                echo 'ID DOCTOR ACTIVO;' . $_SESSION['cod_doc'];
             }
-            $row = mysql_fetch_array(mysql_query("SELECT * FROM `doctor` WHERE `id` = '$id' "));
-            echo 'ID DOCTOR ACTIVO;' . $_SESSION['cod_doc'];
+        } else {
+            echo "Genial! evitamos un doble sumit!!!";
         }
         ?>
 
@@ -268,14 +286,15 @@
                                 echo "<td><b>Admin</b></td>";
                                 echo "<td><b>Eliminar</b></td>";
                                 echo "</tr>";
-                                $result = mysql_query("SELECT * FROM `doctor`") or trigger_error(mysql_error());
+                                $result = mysql_query("SELECT * FROM `doctor` ") or trigger_error(mysql_error());
                                 while ($row = mysql_fetch_array($result)) {
                                     foreach ($row AS $key => $value) {
                                         $row[$key] = stripslashes($value);
                                     }
                                     $permiso_doc = $_SESSION['permiso_doc'];
                                     if ($permiso_doc === "S") {
-                                        $SetPermiso = "<a href=eliminarDoctor.php?id={$row['cod_doc']}>Eliminar</a>";
+                                        $SetPermiso = "<a href=eliminarDoctor.php?id={$row['cod_doc']
+                                                }>Eliminar</a>";
                                     } elseif ($permiso_doc === "N") {
                                         $SetPermiso = "No Permitido";
                                     }

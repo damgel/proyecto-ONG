@@ -22,6 +22,16 @@ class utils {
         return $ano_diferencia . "anios";
     }
 
+    public static function evitarDobleSumitInicio() {
+        session_start();
+        $verifica = 1;
+        $_SESSION["verifica"] = $verifica;
+    }
+
+    public static function evitarDobleSumitFin() {
+        
+    }
+
 }
 
 ?>
