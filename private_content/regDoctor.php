@@ -120,6 +120,8 @@ $_SESSION["verifica"] = $verifica;
                         }'  ) ";
                 mysql_query($sql) or die(mysql_error());
                 echo "<p class='succesUs'>Guardado Correctamente!.</p>";
+                header("Location: http://localhost:8000/regDoctor.php"); /* Redirect browser */
+                //else if que detecta la accion del boton presionado y actualiza el dr actualmente logueado
             } elseif ($_POST['Modificar']) {
                 include_once '../clases/db_connect.php';
                 $id = (int) $_SESSION['cod_doc'];
@@ -129,9 +131,11 @@ $_SESSION["verifica"] = $verifica;
                 $sql = "UPDATE `doctor` SET `nombre_doc` =  '{$_POST['nombre_doc']}' ,  `apellido_doc` =  '{$_POST['apellido_doc']}' ,  `JVPO` =  '{$_POST['JVPO']}' ,  `genero_doc` =  '{$_POST['genero_doc']}' ,  `fecha_na_doc` =  '{$_POST['fecha_na_doc']}' ,  `password_doc` =  '{$_POST['password_doc']}' ,  `telefono_doc` =  '{$_POST['telefono_doc']}' ,  `direccion_doc` =  '{$_POST['direccion_doc']}' ,  `departamento_doc` =  '{$_POST['departamento_doc']}' ,  `cod_as` =  '{$_POST['cod_as']}'   WHERE `cod_doc` = $id ";
                 mysql_query($sql) or die(mysql_error());
                 echo (mysql_affected_rows()) ? "<p class='succesUs'>Usuario editado correctamente!</p>.<br />" : "<p class='errorUs'>Usuario no editado</p> <br />";
+                header("Location: http://localhost:8000/regDoctor.php"); /* Redirect browser */
             }
         } else {
             echo "Genial! evitamos un doble sumit!!!";
+            header("Location: http://localhost:8000/regDoctor.php"); /* Redirect browser */
         }
         ?>
 
