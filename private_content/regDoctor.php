@@ -27,7 +27,7 @@ $_SESSION["verifica"] = $verifica;
         <script src="../assets/js/jquery.validate.js"></script>   
         <script src="../assets/js/modernizr2.6.2.js"></script>
         <script src="../assets/js/holder.js"></script>
-        <script src="../assets/js/validarRegEmpleador.js"></script>
+        <script src="../assets/js/validarDoctores.js "></script>
 
         <script>
             // fallback para el datepicker con jquery
@@ -166,7 +166,7 @@ $_SESSION["verifica"] = $verifica;
                         <div class="panel-heading"><?php echo 'ID DOCTOR: ' . $_SESSION['cod_doc']; ?></div>
                         <div class="panel-body">
 
-                            <form method="POST" action="" class="form-horizontal">
+                            <form method="POST" action="" class="form-horizontal" id="regDoctor">
 
                                 <div class="form-group">
                                     <label for="Nombre_doc" class="col-lg-3 control-label">Nombre del Doctor</label>
@@ -195,7 +195,7 @@ $_SESSION["verifica"] = $verifica;
                                     <label for="JVPO" class="col-lg-3 control-label">J.V.P.O</label>
                                     <div class="col-lg-4">
                                         <input type="text" name="JVPO" value="<?php echo $JVPO ?>"  class="form-control" placeholder="Escriba el numero de J.V.P.O" required>
-
+<!--///*JUNTA DE VIGILANCIA DE LA PROFESION ODONTOLOGICA*/-->
                                     </div>
                                 </div>
 
@@ -228,7 +228,7 @@ $_SESSION["verifica"] = $verifica;
                                 <div class="form-group">
                                     <label for="correo" class="col-lg-3 control-label">Correo</label>
                                     <div class="col-lg-4">
-                                        <input type="email" name="email_emp" value=""  placeholder="Ejemplo: ejemplo@dominio.com" class="form-control" id="focusedInput" required>
+                                        <input type="email" name="email_doc" value=""  placeholder="Ejemplo: ejemplo@dominio.com" class="form-control" id="focusedInput" required>
                                     </div>
                                 </div>
 
