@@ -83,128 +83,32 @@
                     <div class="panel panel-primary">
                         <div class="panel-heading">Paciente</div>
                         <div class="panel-body">
-
-                            <form action="#" id="paciente" method="POST" class="form-horizontal">
-                                <div class="form-group">
-                                    <label for="Nombre" class="col-lg-3 control-label">Nombre</label>
-                                    <div class="col-lg-4">
-                                        <input type="text" name="nombre_pa" class="form-control" placeholder="Escriba un nombre" required>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="Apellido" class="col-lg-3 control-label">Apellido</label>
-                                    <div class="col-lg-4">
-                                        <input type="text" name="apellido_pa" class="form-control" placeholder="Escriba un nombre" required>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="fecha_na_pa" class="col-lg-3 control-label">Fecha de nacimiento:</label>
-                                    <div class="col-lg-3">
-                                        <input type="date"  class="form-control"><br>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-lg-3 control-label">Genero</label>
-                                    <div class="col-lg-4">
-                                        <input type="radio" name="geneno_pa" checked="" value="M">
-                                        Masculino
-                                        <input type="radio" name="genero_pa" value="F">
-                                        Femenino   
-                                    </div>  
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="telefono" class="col-lg-3 control-label">Telefono</label>
-                                    <div class="col-lg-4">
-                                        <input type="tel" name="telefono_pa" placeholder="Escriba un numero de telefono" class="form-control" required>
-                                    </div>
-                                </div>
-                                <div class="form-group">    
-                                    <label for="direccionPaciente" class="col-lg-3 control-label">Direccion actual</label>
-                                    <div class="col-lg-6">
-                                        <input type="text" name="direccion_pa" class="form-control" placeholder="Escriba la direccion" required>
-
-                                    </div>
-                                </div>
-
-                                <div class="form-group">    
-                                    <label for="municipioPaciente" class="col-lg-3 control-label">Municipio</label>
-                                    <div class="col-lg-6">
-                                        <input type="text" name="municipio_pa" class="form-control" placeholder="Municipio" required>
-
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="departamento" class="col-lg-3 control-label">Departamento</label>
-                                    <div class="col-lg-4">
-                                        <select name="departamento_pa" class="form-control" required="">
-                                            <option value="NONE">- Seleccione -</option>
-                                            <option value="San Salvador">San Salvador</option>
-                                            <option value="La Paz">La Paz</option>
-                                            <option value="San Miguel">San Miguel</option>
-                                            <option value="La Union">La Union</option>
-                                            <option value="La Libertad">La Libertad</option>
-                                            <option value="Santa Ana">Santa Ana</option>
-                                            <option value="Sonsonate">Sonsonate</option>
-                                            <option value="Ahuachapan">Aguachapan</option>
-                                            <option value="San Vicente">San Vicente</option>
-                                            <option value="Chalatenango">Chalatenango</option>
-                                            <option value="Cabanias">Cabañas</option>
-                                            <option value="Cuscatlan">Cuscatlan</option>
-                                            <option value="Usulutan">Usulutan</option>
-                                            <option value="Morazan">Morazan</option>
-                                        </select>
-                                    </div>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <center>
-                                        <a href="#" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-search"></i> Guardar</a>
-                                        <a href="#" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-search"></i> Modificar</a>
-                                    </center>
-                                </div>
-
-                            </form>
                             <div class="table-responsive">
                                 <?
                                 include_once '../clases/db_connect.php';
-                                $tabla = "table ";
-                                echo "<table class=" . $tabla . ">";
-                                echo "<tr>";
-                                echo "<td><b>Cod Pa</b></td>";
-                                echo "<td><b>Nombre Pa</b></td>";
-                                echo "<td><b>Apellido Pa</b></td>";
-                                echo "<td><b>Fecha Na Pa</b></td>";
-                                echo "<td><b>Edad Pa</b></td>";
-                                echo "<td><b>Genero Pa</b></td>";
-                                echo "<td><b>Telefono Pa</b></td>";
-                                echo "<td><b>Direccion Pa</b></td>";
-                                echo "<td><b>Municipio Pa</b></td>";
-                                echo "<td><b>Departamento Pa</b></td>";
-                                echo "</tr>";
-                                $result = mysql_query("SELECT * FROM `paciente`") or trigger_error(mysql_error());
-                                while ($row = mysql_fetch_array($result)) {
-                                    foreach ($row AS $key => $value) {
-                                        $row[$key] = stripslashes($value);
+                                if (isset($_POST['submitted'])) {
+                                    foreach ($_POST AS $key => $value) {
+                                        $_POST[$key] = mysql_real_escape_string($value);
                                     }
-                                    echo "<tr>";
-                                    echo "<td valign='top'>" . nl2br($row['cod_pa']) . "</td>";
-                                    echo "<td valign='top'>" . nl2br($row['nombre_pa']) . "</td>";
-                                    echo "<td valign='top'>" . nl2br($row['apellido_pa']) . "</td>";
-                                    echo "<td valign='top'>" . nl2br($row['fecha_na_pa']) . "</td>";
-                                    echo "<td valign='top'>" . nl2br($row['edad_pa']) . "</td>";
-                                    echo "<td valign='top'>" . nl2br($row['genero_pa']) . "</td>";
-                                    echo "<td valign='top'>" . nl2br($row['telefono_pa']) . "</td>";
-                                    echo "<td valign='top'>" . nl2br($row['direccion_pa']) . "</td>";
-                                    echo "<td valign='top'>" . nl2br($row['municipio_pa']) . "</td>";
-                                    echo "<td valign='top'>" . nl2br($row['departamento_pa']) . "</td>";
-                                    echo "<td valign='top'><a href=modificaraPaciente.php?cod_pa={$row['cod_pa']}>Edit</a></td><td><a href=eliminarPaciente.php?cod_pa={$row['cod_pa']}>Delete</a></td> ";
-                                    echo "</tr>";
+                                    $sql = "INSERT INTO `paciente` ( `nombre_pa` ,  `apellido_pa` ,  `fecha_na_pa` ,  `edad_pa` ,  `genero_pa` ,  `telefono_pa` ,  `direccion_pa` ,  `municipio_pa` ,  `departamento_pa`  ) VALUES(  '{$_POST['nombre_pa']}' ,  '{$_POST['apellido_pa']}' ,  '{$_POST['fecha_na_pa']}' ,  '{$_POST['edad_pa']}' ,  '{$_POST['genero_pa']}' ,  '{$_POST['telefono_pa']}' ,  '{$_POST['direccion_pa']}' ,  '{$_POST['municipio_pa']}' ,  '{$_POST['departamento_pa']}'  ) ";
+                                    mysql_query($sql) or die(mysql_error());
+                                    echo "Added row.<br />";
+                                    echo "<a href='paciente.php'>Regresar a Lista</a>";
                                 }
-                                echo "</table>";
-                                echo "<a href=agregarPaciente.php>Nuevo Paciente</a>";
                                 ?>
+
+                                <form action='' method='POST'> 
+                                    <p><b>Nombre Pa:</b><br /><input type='text' class="form-control" name='nombre_pa'/> 
+                                    <p><b>Apellido Pa:</b><br /><input type='text' class="form-control" name='apellido_pa'/> 
+                                    <p><b>Fecha Na Pa:</b><br /><input type='text' class="form-control" name='fecha_na_pa'/> 
+                                    <p><b>Edad Pa:</b><br /><input type='text' class="form-control" name='edad_pa'/> 
+                                    <p><b>Genero Pa:</b><br /><input type='text' class="form-control" name='genero_pa'/> 
+                                    <p><b>Telefono Pa:</b><br /><input type='text' class="form-control" name='telefono_pa'/> 
+                                    <p><b>Direccion Pa:</b><br /><input type='text' class="form-control" name='direccion_pa'/> 
+                                    <p><b>Municipio Pa:</b><br /><input type='text' class="form-control" name='municipio_pa'/> 
+                                    <p><b>Departamento Pa:</b><br /><input type='text' class="form-control" name='departamento_pa'/> 
+                                    <p><input type='submit' value='Add Row' /><input type='hidden' value='1' name='submitted' /> 
+                                </form> 
                             </div>
                         </div>
                     </div>
