@@ -238,13 +238,10 @@
                     <div class="panel panel-primary">
                         <div class="panel-heading">Ficha</div>
                         <div class="panel-body">
-
                             <h1 align="center">FICHA PARA DIAGNOSTICO ORAL</h1>
-
                             <form action="#" id="paciente" method="POST" class="form-horizontal">
-
                                 <div class="form-group">
-                                    <label for="Nombre" class="col-lg-3 control-label">Paciente</label>
+                                    <label for="Nombre" class="col-lg-3 control-label">Nombre Paciente</label>
                                     <div class="col-lg-4">
                                         <input type="text" name="nombre_pa" class="form-control" placeholder="" required>
                                     </div>
@@ -285,29 +282,57 @@
                                 </div>
                                 <div class="form-group">    
                                     <label for="Mensaje" class="col-lg-3 control-label">Motivo de consulta</label>
-                                    <div class="col-lg-6">
-                                        <textarea name="textarea" name="motivo_consulta" class="form-control col-lg-6" rows="4" required> </textarea>
+                                    <div class="col-lg-8">
+                                        <textarea name="textarea" name="motivo_consulta" class="form-control col-lg-6" rows="2" required> </textarea>
 
                                     </div>
                                 </div>
-
 
                                 <div class="form-group">    
                                     <label for="Mensaje" class="col-lg-3 control-label">Antecedentes medicos</label>
-                                    <div class="col-lg-6">
-                                        <textarea name="textarea" class="form-control col-lg-6" rows="4" required> </textarea>
+                                    <div class="col-lg-8">
+                                        <textarea name="textarea" class="form-control col-lg-6" rows="2" required> </textarea>
 
                                     </div>
                                 </div>
                                 <br>
-                                <br>
-                                <br>
-                                <br>
-                                <center>
-                                    <a href="#" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-search"></i> Guardar Cambios</a>
+                                <center
+                                    <p><input type='submit' class="btn btn-primary btn-large" value='Guardar Expediente' /><input type='hidden' value='1' name='submitted' /> 
                                 </center>
+                                <br>
                             </form>
-
+                            <div class="table-responsive">      
+                                <?
+                                include_once '../clases/db_connect.php';
+                                $tabla = "table ";
+                                echo "<table class=" . $tabla . ">";
+                                echo "<tr>";
+                                echo "<td><b>Cod Ex</b></td>";
+                                echo "<td><b>No Ex</b></td>";
+                                echo "<td><b>Referido</b></td>";
+                                echo "<td><b>At Medicos</b></td>";
+                                echo "<td><b>Cod Cita</b></td>";
+                                echo "<td><b>Cod Pa</b></td>";
+                                echo "</tr>";
+                                $result = mysql_query("SELECT * FROM `expediente`") or trigger_error(mysql_error());
+                                while ($row = mysql_fetch_array($result)) {
+                                    foreach ($row AS $key => $value) {
+                                        $row[$key] = stripslashes($value);
+                                    }
+                                    echo "<tr>";
+                                    echo "<td valign='top'>" . nl2br($row['cod_ex']) . "</td>";
+                                    echo "<td valign='top'>" . nl2br($row['no_ex']) . "</td>";
+                                    echo "<td valign='top'>" . nl2br($row['referido']) . "</td>";
+                                    echo "<td valign='top'>" . nl2br($row['at_medicos']) . "</td>";
+                                    echo "<td valign='top'>" . nl2br($row['cod_cita']) . "</td>";
+                                    echo "<td valign='top'>" . nl2br($row['cod_pa']) . "</td>";
+                                    echo "<td valign='top'><a href=modificarExpediente.php?cod_pa={$row['cod_pa']}>Edit</a></td><td><a href=eliminarExpediente.php?cod_pa={$row['cod_pa']}>Delete</a></td> ";
+                                    echo "</tr>";
+                                }
+                                echo "</table>";
+                                echo "<a href=agregarExpediente.php>New Row</a>";
+                                ?>
+                            </div>
                         </div>
                     </div>
                 </div>
