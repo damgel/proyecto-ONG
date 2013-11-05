@@ -96,7 +96,7 @@
             header("Location: http://localhost:8000/private_content/perfilVoluntariado.php"); /* Redirect browser */
         } elseif (isset($_POST['Modificar'])) {
             include_once '../clases/db_connect.php';
-            $id = (int) $_SESSION['nombre_vo'];
+            $id = (int) $_SESSION['cod_vo'];
             foreach ($_POST AS $key => $value) {
                 $_POST[$key] = mysql_real_escape_string($value);
             }
@@ -134,39 +134,39 @@
                 <div class="tab-pane active" id="Perfil_volun">
 
                     <div class="panel panel-primary">
-                        <div class="panel-heading"><?php echo 'ID VOLUNTARIADO: ' . $_SESSION['cod_vo']; ?> </div>
+                        <div class="panel-heading"> <?php echo 'VOLUNTARIADO: ' . $_SESSION['cod_vo']; ?> </div>
                         <div class="panel-body">
 
                             <form action="#" method="POST" class="form-horizontal">
                                 <div class="form-group">
                                     <label for="Nombre_vo" class="col-lg-3 control-label">Nombre</label>
                                     <div class="col-lg-4">
-                                        <input type="text" name="nombre_vo"  value="<?php echo $nombreV ?> class="form-control" placeholder="Escriba un nombre" required>
+                                        <input type="text" name="nombre_vo"  value= "<?php echo $nombreV ?>" class="form-control" placeholder="Escriba un nombre" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="apellido_doc" class="col-lg-3 control-label">Apellido</label>
                                     <div class="col-lg-4">
-                                        <input type="text" name="apellido_vo" value="<?php echo $apellidoV ?>class="form-control" placeholder="Escriba un apellido" required>
+                                        <input type="text" name="apellido_vo" value= "<?php echo $apellidoV ?>" class="form-control" placeholder="Escriba un apellido" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="Fecha_Nacimiento" class="col-lg-3 control-label">Fecha de nacimiento:</label>
                                     <div class="col-lg-3">
-                                        <input type="date" name="fecha_na_vo" value="<?php echo $fechaNaV ?> class="form-control">
+                                        <input type="date" name="fecha_na_vo" value= "<?php echo $fechaNaV ?>"  class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="Edad" class="col-lg-3 control-label">Edad:</label>
                                     <div class="col-lg-3">
-                                        <input type="number" name="edad_vo" value="<?php echo $edadV ?>class="form-control">
+                                        <input type="number" name="edad_vo" value=" <?php echo $edadV ?>"  class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="sexo" class="col-lg-3 control-label">Sexo</label>
                                     <div class="col-lg-4">
                                         <select name="genero_vo" class="form-control" required="">
-                                            <option value="<?php echo $generoV ?>" >- Seleccione -</option>
+                                            <option value=" <?php echo $generoV ?>" >- Seleccione -</option>
                                             <option value="M">Masculino</option>
                                             <option value="F">Femenino</option>
                                         </select>
@@ -176,13 +176,13 @@
                                 <div class="form-group">
                                     <label for="telefono" class="col-lg-3 control-label">Telefono</label>
                                     <div class="col-lg-4">
-                                        <input type="tel" name="telefono_vo" value="<?php echo $telefonoV ?> placeholder="Escriba un numero de telefono" class="form-control" required>
+                                        <input type="tel" name="telefono_vo" value= "<?php echo $telefonoV ?>" placeholder="Escriba un numero de telefono" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="form-group">    
                                     <label for="direccion" class="col-lg-3 control-label">Direccion</label>
                                     <div class="col-lg-6">
-                                        <input type="text" name="direcccion_vo" value="<?php echo $direccionV ?> class="form-control" placeholder="Escriba la direccion" required>
+                                        <input type="text" name="direcccion_vo" value="<?php echo $direccionV ?>" class="form-control" placeholder="Escriba la direccion" required>
 
                                     </div>
                                 </div>
@@ -209,10 +209,11 @@
 
                                         </select>
                                     </div>
+                                    
                                     <div class="form-group">
                                         <label for="correo" class="col-lg-3 control-label">Correo</label>
-                                        <div class="col-lg-4">
-                                            <input type="email" name="email_vo"  value="<?php echo $emailV ?>" placeholder="Ejemplo: ejemplo@dominio.com" class="form-control" id="focusedInput" required>
+                                        <div class="col-lg-4"> 
+     <input type="email" name="email_vo"  value= "<?php echo $emailV ?>" placeholder="Ejemplo: ejemplo@dominio.com" class="form-control" id="focusedInput" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
