@@ -98,16 +98,56 @@
                                 ?>
 
                                 <form action='' method='POST'> 
-                                    <p><b>Nombre Pa:</b><br /><input type='text' class="form-control" name='nombre_pa'/> 
-                                    <p><b>Apellido Pa:</b><br /><input type='text' class="form-control" name='apellido_pa'/> 
-                                    <p><b>Fecha Na Pa:</b><br /><input type='text' class="form-control" name='fecha_na_pa'/> 
-                                    <p><b>Edad Pa:</b><br /><input type='text' class="form-control" name='edad_pa'/> 
-                                    <p><b>Genero Pa:</b><br /><input type='text' class="form-control" name='genero_pa'/> 
-                                    <p><b>Telefono Pa:</b><br /><input type='text' class="form-control" name='telefono_pa'/> 
-                                    <p><b>Direccion Pa:</b><br /><input type='text' class="form-control" name='direccion_pa'/> 
-                                    <p><b>Municipio Pa:</b><br /><input type='text' class="form-control" name='municipio_pa'/> 
-                                    <p><b>Departamento Pa:</b><br /><input type='text' class="form-control" name='departamento_pa'/> 
-                                    <p><input type='submit' value='Add Row' /><input type='hidden' value='1' name='submitted' /> 
+                                    <div class="form-group">
+                                        <div><p><b>Nombre Pa:</b><br /><input type='text' class="form-control" name='nombre_pa'/>
+                                        </div> 
+
+                                    </div>
+                                    <div class="form-group">
+                                        <div><p><b>Apellido Pa:</b><br /><input type='text' class="form-control" name='apellido_pa'/>
+                                        </div> 
+
+                                    </div>
+                                    <div class="form-group">
+                                        <div><p><b>Fecha Na Pa:</b><br /><input type='text' class="form-control" name='fecha_na_pa'/>
+                                        </div> 
+
+                                    </div>
+                                    <div class="form-group">
+                                        <div><p><b>Edad Pa:</b><br /><input type='text' class="form-control" name='edad_pa'/>
+                                        </div> 
+
+                                    </div>
+                                    <div class="form-group">
+                                        <div><p><b>Genero Pa:</b><br /><input type='text' class="form-control" name='genero_pa'/>
+                                        </div> 
+
+                                    </div>
+                                    <div class="form-group">
+                                        <div><p><b>Telefono Pa:</b><br /><input type='text' class="form-control" name='telefono_pa'/>
+                                        </div> 
+
+                                    </div>
+                                    <div class="form-group">
+                                        <div><p><b>Direccion Pa:</b><br /><input type='text' class="form-control" name='direccion_pa'/>
+                                        </div> 
+
+                                    </div>
+                                    <div class="form-group">
+                                        <div><p><b>Municipio Pa:</b><br /><input type='text' class="form-control" name='municipio_pa'/>
+                                        </div> 
+
+                                    </div>
+                                    <div class="form-group">
+                                        <div><p><b>Departamento Pa:</b><br /><input type='text' class="form-control" name='departamento_pa'/>
+                                        </div> 
+
+                                    </div>
+                                    <div class="form-group">
+                                        <div><p><input type='submit' value='Add Row' /><input type='hidden' value='1' name='submitted' />
+                                        </div> 
+
+                                    </div>
                                 </form> 
                             </div>
                         </div>
