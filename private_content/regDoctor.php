@@ -20,7 +20,7 @@ $_SESSION["verifica"] = $verifica;
         <link rel="stylesheet" href="../assets/css/bootstrap.css">
         <link rel="stylesheet" href="../assets/css/normalize.css">
         <link rel="stylesheet" href="../assets/css/jqueryUI.css">
-        <link rel="stylesheet" href="validacionStyle.css">
+        <link rel="stylesheet" href="../validacionStyle.css">
         <script src="../assets/js/jquery-v1.10.2.js"></script>
         <script src="../assets/js/bootstrap.min.js"></script>
         <script src="../assets/js/jquery-ui.js"></script>

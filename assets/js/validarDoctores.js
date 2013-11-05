@@ -7,30 +7,43 @@ $(document).ready(function() {
                     {
                         required: true,
                         minlength: 3,
-                        maxlenght: 15
+                        maxlenght: 15,
+                        patterner:[0,10]
+                       
                     },
             apellido_doc:
                     {
                         required: true,
-                        minlength: 3,
-                        maxlenght: 15
+                        minlength: 6,
+                        maxlenght: 15,
+                        patterner:[0,10]
+                        
                     },
             genero_doc:
                     {
-                        required: true
+                        required: true,
+                        patterner:[0,10]
 
                     },
             JVPO:
                     {
                         required: true,
                         minlength: 6,
-                        maxlenght: 8
+                        maxlenght: 8,
+                        patterner:[0,10]
 
+                    },
+           fecha_na_doc:
+                    {
+                        required: true
+                        
                     },
             password_doc:
                     {
-                        minlength: 8,
-                        required: true
+                        required: true,
+                        minlength: 8
+                        
+                        
                     },
             confirm_password:
                     {
@@ -42,21 +55,25 @@ $(document).ready(function() {
                     {
                         required: true,
                         minlength: 8
+                        
                     },
             email_doc:
                     {
                         required: true,
-                        email: true
+                        email: true,
+                        patterner:[0,10]
                     },
             direccion_doc:
                     {
                         required: true,
                         minlength: 15,
-                        maxlenght: 30
+                        maxlenght: 30,
+                        patterner:[0,10]
                     },
             departamento_doc:
                     {
-                        required: true
+                        required: true,
+                        patterner:[0,10]
 
                     }
         }
