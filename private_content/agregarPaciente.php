@@ -119,8 +119,8 @@
                                         <div class="col-lg-4"><b>Genero Paciente:</b><br />
                                              <select name="genero_doc" class="form-control" required="">
                                             <option value="<?php echo $genero ?>" >- Seleccione -</option>
-                                            <option value="M">Masculino</option>
-                                            <option value="F">Femenino</option>
+                                            <option value="Masculino">Masculino</option>
+                                            <option value="Femenino">Femenino</option>
                                         </select>
                                         </div> 
 

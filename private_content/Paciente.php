@@ -135,10 +135,8 @@
                                 <div class="form-group">
                                     <label class="col-lg-3 control-label">Genero</label>
                                     <div class="col-lg-4">
-                                        <input type="radio" value="<?php echo $genero ?>"  name="geneno_pa" checked="" value="M">
-                                        Masculino
-                                        <input type="radio" name="genero_pa" value="F">
-                                        Femenino   
+                                        <input type="radio" name="genero_pa" value="Masculino" />Masculino<br />
+                                        <input type="radio" name="genero_pa" value="Femenino" />Femenino<br />
                                     </div>  
                                 </div>
 
