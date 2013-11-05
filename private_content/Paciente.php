@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Perfil Doctor</title>
+        <title>Perfil Paciente</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -83,7 +83,7 @@
                     <div class="panel panel-primary">
                         <div class="panel-heading">Paciente</div>
                         <div class="panel-body">
-
+<a href=agregarPaciente.php>Nuevo Paciente</a>
                             <form action="#" id="paciente" method="POST" class="form-horizontal">
                                 <div class="form-group">
                                     <label for="Nombre" class="col-lg-3 control-label">Nombre</label>
@@ -160,8 +160,7 @@
                                     <br>
                                     <br>
                                     <center>
-                                        <a href="#" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-search"></i> Guardar</a>
-                                        <a href="#" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-search"></i> Modificar</a>
+                                        <p><input type='submit' class="btn btn-primary btn-large" value='Guardar Cambios' /><input type='hidden' value='1' name='submitted' /> 
                                     </center>
                                 </div>
 
@@ -172,16 +171,16 @@
                                 $tabla = "table ";
                                 echo "<table class=" . $tabla . ">";
                                 echo "<tr>";
-                                echo "<td><b>Cod Pa</b></td>";
-                                echo "<td><b>Nombre Pa</b></td>";
-                                echo "<td><b>Apellido Pa</b></td>";
-                                echo "<td><b>Fecha Na Pa</b></td>";
-                                echo "<td><b>Edad Pa</b></td>";
-                                echo "<td><b>Genero Pa</b></td>";
-                                echo "<td><b>Telefono Pa</b></td>";
-                                echo "<td><b>Direccion Pa</b></td>";
-                                echo "<td><b>Municipio Pa</b></td>";
-                                echo "<td><b>Departamento Pa</b></td>";
+                                echo "<td><b>Codigo</b></td>";
+                                echo "<td><b>Nombre</b></td>";
+                                echo "<td><b>Apellido</b></td>";
+                                echo "<td><b>Fecha Na</b></td>";
+                                echo "<td><b>Edad</b></td>";
+                                echo "<td><b>Genero</b></td>";
+                                echo "<td><b>Telefono</b></td>";
+                                echo "<td><b>Direccion</b></td>";
+                                echo "<td><b>Municipio</b></td>";
+                                echo "<td><b>Departamento</b></td>";
                                 echo "</tr>";
                                 $result = mysql_query("SELECT * FROM `paciente`") or trigger_error(mysql_error());
                                 while ($row = mysql_fetch_array($result)) {
@@ -199,11 +198,11 @@
                                     echo "<td valign='top'>" . nl2br($row['direccion_pa']) . "</td>";
                                     echo "<td valign='top'>" . nl2br($row['municipio_pa']) . "</td>";
                                     echo "<td valign='top'>" . nl2br($row['departamento_pa']) . "</td>";
-                                    echo "<td valign='top'><a href=modificaraPaciente.php?cod_pa={$row['cod_pa']}>Edit</a></td><td><a href=eliminarPaciente.php?cod_pa={$row['cod_pa']}>Delete</a></td> ";
+                                    echo "<td valign='top'><a href=modificaraPaciente.php?cod_pa={$row['cod_pa']}>Editar</a></td><td><a href=eliminarPaciente.php?cod_pa={$row['cod_pa']}>Eliminar</a></td> ";
                                     echo "</tr>";
                                 }
                                 echo "</table>";
-                                echo "<a href=agregarPaciente.php>Nuevo Paciente</a>";
+                                
                                 ?>
                             </div>
                         </div>
@@ -279,8 +278,7 @@
                                 <br>
                                 <br>
                                 <center>
-                                    <a href="#" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-search"></i> Guardar</a>
-                                    <a href="#" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-search"></i> Modificar</a>
+                                    <a href="#" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-search"></i> Guardar Cambios</a>
                                 </center>
                             </form>
 
