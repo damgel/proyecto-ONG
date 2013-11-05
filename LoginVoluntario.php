@@ -56,16 +56,20 @@
 
                                 if (isset($usuario_vo) && !empty($pass_vo)) {
                                     include "clases/db_connect.php";
-                                    $result = mysql_query("SELECT nombre_vo FROM voluntariado where email_vo='$usuario_vo' and password_vo='$pass_vo'");
+                                    $result = mysql_query("SELECT cod_vo, nombre_vo, apellido_vo FROM voluntariado where email_vo='$usuario_vo' and password_vo='$pass_vo'");
                                     if ($result === 0) {
                                         session_start();
                                         $_SESSION['error'] = "<P>Por favor introduzca un usuario y contrasenia validos</P>";
                                     } elseif ($result >= 0) {
                                         while ($row = mysql_fetch_array($result)) {
-                                            $nombre = $row{'nombre_vo'};
+                                            $nombreV = $row{'nombre_vo'};
+											$apellidoV = $row {'apellido_vo'};
+											$cod_vo = $row {'cod_vo'};
                                             session_start();
-                                            $_SESSION['nombre'] = $nombre;
-                                            echo $_SESSION['nombre'];
+                                            $_SESSION['nombre_vo'] = $nombreV . " " . $apellidoV;						
+											$_SESSION['cod_vo'] = $cod_vo;
+                                            echo $_SESSION['nombre_vo'];
+											
                                             header("Location: http://localhost:8000/private_content/index.php"); /* Redirect browser */
                                         }
                                     }
