@@ -156,9 +156,7 @@ $_SESSION["verifica"] = $verifica;
 
             </style>
             <ul class="nav nav-tabs" id="myTab">
-                <li class="active"><a href="#Perfil">Perfil</a></li>
-                <li class=""><a href="#Agenda">Agenda de Trabajo</a></li>
-
+                <li class="active"><a href="#Perfil">Administracion</a></li>
             </ul>
 
             <div class="tab-content">
@@ -329,57 +327,7 @@ $_SESSION["verifica"] = $verifica;
 
 
                 </div>
-                <div class="tab-pane" id="Agenda">
 
-                    <div class="panel panel-primary">
-
-                        <div class="panel-heading">Agenda</div>
-
-
-                        <div class="panel-body">
-
-                            <form action="#" method="POST" class="form-horizontal" role="form">
-
-                                <div class="form-group">       
-
-                                    <br>      
-                                    <fieldset>
-                                        <center><legend> Detalles de la Agenda</legend></center>
-                                        <label for="Fecha_Cita" class="col-lg-3 control-label">Fecha:</label>
-                                        <div class="col-lg-3">
-                                            <input type="date"  class="form-control"><br>
-                                            <br>
-                                            <label for="hora_Cita" class="col-lg-2 control-label">Hora:</label>
-                                            <div class="col-lg-10">
-                                                <input type="time"  class="form-control">  
-                                            </div>
-                                        </div>
-                                    </fieldset>
-                                </div>
-                                <center><button type="submit" class="btn btn-primary btn-lg">Buscar</button></center>  
-
-
-
-
-
-                            </form>
-                        </div>
-
-                    </div>
-
-
-                    <script>
-                        $('#myTab a').click(function(e) {
-                            e.preventDefault();
-                            $(this).tab('show');
-                        });
-                    </script>
-
-
-                </div>
-
-
-                <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
             </div>
         </div>
     </body>
