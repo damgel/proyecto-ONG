@@ -95,6 +95,7 @@
                                 ?>
 
                                 <form action='' method='POST'> 
+                                    <a href='paciente.php'>Regresar a Lista</a><br>
                                     <div class="form-group">
                                         <div class="col-lg-4"><b>Nombre Paciente:</b><br /><input type='text' class="form-control" name='nombre_pa' required/>
                                         </div> 
@@ -106,7 +107,7 @@
 
                                     </div>
                                     <div class="form-group">
-                                        <div class="col-lg-4"><b>Fecha Na Paciente:</b><br /><input type='text' class="form-control" name='fecha_na_pa' required/>
+                                        <div class="col-lg-4"><b>Fecha Na Paciente:</b><br /><input type='date' class="form-control" name='fecha_na_pa' required/>
                                         </div> 
 
                                     </div>
@@ -116,7 +117,12 @@
 
                                     </div>
                                     <div class="form-group">
-                                        <div class="col-lg-4"><b>Genero Paciente:</b><br /><input type='text' class="form-control" name='genero_pa' required/>
+                                        <div class="col-lg-4"><b>Genero Paciente:</b><br />
+                                             <select name="genero_doc" class="form-control" required="">
+                                            <option value="<?php echo $genero ?>" >- Seleccione -</option>
+                                            <option value="M">Masculino</option>
+                                            <option value="F">Femenino</option>
+                                        </select>
                                         </div> 
 
                                     </div>
@@ -136,7 +142,26 @@
 
                                     </div>
                                     <div class="form-group">
-                                        <div class="col-lg-4"><b>Departamento Paciente:</b><br /><input type='text' class="form-control" name='departamento_pa' required/>
+                                        <div class="col-lg-4"><b>Departamento Paciente:</b><br />
+                                            <select name="departamento_pa" class="form-control" required>
+
+                                            <option value="<?php echo $departamento ?>">- Seleccione -</option>
+                                            <option value="San Salvador">San Salvador</option>
+                                            <option value="La Paz">La Paz</option>
+                                            <option value="San Miguel">San Miguel</option>
+                                            <option value="La union">La Union</option>
+                                            <option value="La Libertad">La Libertad</option>
+                                            <option value="Santa Ana">Santa Ana</option>
+                                            <option value="Sonsonate">Sonsonate</option>
+                                            <option value="Ahuachapan">Ahuachapan</option>
+                                            <option value="San Vicente">San Vicente</option>
+                                            <option value="Chalatenango">Chalatenango</option>
+                                            <option value="Cabanias">Cabañas</option>
+                                            <option value="Cuscatlan">Cuscatlan</option>
+                                            <option value="Usulutan">Usulutan</option>
+                                            <option value="Morazan">Morazan</option>
+
+                                        </select>
                                         </div> 
 
                                     </div>
