@@ -245,7 +245,7 @@ $_SESSION["verifica"] = $verifica;
                                 <div class="form-group">
                                     <label for="departamento" class="col-lg-3 control-label">departamento</label>
                                     <div class="col-lg-4">
-                                        <select name="departamento_doc" class="form-control" required="">
+                                        <select name="departamento_doc" class="form-control" required>
 
                                             <option value="<?php echo $departamento ?>">- Seleccione -</option>
                                             <option value="San Salvador">San Salvador</option>
