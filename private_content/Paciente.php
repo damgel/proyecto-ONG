@@ -307,12 +307,12 @@
                                 $tabla = "table ";
                                 echo "<table class=" . $tabla . ">";
                                 echo "<tr>";
-                                echo "<td><b>Cod Ex</b></td>";
-                                echo "<td><b>No Ex</b></td>";
+                                
+                                echo "<td><b>Numero Expediente</b></td>";
                                 echo "<td><b>Referido</b></td>";
-                                echo "<td><b>At Medicos</b></td>";
-                                echo "<td><b>Cod Cita</b></td>";
-                                echo "<td><b>Cod Pa</b></td>";
+                                echo "<td><b>Atencion Brindada</b></td>";
+                                echo "<td><b>Codigo Cita</b></td>";
+                                echo "<td><b>Cod Paciente</b></td>";
                                 echo "</tr>";
                                 $result = mysql_query("SELECT * FROM `expediente`") or trigger_error(mysql_error());
                                 while ($row = mysql_fetch_array($result)) {
@@ -320,17 +320,17 @@
                                         $row[$key] = stripslashes($value);
                                     }
                                     echo "<tr>";
-                                    echo "<td valign='top'>" . nl2br($row['cod_ex']) . "</td>";
+                                    
                                     echo "<td valign='top'>" . nl2br($row['no_ex']) . "</td>";
                                     echo "<td valign='top'>" . nl2br($row['referido']) . "</td>";
                                     echo "<td valign='top'>" . nl2br($row['at_medicos']) . "</td>";
                                     echo "<td valign='top'>" . nl2br($row['cod_cita']) . "</td>";
                                     echo "<td valign='top'>" . nl2br($row['cod_pa']) . "</td>";
-                                    echo "<td valign='top'><a href=modificarExpediente.php?cod_pa={$row['cod_pa']}>Edit</a></td><td><a href=eliminarExpediente.php?cod_pa={$row['cod_pa']}>Delete</a></td> ";
+                                    echo "<td valign='top'><a href=modificarExpediente.php?cod_pa={$row['cod_pa']}>Editar</a></td><td><a href=eliminarExpediente.php?cod_pa={$row['cod_pa']}>Eliminar</a></td> ";
                                     echo "</tr>";
                                 }
                                 echo "</table>";
-                                echo "<a href=agregarExpediente.php>New Row</a>";
+                                echo "<a href=agregarExpediente.php>Guardar Consulta</a>";
                                 ?>
                             </div>
                         </div>
