@@ -63,25 +63,25 @@
     </head>
     <body>
         <?php
-		include_once '../clases/db_connect.php';
+        include_once '../clases/db_connect.php';
         //include database configuration
-		
-		 $codToGet = $_SESSION['cod_vo'];
+
+        $codToGet = $_SESSION['cod_vo'];
         $getVoluntariado = mysql_query("SELECT * FROM voluntariado 
                     where cod_vo=$codToGet");
         while ($row = mysql_fetch_array($getVoluntarios)) {
-			
+
             $nombreV = $row{'nombre_vo'};
             $apellidoV = $row{'apellido_vo'};
-			$fechaNaV = $row{'fecha_na_vo'};
-			$edadV = $row{'edad_vo'};
+            $fechaNaV = $row{'fecha_na_vo'};
+            $edadV = $row{'edad_vo'};
             $generoV = $row{'genero_vo'};
             $telefonoV = $row{'telefono_vo'};
             $direccionV = $row{'direccion_vo'};
             $departamentoV = $row{'departamento_vo'};
-			$emailV = $row{'email_vo'};
-			$emailV = $row{'email_vo'};
-			$passwordV = $row{'password_vo'};
+            $emailV = $row{'email_vo'};
+            $passwordV = $row{'password_vo'};
+        }
 
         if (isset($_POST['Guardar'])) {
 
@@ -89,33 +89,27 @@
             //sql insert statement
             $sql = "insert into voluntariado(nombre_vo, apellido_vo, fecha_na_vo, edad_vo, genero_vo, telefono_vo, direccion_vo,departamento_vo, cod_aso, email_vo, password_vo)
                 values('{$_POST['nombre_vo']}', '{$_POST['apellido_vo']}', '{$_POST['fecha_na_vo']}', '{$_POST['edad_vo']}', '{$_POST['genero_vo']}', '{$_POST['telefono_vo']}', '{$_POST['direccion_vo']}', '{$_POST['departamento_vo']}','1','{$_POST['email_vo']}','{$_POST['password_vo']}) ";
-       
-           mysql_query($sql) or die(mysql_error());
-       
-                echo "<script>alert('registro guardado correctamente!')</script>";
-				header("Location: http://localhost:8000/private_content/perfilVoluntariado.php"); /* Redirect browser */
-              
-				
-				} elseif ($_POST['Modificar']) {
-                include_once '../clases/db_connect.php';
-                $id = (int) $_SESSION['nombre_vo'];
-                foreach ($_POST AS $key => $value) {
-                    $_POST[$key] = mysql_real_escape_string($value);
-                }
-				
-				 $sql = "UPDATE `voluntariado` SET `nombre_vo` =  '{$_POST['nombre_vo']}' ,  `apellido_vo` =  '{$_POST['apellido_vo']}' ,   `fecha_na_vo` =  '{$_POST['fecha_na_vo']}' ,   `edad_vo` =  '{$_POST['edad_vo']}' ,  `genero_vo` =  '{$_POST['genero_vo']}' , `telefono_vo` =  '{$_POST['telefono_vo']}' ,  `direccion_vo` =  '{$_POST['direccion_vo']}' ,  `departamento_vo` =  '{$_POST['departamento_vo']}' ,  `cod_as` =  '{$_POST['cod_as']}' ,  `email_vo` =  '{$_POST['email_vo']},  `password_vo` =  '{$_POST['password_vo']}   WHERE `cod_vo` = $id ";
-				 
-				 mysql_query($sql) or die(mysql_error());
-                echo (mysql_affected_rows()) ? "<p class='succesUs'>Usuario editado correctamente!</p>.<br />" : "<p class='errorUs'>Usuario no editado</p> <br />";
-                header("Location: http://localhost:8000/private_content/perfilVoluntariado.php");
-            
-			 
+
+            mysql_query($sql) or die(mysql_error());
+
+            echo "<script>alert('registro guardado correctamente!')</script>";
+            header("Location: http://localhost:8000/private_content/perfilVoluntariado.php"); /* Redirect browser */
+        } elseif (isset($_POST['Modificar'])) {
+            include_once '../clases/db_connect.php';
+            $id = (int) $_SESSION['nombre_vo'];
+            foreach ($_POST AS $key => $value) {
+                $_POST[$key] = mysql_real_escape_string($value);
+            }
+
+            $sql = "UPDATE `voluntariado` SET `nombre_vo` =  '{$_POST['nombre_vo']}' ,  `apellido_vo` =  '{$_POST['apellido_vo']}' ,   `fecha_na_vo` =  '{$_POST['fecha_na_vo']}' ,   `edad_vo` =  '{$_POST['edad_vo']}' ,  `genero_vo` =  '{$_POST['genero_vo']}' , `telefono_vo` =  '{$_POST['telefono_vo']}' ,  `direccion_vo` =  '{$_POST['direccion_vo']}' ,  `departamento_vo` =  '{$_POST['departamento_vo']}' ,  `cod_as` =  '{$_POST['cod_as']}' ,  `email_vo` =  '{$_POST['email_vo']},  `password_vo` =  '{$_POST['password_vo']}   WHERE `cod_vo` = $id ";
+
+            mysql_query($sql) or die(mysql_error());
+            echo (mysql_affected_rows()) ? "<p class='succesUs'>Usuario editado correctamente!</p>.<br />" : "<p class='errorUs'>Usuario no editado</p> <br />";
+            header("Location: http://localhost:8000/private_content/perfilVoluntariado.php");
         } else {
             echo "Genial! evitamos un doble sumit!!!";
-            header("Location: http://localhost:8000/private_content/index.php"); /* Redirect browser */
+            // header("Location: http://localhost:8000/private_content/index.php"); /* Redirect browser */
         }
-
-            
         ?>
 
         <div id="header" class="navbar navbar-default navbar-static-top">
@@ -168,7 +162,7 @@
                                         <input type="number" name="edad_vo" value="<?php echo $edadV ?>class="form-control">
                                     </div>
                                 </div>
-                                 <div class="form-group">
+                                <div class="form-group">
                                     <label for="sexo" class="col-lg-3 control-label">Sexo</label>
                                     <div class="col-lg-4">
                                         <select name="genero_vo" class="form-control" required="">
@@ -178,7 +172,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <label for="telefono" class="col-lg-3 control-label">Telefono</label>
                                     <div class="col-lg-4">
@@ -215,30 +209,30 @@
 
                                         </select>
                                     </div>
-                                          <div class="form-group">
-                                    <label for="correo" class="col-lg-3 control-label">Correo</label>
-                                    <div class="col-lg-4">
-                                        <input type="email" name="email_vo"  value="<?php echo $emailV ?>" placeholder="Ejemplo: ejemplo@dominio.com" class="form-control" id="focusedInput" required>
+                                    <div class="form-group">
+                                        <label for="correo" class="col-lg-3 control-label">Correo</label>
+                                        <div class="col-lg-4">
+                                            <input type="email" name="email_vo"  value="<?php echo $emailV ?>" placeholder="Ejemplo: ejemplo@dominio.com" class="form-control" id="focusedInput" required>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="Contrasenia" class="col-lg-3 control-label">Contraseña</label>
-                                    <div class="col-lg-4">
-                                        <input type="password" name="password_vo"  value="<?php echo $passwordV ?>" class="form-control" placeholder="Contraseña" required>
-                                    </div>  
-                                </div>
+                                    <div class="form-group">
+                                        <label for="Contrasenia" class="col-lg-3 control-label">Contraseña</label>
+                                        <div class="col-lg-4">
+                                            <input type="password" name="password_vo"  value="<?php echo $passwordV ?>" class="form-control" placeholder="Contraseña" required>
+                                        </div>  
+                                    </div>
                                     <br>
                                     <br>
                                     <br>
                                     <br>
                                     <center>
 
-                                    <input type='submit' name="Guardar" value='guardar' class="btn btn-info btn-large" />
-                                    <input type='submit' name="Modificar" value='modificar' class="btn btn-info btn-large" />
+                                        <input type='submit' name="Guardar" value='guardar' class="btn btn-info btn-large" />
+                                        <input type='submit' name="Modificar" value='modificar' class="btn btn-info btn-large" />
                                     </center>
                                 </div>
                             </form>
-                            
+
                             </form>
                             <div class="table-responsive">
                                 <?php
@@ -251,7 +245,7 @@
                                 echo "<td><b>Nombre</b></td>";
                                 echo "<td><b>Apellido</b></td>";
                                 echo "<td><b>Fecha Nacimiento</b></td>";
-								echo "<td><b>Edad</b></td>";
+                                echo "<td><b>Edad</b></td>";
 
                                 echo "<td><b>Telefono</b></td>";
                                 echo "<td><b>Direccion</b></td>";
@@ -276,7 +270,7 @@
                                     echo "<td valign='top'>" . nl2br($row['nombre_vo']) . "</td>";
                                     echo "<td valign='top'>" . nl2br($row['apellido_vo']) . "</td>";
                                     echo "<td valign='top'>" . nl2br($row['fecha_na_vo']) . "</td>";
-									echo "<td valign='top'>" . nl2br($row['edad_vo']) . "</td>";
+                                    echo "<td valign='top'>" . nl2br($row['edad_vo']) . "</td>";
                                     echo "<td valign='top'>" . nl2br($row['telefono_vo']) . "</td>";
                                     echo "<td valign='top'>" . nl2br($row['direccion_vo']) . "</td>";
                                     echo "<td valign='top'>" . nl2br($row['activo']) . "</td>";
@@ -305,7 +299,7 @@
             </div>
         </div>
     </body>
-    
+
     <div class="footer">
         <style>
             .footer
@@ -315,10 +309,10 @@
                 margin: 10px;
             }
         </style>
-        
+
         <?php
         include_once 'layout/private-footer.php';
         ?>
     </div>
-    
+
 </html>
