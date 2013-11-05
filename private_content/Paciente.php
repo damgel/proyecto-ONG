@@ -71,7 +71,6 @@
             if (isset($_GET['cod_pa'])) {
                 include_once '../clases/db_connect.php';
                 $vcod_pa = $_GET['cod_pa'];
-                echo "llego el codigo del paciente" . $vcod_pa;
                 $getPaciente = mysql_query("SELECT * FROM paciente where cod_pa=$vcod_pa");
                 while ($row = mysql_fetch_array($getPaciente)) {
                     $nombre = $row{'nombre_pa'};
@@ -84,12 +83,24 @@
                     $municipio = $row{'municipio_pa'};
                     $departamento = $row{'departamento_pa'};
                 }
-                echo "llego el codigo del paciente" . $nombre;
             }
             ?>
         </div>
         <div id="contenedor" class="container">
-
+            <div>
+                <?php
+                if (isset($_POST['submitted'])) {
+                    foreach ($_POST AS $key => $value) {
+                        $_POST[$key] = mysql_real_escape_string($value);
+                    }
+                    $sql = "UPDATE `paciente` SET  `nombre_pa` =  '{$_POST['nombre_pa']}' ,  `apellido_pa` =  '{$_POST['apellido_pa']}' ,  `fecha_na_pa` =  '{$_POST['fecha_na_pa']}' ,  `edad_pa` =  '{$_POST['edad_pa']}' ,  `genero_pa` =  '{$_POST['genero_pa']}' ,  `telefono_pa` =  '{$_POST['telefono_pa']}' ,  `direccion_pa` =  '{$_POST['direccion_pa']}' ,  `municipio_pa` =  '{$_POST['municipio_pa']}' ,  `departamento_pa` =  '{$_POST['departamento_pa']}'   WHERE `cod_pa` = '$vcod_pa' ";
+                    mysql_query($sql) or die(mysql_error());
+                    echo (mysql_affected_rows()) ? "Paciente actualizado correctamente!.<br />" : "Error al actualizar!. <br />";
+                } else {
+                    
+                }
+                ?>
+            </div>
             <ul class="nav nav-tabs" id="myTab">
                 <li class="active"><a href="#Datos">Datos</a></li>
                 <li class=""><a href="#Expediente">Expediente</a></li>
