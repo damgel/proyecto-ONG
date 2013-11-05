@@ -7,40 +7,38 @@ $(document).ready(function() {
                     {
                         required: true,
                         minlength: 3,
-						maxlenght:15
+                        maxlenght: 15
                     },
-			apellido_doc:
+            apellido_doc:
                     {
                         required: true,
                         minlength: 3,
-						maxlenght:15
+                        maxlenght: 15
                     },
-						genero_doc:
+            genero_doc:
                     {
                         required: true
-                       
+
                     },
-				JVPO:
+            JVPO:
                     {
-                         required: true,
+                        required: true,
                         minlength: 6,
-						maxlenght:8
-                       
+                        maxlenght: 8
+
                     },
             password_doc:
                     {
                         minlength: 8,
                         required: true
                     },
-					
-
             confirm_password:
                     {
                         minlength: 8,
                         required: true,
                         equalTo: '#password_doc'
                     },
-			telefono_doc:
+            telefono_doc:
                     {
                         required: true,
                         minlength: 8
@@ -50,15 +48,13 @@ $(document).ready(function() {
                         required: true,
                         email: true
                     },
-           
             direccion_doc:
                     {
                         required: true,
                         minlength: 15,
-						maxlenght:30
+                        maxlenght: 30
                     },
-           
-           departamento_doc:
+            departamento_doc:
                     {
                         required: true
 
