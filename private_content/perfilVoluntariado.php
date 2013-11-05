@@ -69,8 +69,8 @@
 
             include_once '../clases/db_connect.php';
             //sql insert statement
-            $sql = "insert into voluntariado(nombre_vo, apellido_vo, fecha_na_vo, edad_vo, genero_vo, telefono_vo, direccion_vo,departamento_vo, cod_aso, email_vo)
-                values('{$_POST['nombre_vo']}', '{$_POST['apellido_vo']}', '{$_POST['fecha_na_vo']}', '{$_POST['edad_vo']}', '{$_POST['genero_vo']}', '{$_POST['telefono_vo']}', '{$_POST['direccion_vo']}', '{$_POST['departamento_vo']}','1','{$_POST['email_vo']}')";
+            $sql = "insert into voluntariado(nombre_vo, apellido_vo, fecha_na_vo, edad_vo, genero_vo, telefono_vo, direccion_vo,departamento_vo, cod_aso, email_vo, password_vo)
+                values('{$_POST['nombre_vo']}', '{$_POST['apellido_vo']}', '{$_POST['fecha_na_vo']}', '{$_POST['edad_vo']}', '{$_POST['genero_vo']}', '{$_POST['telefono_vo']}', '{$_POST['direccion_vo']}', '{$_POST['departamento_vo']}','1','{$_POST['email_vo']}','{$_POST['password_vo']}')";
             //insert query to the database
             if (mysql_query($sql)) {
                 session_start();
@@ -122,6 +122,8 @@
                     $direccion = $row{'direccion_vo'};
                     $municipio = $row{'municipio_vo'};
                     $departamento = $row{'departamento_vo'};
+					$email = $row{'email_vo'};
+					$password = $row{'password_vo'};
                 }
             }
             ?>
@@ -132,7 +134,7 @@
                     foreach ($_POST AS $key => $value) {
                         $_POST[$key] = mysql_real_escape_string($value);
                     }
-                    $sql = "UPDATE `voluntariado` SET  `nombre_vo` =  '{$_POST['nombre_vo']}' ,  `apellido_vo` =  '{$_POST['apellido_vo']}' ,  `fecha_na_vo` =  '{$_POST['fecha_na_vo']}' ,  `edad_vo` =  '{$_POST['edad_vo']}' ,  `genero_vo` =  '{$_POST['genero_vo']}' ,  `telefono_vo` =  '{$_POST['telefono_vo']}' ,  `direccion_vo` =  '{$_POST['direccion_vo']}' ,  `municipio_vo` =  '{$_POST['municipio_vo']}' ,  `departamento_vo` =  '{$_POST['departamento_vo']}'   WHERE `cod_vo` = $cod_vo ";
+                    $sql = "UPDATE `voluntariado` SET  `nombre_vo` =  '{$_POST['nombre_vo']}' ,  `apellido_vo` =  '{$_POST['apellido_vo']}' ,  `fecha_na_vo` =  '{$_POST['fecha_na_vo']}' ,  `edad_vo` =  '{$_POST['edad_vo']}' ,  `genero_vo` =  '{$_POST['genero_vo']}' ,  `telefono_vo` =  '{$_POST['telefono_vo']}' ,  `direccion_vo` =  '{$_POST['direccion_vo']}' ,  `municipio_vo` =  '{$_POST['municipio_vo']}' ,  `departamento_vo` =  '{$_POST['departamento_vo']}',  `email_vo` =  '{$_POST['email_vo']}',  `password_vo` =  '{$_POST['password_vo']}'   WHERE `cod_vo` = $cod_vo ";
                     mysql_query($sql) or die(mysql_error());
                     echo (mysql_affected_rows()) ? "Voluntario se actualizado correctamente!.<br />" : "Error al actualizar!. <br />";
                 } else {
@@ -152,57 +154,44 @@
                                 <div class="form-group">
                                     <label for="Nombre_doc" class="col-lg-3 control-label">Nombre</label>
                                     <div class="col-lg-4">
-                                        <input type="text" name="nombre_vo" class="form-control" placeholder="Escriba un nombre" required>
+                                        <input type="text" name="nombre_vo" value="<?php echo $nombre ?>" class="form-control" placeholder="Escriba un nombre" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="apellido_doc" class="col-lg-3 control-label">Apellido</label>
                                     <div class="col-lg-4">
-                                        <input type="text" name="apellido_vo" class="form-control" placeholder="Escriba un apellido" required>
+                                        <input type="text" name="apellido_vo" value="<?php echo $apellido ?>" class="form-control" placeholder="Escriba un apellido" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="Fecha_Nacimiento" class="col-lg-3 control-label">Fecha de nacimiento:</label>
                                     <div class="col-lg-3">
-                                        <input type="date" name="fecha_na_vo" class="form-control">
+                                        <input type="date" name="fecha_na_vo" value="<?php echo $fechaNa ?>" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="Edad" class="col-lg-3 control-label">Edad:</label>
                                     <div class="col-lg-3">
-                                        <input type="number" name="edad_vo" class="form-control">
+                                        <input type="number" name="edad_vo" value="<?php echo $edad ?>" class="form-control">
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="Contrasenia" class="col-lg-3 control-label">Contraseña</label>
-                                    <div class="col-lg-4">
-                                        <input type="password" name="password_emp" class="form-control" placeholder="Contraseña" required>
-                                    </div>  
+                                     <select name="genero_doc" class="form-control" required="">
+                                            <option value="<?php echo $genero ?>" >- Seleccione -</option>
+                                            <option value="M">Masculino</option>
+                                            <option value="F">Femenino</option>
+                                        </select>
+                                    </div>
                                 </div>
-
-                                <div class="form-group">
-                                    <label for="ConfirmContrasenia" class="col-lg-3 control-label">Confirme contraseña</label>
-                                    <div class="col-lg-4">
-                                        <input type="password" name="confirm_password" class="form-control" placeholder="Confirme su contraseña" required>
-                                    </div>  
-                                </div>    
-
-                                <div class="form-group">
+                                  <div class="form-group">
                                     <label for="telefono" class="col-lg-3 control-label">Telefono</label>
                                     <div class="col-lg-4">
-                                        <input type="tel" name="telefono_vo" placeholder="Escriba un numero de telefono" class="form-control" required>
+                                        <input type="tel" name="telefono_vo" value="<?php echo $telefono ?>" placeholder="Escriba un numero de telefono" class="form-control" required>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="correo" class="col-lg-3 control-label">Correo</label>
-                                    <div class="col-lg-4">
-                                        <input type="email" name="email_vo" placeholder="Ejemplo: ejemplo@dominio.com" class="form-control" id="focusedInput" required>
-                                    </div>
-                                </div>
-                                <div class="form-group">    
+                                  <div class="form-group">    
                                     <label for="direccion" class="col-lg-3 control-label">Direccion</label>
                                     <div class="col-lg-6">
-                                        <input type="text" name="direcccion_vo" class="form-control" placeholder="Escriba la direccion" required>
+                                        <input type="text" name="direcccion_vo" value="<?php echo $direccion ?>" class="form-control" placeholder="Escriba la direccion" required>
 
                                     </div>
                                 </div>
@@ -229,18 +218,77 @@
 
                                         </select>
                                     </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="correo" class="col-lg-3 control-label">Correo</label>
+                                    <div class="col-lg-4">
+                                        <input type="email" name="email_vo" value="<?php echo $email ?>" placeholder="Ejemplo: ejemplo@dominio.com" class="form-control" id="focusedInput" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Contrasenia" class="col-lg-3 control-label">Contraseña</label>
+                                    <div class="col-lg-4">
+                                        <input type="password" name="password_vo" value="<?php echo $password ?>" class="form-control" placeholder="Contraseña" required>
+                                    </div> 
                                     <br>
                                     <br>
                                     <br>
                                     <br>
                                     <center>
 
-                                        <input type='submit' name='Guardar' class="btn btn-default btn-large" />
+                                        <input type='submit' name='Guardar' value='guardar' class="btn btn-default btn-large" />
 
-                                        <a href="#" class="btn btn-default btn-large"><i class="glyphicon glyphicon-floppy-open"></i> Modificar</a>
+                                        <input type='submit' name='Modificar' value='modificar' class="btn btn-default btn-large" />
                                     </center>
                                 </div>
+    
+                        
+                                
                             </form>
+                             <?php
+                                include_once '../clases/db_connect.php';
+                               
+                                $tabla = "table ";
+                                echo "<table class=" . $tabla . ">";
+                                echo "<tr>";
+                                echo "<td><b>Id</b></td>";
+                                echo "<td><b>Nombre</b></td>";
+                                echo "<td><b>Apellido</b></td>";
+                                echo "<td><b>Fecha Nacimiento</b></td>";
+								echo "<td><b>Edad</b></td>";
+                                echo "<td><b>Genero</b></td>";
+
+                                echo "<td><b>Telefono</b></td>";
+                                echo "<td><b>Direccion</b></td>";
+                                echo "<td><b>Email</b></td>";
+                                echo "<td><b>Password</b></td>";
+                              ;
+                                echo "</tr>";
+                                $result = mysql_query("SELECT * FROM `voluntariado` ") or trigger_error(mysql_error());
+                                while ($row = mysql_fetch_array($result)) {
+                                    foreach ($row AS $key => $value) {
+                                        $row[$key] = stripslashes($value);
+                                    }
+                                    
+                                    echo "<tr>";
+                                    echo "<td valign='top'>" . nl2br($row['cod_vo']) . "</td>";
+                                    echo "<td valign='top'>" . nl2br($row['nombre_vo']) . "</td>";
+                                    echo "<td valign='top'>" . nl2br($row['apellido_vo']) . "</td>";
+                                    echo "<td valign='top'>" . nl2br($row['fecha_na_vo']) . "</td>";
+									echo "<td valign='top'>" . nl2br($row['edad_vo']) . "</td>";
+									echo "<td valign='top'>" . nl2br($row['genero_vo']) . "</td>";
+                                    echo "<td valign='top'>" . nl2br($row['telefono_vo']) . "</td>";
+                                    echo "<td valign='top'>" . nl2br($row['direccion_vo']) . "</td>";
+									echo "<td valign='top'>" . nl2br($row['departamento_vo']) . "</td>";
+                                    echo "<td valign='top'>" . nl2br($row['email_vo']) . "</td>";
+                                    echo "<td valign='top'>" . nl2br($row['password_vo']) . "</td>";
+                                    
+                                   
+                                    echo "<td valign='top'><a href=perfilVoluntariado.php?cod_vo={$row['cod_vo']}>Editar</a></td><td><a href=eliminarvoluntario.php?cod_vo={$row['cod_vo']}>Eliminar</a></td> ";
+                                    echo "</tr>";
+                                }
+                                echo "</table>";
+                                ?>
 
                         </div>
                     </div>
