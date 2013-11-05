@@ -83,9 +83,9 @@
                     $municipio = $row{'municipio_pa'};
                     $departamento = $row{'departamento_pa'};
                 }
-                $getExped = mysql_query("SELECT no_ex FROM expediente where cod_pa=$vcod_pa");
+                $getExped = mysql_query("SELECT cod_pa FROM expediente where cod_pa in (SELECT cod_pa from expediente where cod_pa=$vcod_pa)");
                 while ($row = mysql_fetch_array($getExped)) {
-                    $cod_expediente = $row{'cod_ex'};
+                    $cod_expediente = $row{'cod_pa'};
                 }
             }
             ?>
@@ -100,8 +100,14 @@
                     $sql = "UPDATE `paciente` SET  `nombre_pa` =  '{$_POST['nombre_pa']}' ,  `apellido_pa` =  '{$_POST['apellido_pa']}' ,  `fecha_na_pa` =  '{$_POST['fecha_na_pa']}' ,  `edad_pa` =  '{$_POST['edad_pa']}' ,  `genero_pa` =  '{$_POST['genero_pa']}' ,  `telefono_pa` =  '{$_POST['telefono_pa']}' ,  `direccion_pa` =  '{$_POST['direccion_pa']}' ,  `municipio_pa` =  '{$_POST['municipio_pa']}' ,  `departamento_pa` =  '{$_POST['departamento_pa']}'   WHERE `cod_pa` = $vcod_pa ";
                     mysql_query($sql) or die(mysql_error());
                     echo (mysql_affected_rows()) ? "Paciente actualizado correctamente!.<br />" : "Error al actualizar!. <br />";
-                } else {
-                    
+                } elseif (isset($_POST['submitted3'])) {
+                    foreach ($_POST AS $key => $value) {
+                        $_POST[$key] = mysql_real_escape_string($value);
+                    }
+                    $sql = "INSERT INTO `expediente` ( `cod_ex` ,  `no_ex` ,  `referido` ,  `at_medicos` ,  `cod_cita` ,  `consulta_pa` ,  `antecedentes_pa` ,`cod_pa` ) VALUES(  '{$_POST['cod_ex']}' ,  '{$_POST['no_ex']}' ,  '{$_POST['referido']}' ,  '{$_POST['at_medicos']}' ,  '{$_POST['cod_cita']}' ,  '{$_POST['consulta_pa']}' ,  '{$_POST['antecedentes_pa']}', $vcod_pa  ) ";
+                    mysql_query($sql) or die(mysql_error());
+                    echo "Consulta guardada!.<br />";
+                    echo "<a href='Paciente.php'>Regresar</a>";
                 }
                 ?>
             </div>
@@ -246,10 +252,12 @@
                     </div>
                 </div>
                 <div class="tab-pane" id="Expediente">
+
                     <div class="panel panel-primary">
                         <div class="panel-heading">Ficha</div>
                         <div class="panel-body">
                             <h1 align="center">FICHA PARA DIAGNOSTICO ORAL</h1>
+
                             <form action="#" id="paciente" method="POST" class="form-horizontal">
                                 <div class="form-group">
                                     <label for="Nombre" class="col-lg-3 control-label">Nombre Paciente</label>
@@ -294,7 +302,14 @@
                                 <div class="form-group">    
                                     <label for="Mensaje" class="col-lg-3 control-label">Motivo de consulta</label>
                                     <div class="col-lg-8">
-                                        <textarea name="textarea" name="motivo_consulta" class="form-control col-lg-6" rows="2" required> </textarea>
+                                        <input type="text" name="textarea" name="consulta_pa" class="form-control col-lg-6" rows="2" required> <br>
+
+                                    </div>
+                                </div>
+                                <div class="form-group">    
+                                    <label for="Mensaje" class="col-lg-3 control-label">Tratamiento recibido</label>
+                                    <div class="col-lg-8">
+                                        <input type="text" name="textarea" name="at_medicos" class="form-control col-lg-6" rows="2" required> <br>
 
                                     </div>
                                 </div>
@@ -302,111 +317,114 @@
                                 <div class="form-group">    
                                     <label for="Mensaje" class="col-lg-3 control-label">Antecedentes medicos</label>
                                     <div class="col-lg-8">
-                                        <textarea name="textarea" class="form-control col-lg-6" rows="2" required> </textarea>
+                                        <textarea name="antecedentes_pa" class="form-control col-lg-6" rows="2" required> </textarea>
 
                                     </div>
                                 </div>
                                 <br>
                                 <center
+                                    <p><input type='submit' class="btn btn-primary btn-large" value='Guardar Consulta' /><input type='hidden' value='3' name='submitted3' /> 
+                                </center>
+                                <br>
+                            </form>
 
-                            </center>
-                            <br>
-                        </form>
-                        <div class="table-responsive">      
-                            <?
-                            include_once '../clases/db_connect.php';
+                            <div class="table-responsive">      
+                                <?
+                                include_once '../clases/db_connect.php';
 
-                            echo "<table class=" . $tabla . ">";
-                            echo "<tr>";
-
-                            echo "<td><b>Numero Expediente</b></td>";
-                            echo "<td><b>Referido</b></td>";
-                            echo "<td><b>Atencion Brindada</b></td>";
-                            echo "<td><b>Codigo Cita</b></td>";
-                            echo "<td><b>Cod Paciente</b></td>";
-                            echo "</tr>";
-                            $result = mysql_query("SELECT * FROM `expediente`") or trigger_error(mysql_error());
-                            while ($row = mysql_fetch_array($result)) {
-                                foreach ($row AS $key => $value) {
-                                    $row[$key] = stripslashes($value);
-                                }
+                                echo "<table class=" . $tabla . ">";
                                 echo "<tr>";
-                                echo "<td valign='top'>" . nl2br($row['no_ex']) . "</td>";
-                                echo "<td valign='top'>" . nl2br($row['referido']) . "</td>";
-                                echo "<td valign='top'>" . nl2br($row['at_medicos']) . "</td>";
-                                echo "<td valign='top'>" . nl2br($row['cod_cita']) . "</td>";
-                                echo "<td valign='top'>" . nl2br($row['cod_pa']) . "</td>";
-                                echo "<td valign='top'><a href=modificarExpediente.php?cod_pa={$row['cod_pa']}>Editar</a></td><td><a href=eliminarExpediente.php?cod_pa={$row['cod_pa']}>Eliminar</a></td> ";
+
+                                echo "<td><b>No Expediente</b></td>";
+                                echo "<td><b>Referido</b></td>";
+                                echo "<td><b>At Medicos</b></td>";
+                                echo "<td><b>Cod Pa</b></td>";
+                                echo "<td><b>Consulta Pa</b></td>";
+                                echo "<td><b>Antecedentes Pa</b></td>";
                                 echo "</tr>";
-                            }
-                            echo "</table>";
-                            echo "<a href=agregarExpediente.php>Guardar Consulta</a>";
-                            ?>
+                                $result = mysql_query("SELECT * FROM `expediente` where cod_pa=$vcod_pa") or trigger_error(mysql_error());
+                                while ($row = mysql_fetch_array($result)) {
+                                    foreach ($row AS $key => $value) {
+                                        $row[$key] = stripslashes($value);
+                                    }
+                                    echo "<tr>";
+
+                                    echo "<td valign='top'>" . nl2br($row['no_ex']) . "</td>";
+                                    echo "<td valign='top'>" . nl2br($row['referido']) . "</td>";
+                                    echo "<td valign='top'>" . nl2br($row['at_medicos']) . "</td>";
+                                    echo "<td valign='top'>" . nl2br($row['cod_pa']) . "</td>";
+                                    echo "<td valign='top'>" . nl2br($row['consulta_pa']) . "</td>";
+                                    echo "<td valign='top'>" . nl2br($row['antecedentes_pa']) . "</td>";
+                                    echo "<td valign='top'><a href=eliminarExpediente.php?cod_pa={$row['cod_pa']}>Delete</a></td> ";
+                                    echo "</tr>";
+                                }
+                                echo "</table>";
+                                ?>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="tab-pane" id="Citas">
-                <div class="panel panel-primary">
+                <div class="tab-pane" id="Citas">
+                    <div class="panel panel-primary">
 
-                    <div class="panel-heading">Seleccione fecha para proxima cita</div>
-                    <div class="panel-body">
-                        <form action="#" id="busquedaCita" class="form-horizontal">
-                            <div class="form-group">
-                                <label for="numero_expediente" class="col-lg-3 control-label">Numero de expediente:</label>
-                                <div class="col-lg-3">
-                                    <input type="text" name="numero_exp" class="form-control "   placeholder="-----------" required>
-                                </div>
-
-                            </div> 
-                            <div class="panel-body">
+                        <div class="panel-heading">Seleccione fecha para proxima cita</div>
+                        <div class="panel-body">
+                            <form action="#" id="busquedaCita" class="form-horizontal">
                                 <div class="form-group">
-                                    <label for="Nombre_doc" class="col-lg-3 control-label">Doctor: </label>
-                                    <div class="col-lg-6">
-                                        <input type="text" name="nombre_doc" class="form-control" placeholder="Escriba nombre" required>
+                                    <label for="numero_expediente" class="col-lg-3 control-label">Numero de expediente:</label>
+                                    <div class="col-lg-3">
+                                        <input type="text" name="numero_exp" class="form-control "   placeholder="-----------" required>
+                                    </div>
+
+                                </div> 
+                                <div class="panel-body">
+                                    <div class="form-group">
+                                        <label for="Nombre_doc" class="col-lg-3 control-label">Doctor: </label>
+                                        <div class="col-lg-6">
+                                            <input type="text" name="nombre_doc" class="form-control" placeholder="Escriba nombre" required>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <label for="Fecha_Cita" class="col-lg-3 control-label">Proxima Cita:</label>
-                            <div class="col-lg-3">
-                                <input type="date"  class="form-control"><br>
-                                <br>
-                                <label for="hora_Cita" class="col-lg-2 control-label">Hora:</label>
-                                <div class="col-lg-10">
-                                    <input type="time"  class="form-control">  
-                                </div>
-                                <br>
-                                <br>
+                                <label for="Fecha_Cita" class="col-lg-3 control-label">Proxima Cita:</label>
+                                <div class="col-lg-3">
+                                    <input type="date"  class="form-control"><br>
+                                    <br>
+                                    <label for="hora_Cita" class="col-lg-2 control-label">Hora:</label>
+                                    <div class="col-lg-10">
+                                        <input type="time"  class="form-control">  
+                                    </div>
+                                    <br>
+                                    <br>
 
-                                <a href="#" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-search"></i> Guardar</a>
-                                <a href="#" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-search"></i> Limpiar</a>
-                            </div>
-                        </form>
+                                    <a href="#" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-search"></i> Guardar</a>
+                                    <a href="#" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-search"></i> Limpiar</a>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
+                <script>
+                    $('#myTab a').click(function(e) {
+                        e.preventDefault();
+                        $(this).tab('show');
+                    });
+                </script>
+
             </div>
-            <script>
-                $('#myTab a').click(function(e) {
-                    e.preventDefault();
-                    $(this).tab('show');
-                });
-            </script>
-
         </div>
-    </div>
-</body>
-<div class="footer">
-    <style>
-        .footer
-        {
+    </body>
+    <div class="footer">
+        <style>
+            .footer
+            {
 
-            padding: 10px;
-            margin: 10px;
-        }
-    </style>
-    <?php
-    include_once 'layout/private-footer.php';
-    ?>
-</div>
+                padding: 10px;
+                margin: 10px;
+            }
+        </style>
+        <?php
+        include_once 'layout/private-footer.php';
+        ?>
+    </div>
 </html>

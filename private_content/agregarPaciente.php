@@ -117,11 +117,11 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="col-lg-4"><b>Genero Paciente:</b><br />
-                                             <select name="genero_doc" class="form-control" required="">
-                                            <option value="<?php echo $genero ?>" >- Seleccione -</option>
-                                            <option value="Masculino">Masculino</option>
-                                            <option value="Femenino">Femenino</option>
-                                        </select>
+                                            <select name="genero_doc" class="form-control" required="">
+                                                <option value="<?php echo $genero ?>" >- Seleccione -</option>
+                                                <option value="Masculino">Masculino</option>
+                                                <option value="Femenino">Femenino</option>
+                                            </select>
                                         </div> 
 
                                     </div>
@@ -144,23 +144,23 @@
                                         <div class="col-lg-4"><b>Departamento Paciente:</b><br />
                                             <select name="departamento_pa" class="form-control" required>
 
-                                            <option value="<?php echo $departamento ?>">- Seleccione -</option>
-                                            <option value="San Salvador">San Salvador</option>
-                                            <option value="La Paz">La Paz</option>
-                                            <option value="San Miguel">San Miguel</option>
-                                            <option value="La union">La Union</option>
-                                            <option value="La Libertad">La Libertad</option>
-                                            <option value="Santa Ana">Santa Ana</option>
-                                            <option value="Sonsonate">Sonsonate</option>
-                                            <option value="Ahuachapan">Ahuachapan</option>
-                                            <option value="San Vicente">San Vicente</option>
-                                            <option value="Chalatenango">Chalatenango</option>
-                                            <option value="Cabanias">Cabañas</option>
-                                            <option value="Cuscatlan">Cuscatlan</option>
-                                            <option value="Usulutan">Usulutan</option>
-                                            <option value="Morazan">Morazan</option>
+                                                <option value="<?php echo $departamento ?>">- Seleccione -</option>
+                                                <option value="San Salvador">San Salvador</option>
+                                                <option value="La Paz">La Paz</option>
+                                                <option value="San Miguel">San Miguel</option>
+                                                <option value="La union">La Union</option>
+                                                <option value="La Libertad">La Libertad</option>
+                                                <option value="Santa Ana">Santa Ana</option>
+                                                <option value="Sonsonate">Sonsonate</option>
+                                                <option value="Ahuachapan">Ahuachapan</option>
+                                                <option value="San Vicente">San Vicente</option>
+                                                <option value="Chalatenango">Chalatenango</option>
+                                                <option value="Cabanias">Cabañas</option>
+                                                <option value="Cuscatlan">Cuscatlan</option>
+                                                <option value="Usulutan">Usulutan</option>
+                                                <option value="Morazan">Morazan</option>
 
-                                        </select>
+                                            </select>
                                         </div> 
 
                                     </div>
@@ -175,32 +175,32 @@
                         </div>
                     </div>
                 </div>
-                
-                </div>
-
-
-                </div>
-                <script>
-                    $('#myTab a').click(function(e) {
-                        e.preventDefault();
-                        $(this).tab('show');
-                    });
-                </script>
 
             </div>
-        </div>
-    </body>
-    <div class="footer">
-        <style>
-            .footer
-            {
 
-                padding: 10px;
-                margin: 10px;
-            }
-        </style>
-        <?php
-        include_once 'layout/private-footer.php';
-        ?>
+
+        </div>
+        <script>
+            $('#myTab a').click(function(e) {
+                e.preventDefault();
+                $(this).tab('show');
+            });
+        </script>
+
     </div>
+</div>
+</body>
+<div class="footer">
+    <style>
+        .footer
+        {
+
+            padding: 10px;
+            margin: 10px;
+        }
+    </style>
+    <?php
+    include_once 'layout/private-footer.php';
+    ?>
+</div>
 </html>
