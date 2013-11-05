@@ -1,3 +1,9 @@
+<?php
+session_start();
+$verificar = 1;
+$_SESSION["verificar"] = $verificar;
+?> 
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -62,6 +68,12 @@
         </style>
     </head>
     <body>
+    <div id="header" class="navbar navbar-default navbar-static-top">
+            <?php
+            include_once 'layout/private-header.php';
+            ?>
+        </div>
+        
         <?php
         include_once '../clases/db_connect.php';
         //include database configuration
@@ -82,8 +94,12 @@
             $emailV = $row{'email_vo'};
             $passwordV = $row{'password_vo'};
         }
-
-        if (isset($_POST['Guardar'])) {
+		
+		$verificar = $_SESSION["verificar"];
+        //Codigo para evitar un doble submit y que se ingresen registros duplicados en la db 
+        if ($verificar == 1) {
+            unset($_SESSION['verificar']);
+            if ($_POST['Guardar']) {
 
             include_once '../clases/db_connect.php';
             //sql insert statement
@@ -94,7 +110,9 @@
 
             echo "<script>alert('registro guardado correctamente!')</script>";
             header("Location: http://localhost:8000/private_content/perfilVoluntariado.php"); /* Redirect browser */
-        } elseif (isset($_POST['Modificar'])) {
+			
+			
+        } elseif ($_POST['Modificar']) {
             include_once '../clases/db_connect.php';
             $id = (int) $_SESSION['cod_vo'];
             foreach ($_POST AS $key => $value) {
@@ -108,15 +126,11 @@
             header("Location: http://localhost:8000/private_content/perfilVoluntariado.php");
         } else {
             echo "Genial! evitamos un doble sumit!!!";
-            // header("Location: http://localhost:8000/private_content/index.php"); /* Redirect browser */
+            // header("Location: http://localhost:8000/pefrilVoluntario.php"); /* Redirect browser */
         }
         ?>
 
-        <div id="header" class="navbar navbar-default navbar-static-top">
-            <?php
-            include_once 'layout/private-header.php';
-            ?>
-        </div>
+        
         <div id="error"></div>
         <!-- // Script para cargar recursos html con jQuery en una pagina -->
 <!--        <script>$(document).ready(function() {
