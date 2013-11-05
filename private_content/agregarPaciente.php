@@ -89,13 +89,12 @@
                                     }
                                     $sql = "INSERT INTO `paciente` ( `nombre_pa` ,  `apellido_pa` ,  `fecha_na_pa` ,  `edad_pa` ,  `genero_pa` ,  `telefono_pa` ,  `direccion_pa` ,  `municipio_pa` ,  `departamento_pa`  ) VALUES(  '{$_POST['nombre_pa']}' ,  '{$_POST['apellido_pa']}' ,  '{$_POST['fecha_na_pa']}' ,  '{$_POST['edad_pa']}' ,  '{$_POST['genero_pa']}' ,  '{$_POST['telefono_pa']}' ,  '{$_POST['direccion_pa']}' ,  '{$_POST['municipio_pa']}' ,  '{$_POST['departamento_pa']}'  ) ";
                                     mysql_query($sql) or die(mysql_error());
-                                    echo "Added row.<br />";
-                                    echo "<a href='paciente.php'>Regresar a Lista</a>";
+                                    echo "Paciente guardado correctamente!.<br />";
                                 }
                                 ?>
 
                                 <form action='' method='POST'> 
-                                    <a href='paciente.php'>Regresar a Lista</a><br>
+                                    <a href='paciente.php'>Regresar</a><br><br>
                                     <div class="form-group">
                                         <div class="col-lg-4"><b>Nombre Paciente:</b><br /><input type='text' class="form-control" name='nombre_pa' required/>
                                         </div> 
