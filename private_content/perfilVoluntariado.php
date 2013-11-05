@@ -175,13 +175,17 @@
                                         <input type="number" name="edad_vo" value="<?php echo $edad ?>" class="form-control">
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label for="sexo" class="col-lg-3 control-label">Sexo</label>
+                                    <div class="col-lg-4">
                                      <select name="genero_doc" class="form-control" required="">
                                             <option value="<?php echo $genero ?>" >- Seleccione -</option>
                                             <option value="M">Masculino</option>
                                             <option value="F">Femenino</option>
                                         </select>
                                     </div>
-                                </div>
+                                  </div>   
+                      
                                   <div class="form-group">
                                     <label for="telefono" class="col-lg-3 control-label">Telefono</label>
                                     <div class="col-lg-4">
@@ -236,15 +240,18 @@
                                     <br>
                                     <center>
 
-                                        <input type='submit' name='Guardar' value='guardar' class="btn btn-default btn-large" />
+                                      
+                                      
+                                   <input type='submit' name='Guardar' value='guardar' class="btn btn-default btn-large" />
 
-                                        <input type='submit' name='Modificar' value='modificar' class="btn btn-default btn-large" />
+                                   <input type='submit' name='Modificar' value='modificar' class="btn btn-default btn-large" />
                                     </center>
                                 </div>
     
                         
-                                
+          
                             </form>
+                            
                              <?php
                                 include_once '../clases/db_connect.php';
                                
