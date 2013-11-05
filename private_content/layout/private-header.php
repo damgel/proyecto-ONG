@@ -46,6 +46,10 @@
             echo 'Bienvenido: ' . $_SESSION['nombre'] . " ";
             echo '<a href="../private_content/logout.php" class="logout"><span class="glyphicon glyphicon-log-out"></span> Salir</a>';
         } else {
+            if (($_SESSION['activo_v']) === "N") {
+                unset($_SESSION['nombre']);
+                header("Location: http://localhost:8000/private_content/index.php"); /* Redirect browser */
+            }
             //session_start();
             //echo '<h1>HOLA MUNDOOOOOOOOOOO</h1>';
             header("Location: http://localhost:8000/index.html"); /* Redirect browser */
