@@ -1,9 +1,3 @@
-<?php
-session_start();
-$verificar = 1;
-$_SESSION["verificar"] = $verificar;
-?> 
-
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -68,69 +62,37 @@ $_SESSION["verificar"] = $verificar;
         </style>
     </head>
     <body>
-    <div id="header" class="navbar navbar-default navbar-static-top">
+        <?php
+        //include database configuration
+
+        if (isset($_POST['Guardar'])) {
+
+            include_once '../clases/db_connect.php';
+            //sql insert statement
+            $sql = "insert into voluntariado(nombre_vo, apellido_vo, fecha_na_vo, edad_vo, genero_vo, telefono_vo, direccion_vo,departamento_vo, cod_aso, email_vo)
+                values('{$_POST['nombre_vo']}', '{$_POST['apellido_vo']}', '{$_POST['fecha_na_vo']}', '{$_POST['edad_vo']}', '{$_POST['genero_vo']}', '{$_POST['telefono_vo']}', '{$_POST['direccion_vo']}', '{$_POST['departamento_vo']}','1','{$_POST['email_vo']}')";
+            //insert query to the database
+            if (mysql_query($sql)) {
+                session_start();
+                //if successful query
+                echo "<script>alert('registro guardado correctamente!')</script>";
+                $sql = "";
+
+                $_SESSION['nombre'] = $_POST['nombre_vo'];
+                header("Location: http://localhost:8000/private_content/index.php"); /* Redirect browser */
+                exit();
+            } else {
+                //if query failed
+                die($sql . ">>" . mysql_error());
+            }
+        }
+        ?>
+
+        <div id="header" class="navbar navbar-default navbar-static-top">
             <?php
             include_once 'layout/private-header.php';
             ?>
         </div>
-        
-        <?php
-        include_once '../clases/db_connect.php';
-        //include database configuration
-
-        $codToGet = $_SESSION['cod_vo'];
-        $getVoluntariado = mysql_query("SELECT * FROM voluntariado 
-                    where cod_vo=$codToGet");
-        while ($row = mysql_fetch_array($getVoluntarios)) {
-
-            $nombreV = $row{'nombre_vo'};
-            $apellidoV = $row{'apellido_vo'};
-            $fechaNaV = $row{'fecha_na_vo'};
-            $edadV = $row{'edad_vo'};
-            $generoV = $row{'genero_vo'};
-            $telefonoV = $row{'telefono_vo'};
-            $direccionV = $row{'direccion_vo'};
-            $departamentoV = $row{'departamento_vo'};
-            $emailV = $row{'email_vo'};
-            $passwordV = $row{'password_vo'};
-        }
-		
-		$verificar = $_SESSION["verificar"];
-        //Codigo para evitar un doble submit y que se ingresen registros duplicados en la db 
-        if ($verificar == 1) {
-            unset($_SESSION['verificar']);
-            if ($_POST['Guardar']) {
-
-            include_once '../clases/db_connect.php';
-            //sql insert statement
-            $sql = "insert into voluntariado(nombre_vo, apellido_vo, fecha_na_vo, edad_vo, genero_vo, telefono_vo, direccion_vo,departamento_vo, cod_aso, email_vo, password_vo)
-                values('{$_POST['nombre_vo']}', '{$_POST['apellido_vo']}', '{$_POST['fecha_na_vo']}', '{$_POST['edad_vo']}', '{$_POST['genero_vo']}', '{$_POST['telefono_vo']}', '{$_POST['direccion_vo']}', '{$_POST['departamento_vo']}','1','{$_POST['email_vo']}','{$_POST['password_vo']}) ";
-
-            mysql_query($sql) or die(mysql_error());
-
-            echo "<script>alert('registro guardado correctamente!')</script>";
-            header("Location: http://localhost:8000/private_content/perfilVoluntariado.php"); /* Redirect browser */
-			
-			
-        } elseif ($_POST['Modificar']) {
-            include_once '../clases/db_connect.php';
-            $id = (int) $_SESSION['cod_vo'];
-            foreach ($_POST AS $key => $value) {
-                $_POST[$key] = mysql_real_escape_string($value);
-            }
-
-            $sql = "UPDATE `voluntariado` SET `nombre_vo` =  '{$_POST['nombre_vo']}' ,  `apellido_vo` =  '{$_POST['apellido_vo']}' ,   `fecha_na_vo` =  '{$_POST['fecha_na_vo']}' ,   `edad_vo` =  '{$_POST['edad_vo']}' ,  `genero_vo` =  '{$_POST['genero_vo']}' , `telefono_vo` =  '{$_POST['telefono_vo']}' ,  `direccion_vo` =  '{$_POST['direccion_vo']}' ,  `departamento_vo` =  '{$_POST['departamento_vo']}' ,  `cod_as` =  '{$_POST['cod_as']}' ,  `email_vo` =  '{$_POST['email_vo']},  `password_vo` =  '{$_POST['password_vo']}   WHERE `cod_vo` = $id ";
-
-            mysql_query($sql) or die(mysql_error());
-            echo (mysql_affected_rows()) ? "<p class='succesUs'>Usuario editado correctamente!</p>.<br />" : "<p class='errorUs'>Usuario no editado</p> <br />";
-            header("Location: http://localhost:8000/private_content/perfilVoluntariado.php");
-        } else {
-            echo "Genial! evitamos un doble sumit!!!";
-            // header("Location: http://localhost:8000/pefrilVoluntario.php"); /* Redirect browser */
-        }
-        ?>
-
-        
         <div id="error"></div>
         <!-- // Script para cargar recursos html con jQuery en una pagina -->
 <!--        <script>$(document).ready(function() {
@@ -148,55 +110,66 @@ $_SESSION["verificar"] = $verificar;
                 <div class="tab-pane active" id="Perfil_volun">
 
                     <div class="panel panel-primary">
-                        <div class="panel-heading"> <?php echo 'VOLUNTARIADO: ' . $_SESSION['cod_vo']; ?> </div>
+                        <div class="panel-heading">Perfil voluntariado
+
+                        </div>
                         <div class="panel-body">
 
                             <form action="#" method="POST" class="form-horizontal">
                                 <div class="form-group">
-                                    <label for="Nombre_vo" class="col-lg-3 control-label">Nombre</label>
+                                    <label for="Nombre_doc" class="col-lg-3 control-label">Nombre</label>
                                     <div class="col-lg-4">
-                                        <input type="text" name="nombre_vo"  value= "<?php echo $nombreV ?>" class="form-control" placeholder="Escriba un nombre" required>
+                                        <input type="text" name="nombre_vo" class="form-control" placeholder="Escriba un nombre" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="apellido_doc" class="col-lg-3 control-label">Apellido</label>
                                     <div class="col-lg-4">
-                                        <input type="text" name="apellido_vo" value= "<?php echo $apellidoV ?>" class="form-control" placeholder="Escriba un apellido" required>
+                                        <input type="text" name="apellido_vo" class="form-control" placeholder="Escriba un apellido" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="Fecha_Nacimiento" class="col-lg-3 control-label">Fecha de nacimiento:</label>
                                     <div class="col-lg-3">
-                                        <input type="date" name="fecha_na_vo" value= "<?php echo $fechaNaV ?>"  class="form-control">
+                                        <input type="date" name="fecha_na_vo" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="Edad" class="col-lg-3 control-label">Edad:</label>
                                     <div class="col-lg-3">
-                                        <input type="number" name="edad_vo" value=" <?php echo $edadV ?>"  class="form-control">
+                                        <input type="number" name="edad_vo" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="sexo" class="col-lg-3 control-label">Sexo</label>
+                                    <label for="Contrasenia" class="col-lg-3 control-label">Contraseña</label>
                                     <div class="col-lg-4">
-                                        <select name="genero_vo" class="form-control" required="">
-                                            <option value=" <?php echo $generoV ?>" >- Seleccione -</option>
-                                            <option value="M">Masculino</option>
-                                            <option value="F">Femenino</option>
-                                        </select>
-                                    </div>
+                                        <input type="password" name="password_emp" class="form-control" placeholder="Contraseña" required>
+                                    </div>  
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="ConfirmContrasenia" class="col-lg-3 control-label">Confirme contraseña</label>
+                                    <div class="col-lg-4">
+                                        <input type="password" name="confirm_password" class="form-control" placeholder="Confirme su contraseña" required>
+                                    </div>  
+                                </div>    
 
                                 <div class="form-group">
                                     <label for="telefono" class="col-lg-3 control-label">Telefono</label>
                                     <div class="col-lg-4">
-                                        <input type="tel" name="telefono_vo" value= "<?php echo $telefonoV ?>" placeholder="Escriba un numero de telefono" class="form-control" required>
+                                        <input type="tel" name="telefono_vo" placeholder="Escriba un numero de telefono" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="correo" class="col-lg-3 control-label">Correo</label>
+                                    <div class="col-lg-4">
+                                        <input type="email" name="email_vo" placeholder="Ejemplo: ejemplo@dominio.com" class="form-control" id="focusedInput" required>
                                     </div>
                                 </div>
                                 <div class="form-group">    
                                     <label for="direccion" class="col-lg-3 control-label">Direccion</label>
                                     <div class="col-lg-6">
-                                        <input type="text" name="direcccion_vo" value="<?php echo $direccionV ?>" class="form-control" placeholder="Escriba la direccion" required>
+                                        <input type="text" name="direcccion_vo" class="form-control" placeholder="Escriba la direccion" required>
 
                                     </div>
                                 </div>
@@ -205,7 +178,7 @@ $_SESSION["verificar"] = $verificar;
                                     <div class="col-lg-4">
                                         <select name="departamento_vo" class="form-control" required>
 
-                                            <option value="<?php echo $departamentoV ?>">- Seleccione -</option>
+                                            <option value="-1">- Seleccione -</option>
                                             <option value="san salvador">San Salvador</option>
                                             <option value="la paz">La Paz</option>
                                             <option value="san miguel">San Miguel</option>
@@ -223,79 +196,18 @@ $_SESSION["verificar"] = $verificar;
 
                                         </select>
                                     </div>
-                                    
-                                    <div class="form-group">
-                                        <label for="correo" class="col-lg-3 control-label">Correo</label>
-                                        <div class="col-lg-4"> 
-     <input type="email" name="email_vo"  value= "<?php echo $emailV ?>" placeholder="Ejemplo: ejemplo@dominio.com" class="form-control" id="focusedInput" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="Contrasenia" class="col-lg-3 control-label">Contraseña</label>
-                                        <div class="col-lg-4">
-                                            <input type="password" name="password_vo"  value="<?php echo $passwordV ?>" class="form-control" placeholder="Contraseña" required>
-                                        </div>  
-                                    </div>
                                     <br>
                                     <br>
                                     <br>
                                     <br>
                                     <center>
 
-                                        <input type='submit' name="Guardar" value='guardar' class="btn btn-info btn-large" />
-                                        <input type='submit' name="Modificar" value='modificar' class="btn btn-info btn-large" />
+                                        <input type='submit' name='Guardar' class="btn btn-default btn-large" />
+
+                                        <a href="#" class="btn btn-default btn-large"><i class="glyphicon glyphicon-floppy-open"></i> Modificar</a>
                                     </center>
                                 </div>
                             </form>
-
-                            </form>
-                            <div class="table-responsive">
-                                <?php
-                                include_once '../clases/db_connect.php';
-                                $SetPermiso;
-                                $tabla = "table ";
-                                echo "<table class=" . $tabla . ">";
-                                echo "<tr>";
-                                echo "<td><b>Id</b></td>";
-                                echo "<td><b>Nombre</b></td>";
-                                echo "<td><b>Apellido</b></td>";
-                                echo "<td><b>Fecha Nacimiento</b></td>";
-                                echo "<td><b>Edad</b></td>";
-
-                                echo "<td><b>Telefono</b></td>";
-                                echo "<td><b>Direccion</b></td>";
-                                echo "<td><b>Activo</b></td>";
-                                echo "<td><b>Admin</b></td>";
-                                echo "<td><b>Eliminar</b></td>";
-                                echo "</tr>";
-                                $result = mysql_query("SELECT * FROM `voluntariado` ") or trigger_error(mysql_error());
-                                while ($row = mysql_fetch_array($result)) {
-                                    foreach ($row AS $key => $value) {
-                                        $row[$key] = stripslashes($value);
-                                    }
-                                    $permiso_vo = $_SESSION['permiso_vo'];
-                                    if ($permiso_vo === "S") {
-                                        $SetPermiso = "<a href=eliminarVoluntario.php?id={$row['cod_vo']
-                                                }>Eliminar</a>";
-                                    } elseif ($permiso_vo === "N") {
-                                        $SetPermiso = "No Permitido";
-                                    }
-                                    echo "<tr>";
-                                    echo "<td valign='top'>" . nl2br($row['cod_vo']) . "</td>";
-                                    echo "<td valign='top'>" . nl2br($row['nombre_vo']) . "</td>";
-                                    echo "<td valign='top'>" . nl2br($row['apellido_vo']) . "</td>";
-                                    echo "<td valign='top'>" . nl2br($row['fecha_na_vo']) . "</td>";
-                                    echo "<td valign='top'>" . nl2br($row['edad_vo']) . "</td>";
-                                    echo "<td valign='top'>" . nl2br($row['telefono_vo']) . "</td>";
-                                    echo "<td valign='top'>" . nl2br($row['direccion_vo']) . "</td>";
-                                    echo "<td valign='top'>" . nl2br($row['activo']) . "</td>";
-                                    echo "<td valign='top'>" . nl2br($row['permiso']) . "</td>";
-                                    echo "<td valign='top'>    " . $SetPermiso . "    </td> ";
-                                    echo "</tr>";
-                                }
-                                echo "</table>";
-                                ?>
-                            </div>
 
                         </div>
                     </div>
@@ -314,7 +226,6 @@ $_SESSION["verificar"] = $verificar;
             </div>
         </div>
     </body>
-
     <div class="footer">
         <style>
             .footer
@@ -324,10 +235,8 @@ $_SESSION["verificar"] = $verificar;
                 margin: 10px;
             }
         </style>
-
         <?php
         include_once 'layout/private-footer.php';
         ?>
     </div>
-
 </html>
