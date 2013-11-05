@@ -68,6 +68,24 @@
         <div id="header" class="navbar navbar-default navbar-static-top">
             <?php
             include_once 'layout/private-header.php';
+            if (isset($_GET['cod_pa'])) {
+                include_once '../clases/db_connect.php';
+                $vcod_pa = $_GET['cod_pa'];
+                echo "llego el codigo del paciente" . $vcod_pa;
+                $getPaciente = mysql_query("SELECT * FROM paciente where cod_pa=$vcod_pa");
+                while ($row = mysql_fetch_array($getPaciente)) {
+                    $nombre = $row{'nombre_pa'};
+                    $apellido = $row{'apellido_pa'};
+                    $fechaNa = $row{'fecha_na_pa'};
+                    $edad = $row{'edad_pa'};
+                    $genero = $row{'genero_pa'};
+                    $telefono = $row{'telefono_pa'};
+                    $direccion = $row{'direccion_pa'};
+                    $municipio = $row{'municipio_pa'};
+                    $departamento = $row{'departamento_pa'};
+                }
+                echo "llego el codigo del paciente" . $nombre;
+            }
             ?>
         </div>
         <div id="contenedor" class="container">
@@ -83,30 +101,30 @@
                     <div class="panel panel-primary">
                         <div class="panel-heading">Paciente</div>
                         <div class="panel-body">
-<a href=agregarPaciente.php>Nuevo Paciente</a>
+                            <a href=agregarPaciente.php>Nuevo Paciente</a>
                             <form action="#" id="paciente" method="POST" class="form-horizontal">
                                 <div class="form-group">
                                     <label for="Nombre" class="col-lg-3 control-label">Nombre</label>
                                     <div class="col-lg-4">
-                                        <input type="text" name="nombre_pa" class="form-control" placeholder="Escriba un nombre" required>
+                                        <input type="text" name="nombre_pa" value="<?php echo $nombre ?>"  class="form-control" placeholder="Escriba un nombre" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="Apellido" class="col-lg-3 control-label">Apellido</label>
                                     <div class="col-lg-4">
-                                        <input type="text" name="apellido_pa" class="form-control" placeholder="Escriba un nombre" required>
+                                        <input type="text" name="apellido_pa" value="<?php echo $apellido ?>"  class="form-control" placeholder="Escriba un nombre" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="fecha_na_pa" class="col-lg-3 control-label">Fecha de nacimiento:</label>
                                     <div class="col-lg-3">
-                                        <input type="date"  class="form-control"><br>
+                                        <input type="date" value="<?php echo $fechaNa ?>"   class="form-control"><br>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-lg-3 control-label">Genero</label>
                                     <div class="col-lg-4">
-                                        <input type="radio" name="geneno_pa" checked="" value="M">
+                                        <input type="radio" value="<?php echo $genero ?>"  name="geneno_pa" checked="" value="M">
                                         Masculino
                                         <input type="radio" name="genero_pa" value="F">
                                         Femenino   
@@ -116,13 +134,13 @@
                                 <div class="form-group">
                                     <label for="telefono" class="col-lg-3 control-label">Telefono</label>
                                     <div class="col-lg-4">
-                                        <input type="tel" name="telefono_pa" placeholder="Escriba un numero de telefono" class="form-control" required>
+                                        <input type="tel" value="<?php echo $telefono ?>"  name="telefono_pa" placeholder="Escriba un numero de telefono" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="form-group">    
                                     <label for="direccionPaciente" class="col-lg-3 control-label">Direccion actual</label>
                                     <div class="col-lg-6">
-                                        <input type="text" name="direccion_pa" class="form-control" placeholder="Escriba la direccion" required>
+                                        <input type="text" value="<?php echo $direccion ?>"  name="direccion_pa" class="form-control" placeholder="Escriba la direccion" required>
 
                                     </div>
                                 </div>
@@ -130,7 +148,7 @@
                                 <div class="form-group">    
                                     <label for="municipioPaciente" class="col-lg-3 control-label">Municipio</label>
                                     <div class="col-lg-6">
-                                        <input type="text" name="municipio_pa" class="form-control" placeholder="Municipio" required>
+                                        <input type="text" value="<?php echo $municipio ?>"  name="municipio_pa" class="form-control" placeholder="Municipio" required>
 
                                     </div>
                                 </div>
@@ -198,11 +216,10 @@
                                     echo "<td valign='top'>" . nl2br($row['direccion_pa']) . "</td>";
                                     echo "<td valign='top'>" . nl2br($row['municipio_pa']) . "</td>";
                                     echo "<td valign='top'>" . nl2br($row['departamento_pa']) . "</td>";
-                                    echo "<td valign='top'><a href=modificaraPaciente.php?cod_pa={$row['cod_pa']}>Editar</a></td><td><a href=eliminarPaciente.php?cod_pa={$row['cod_pa']}>Eliminar</a></td> ";
+                                    echo "<td valign='top'><a href=paciente.php?cod_pa={$row['cod_pa']}>Editar</a></td><td><a href=eliminarPaciente.php?cod_pa={$row['cod_pa']}>Eliminar</a></td> ";
                                     echo "</tr>";
                                 }
                                 echo "</table>";
-                                
                                 ?>
                             </div>
                         </div>
