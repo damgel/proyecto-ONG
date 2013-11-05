@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="../assets/css/bootstrap.css">
         <link rel="stylesheet" href="../assets/css/normalize.css">
         <link rel="stylesheet" href="../assets/css/jqueryUI.css">
-        <link rel="stylesheet" href="validacionStyle.css">
+        <link rel="stylesheet" href="../validacionStyle.css">
         <script src="../assets/js/jquery-v1.10.2.js"></script>
         <script src="../assets/js/bootstrap.min.js"></script>
         <script src="../assets/js/jquery-ui.js"></script>
@@ -123,7 +123,7 @@
                         <div class="panel-heading">Paciente</div>
                         <div class="panel-body">
                             <a href=agregarPaciente.php>Nuevo Paciente</a>
-                            <form action="#" id="paciente" method="POST" class="form-horizontal">
+                            <form action="#" id="paciente" method="POST" class="form-horizontal" id="pacientedatos">
                                 <div class="form-group">
                                     <label for="Nombre" class="col-lg-3 control-label">Nombre</label>
                                     <div class="col-lg-4">
@@ -152,7 +152,7 @@
                                 <div class="form-group">
                                     <label class="col-lg-3 control-label">Genero</label>
                                     <div class="col-lg-4">
-                                        <input type="radio" name="genero_pa" value="Masculino" />Masculino<br />
+                                        <input type="radio" name="genero_pa" value="Masculino" checked />Masculino<br />
                                         <input type="radio" name="genero_pa" value="Femenino" />Femenino<br />
                                     </div>  
                                 </div>
