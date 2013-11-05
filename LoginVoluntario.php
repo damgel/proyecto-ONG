@@ -51,21 +51,21 @@
                             //echo "hola mundo";
 
                             if ($_POST['action'] === 'Entrar') {
-                                $usuario_vo = $_POST['email_vo'];
-                                $pass_vo = $_POST['password_vo'];
+                                $emailV = $_POST['email_vo'];
+                                $passwordV = $_POST['password_vo'];
 
-                                if (isset($usuario_vo) && !empty($pass_vo)) {
+                                if (isset($emailV) && !empty($passwordV)) {
                                     include "clases/db_connect.php";
-                                    $result = mysql_query("SELECT nombre_vo FROM voluntariado where email_vo='$usuario_vo' and password_vo='$pass_vo'");
+                                    $result = mysql_query("SELECT cod_vo FROM voluntariado where email_vo='$emailV' and password_vo='$passwordV'");
                                     if ($result === 0) {
                                         session_start();
                                         $_SESSION['error'] = "<P>Por favor introduzca un usuario y contrasenia validos</P>";
                                     } elseif ($result >= 0) {
                                         while ($row = mysql_fetch_array($result)) {
-                                            $nombre = $row{'nombre_vo'};
+                                            $cod_vo = $row{'cod_vo'};											
                                             session_start();
-                                            $_SESSION['nombre'] = $nombre;
-                                            echo $_SESSION['nombre'];
+                                            $_SESSION['cod_vo'] = $cod_vo;
+                                            echo $_SESSION['cod_vo'];											
                                             header("Location: http://localhost:8000/private_content/index.php"); /* Redirect browser */
                                         }
                                     }
