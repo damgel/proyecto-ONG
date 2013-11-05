@@ -93,6 +93,7 @@
             include_once 'layout/private-header.php';
             ?>
         </div>
+       
         <div id="error"></div>
         <!-- // Script para cargar recursos html con jQuery en una pagina -->
 <!--        <script>$(document).ready(function() {
@@ -105,7 +106,39 @@
                 });
             });
         </script> -->
+          <?php
+            include_once 'layout/private-header.php';
+            if (isset($_GET['cod_vo'])) {
+                include_once '../clases/db_connect.php';
+                $cod_vo = $_GET['cod_vo'];
+                $getPaciente = mysql_query("SELECT * FROM voluntariado where cod_vo=$cod_vo");
+                while ($row = mysql_fetch_array($getPaciente)) {
+                    $nombre = $row{'nombre_vo'};
+                    $apellido = $row{'apellido_vo'};
+                    $fechaNa = $row{'fecha_na_vo'};
+                    $edad = $row{'edad_vo'};
+                    $genero = $row{'genero_vo'};
+                    $telefono = $row{'telefono_vo'};
+                    $direccion = $row{'direccion_vo'};
+                    $municipio = $row{'municipio_vo'};
+                    $departamento = $row{'departamento_vo'};
+                }
+            }
+            ?>
         <div class="container">
+        
+        <?php
+                if (isset($_POST['submitted'])) {
+                    foreach ($_POST AS $key => $value) {
+                        $_POST[$key] = mysql_real_escape_string($value);
+                    }
+                    $sql = "UPDATE `voluntariado` SET  `nombre_vo` =  '{$_POST['nombre_vo']}' ,  `apellido_vo` =  '{$_POST['apellido_vo']}' ,  `fecha_na_vo` =  '{$_POST['fecha_na_vo']}' ,  `edad_vo` =  '{$_POST['edad_vo']}' ,  `genero_vo` =  '{$_POST['genero_vo']}' ,  `telefono_vo` =  '{$_POST['telefono_vo']}' ,  `direccion_vo` =  '{$_POST['direccion_vo']}' ,  `municipio_vo` =  '{$_POST['municipio_vo']}' ,  `departamento_vo` =  '{$_POST['departamento_vo']}'   WHERE `cod_vo` = $cod_vo ";
+                    mysql_query($sql) or die(mysql_error());
+                    echo (mysql_affected_rows()) ? "Voluntario se actualizado correctamente!.<br />" : "Error al actualizar!. <br />";
+                } else {
+                    
+                }
+                ?>
             <div class="tab-content">
                 <div class="tab-pane active" id="Perfil_volun">
 
@@ -178,7 +211,7 @@
                                     <div class="col-lg-4">
                                         <select name="departamento_vo" class="form-control" required>
 
-                                            <option value="-1">- Seleccione -</option>
+                                            <option value="<?php echo $departamento ?>">- Seleccione -</option>
                                             <option value="san salvador">San Salvador</option>
                                             <option value="la paz">La Paz</option>
                                             <option value="san miguel">San Miguel</option>
