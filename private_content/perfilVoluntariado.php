@@ -21,7 +21,7 @@
         <script src="../assets/js/jquery.validate.js"></script>   
         <script src="../assets/js/modernizr2.6.2.js"></script>
         <script src="../assets/js/holder.js"></script>
-        <script src="../assets/js/validarRegEmpleador.js"></script>
+        <script src="../assets/js/perfilVoluntariado.js"></script>
 
         <script>
             // fallback para el datepicker con jquery

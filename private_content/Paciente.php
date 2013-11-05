@@ -21,7 +21,8 @@
         <script src="../assets/js/jquery.validate.js"></script>   
         <script src="../assets/js/modernizr2.6.2.js"></script>
         <script src="../assets/js/holder.js"></script>
-        <script src="../assets/js/validarRegEmpleador.js"></script>
+        <script src="../assets/js/pacientedatos.js"></script>
+        <script src="../assets/js/citas.js"></script>
 
 
         <style>
@@ -370,7 +371,7 @@
 
                         <div class="panel-heading">Seleccione fecha para proxima cita</div>
                         <div class="panel-body">
-                            <form action="#" id="busquedaCita" class="form-horizontal">
+                            <form action="#" id="busquedaCita" class="form-horizontal" id="citas">
                                 <div class="form-group">
                                     <label for="numero_expediente" class="col-lg-3 control-label">Numero de expediente:</label>
                                     <div class="col-lg-3">
@@ -388,11 +389,11 @@
                                 </div>
                                 <label for="Fecha_Cita" class="col-lg-3 control-label">Proxima Cita:</label>
                                 <div class="col-lg-3">
-                                    <input type="date"  class="form-control"><br>
+                                    <input type="date"  name="fecha" class="form-control"><br>
                                     <br>
                                     <label for="hora_Cita" class="col-lg-2 control-label">Hora:</label>
                                     <div class="col-lg-10">
-                                        <input type="time"  class="form-control">  
+                                        <input type="time"  class="form-control" name=hora"">  
                                     </div>
                                     <br>
                                     <br>
