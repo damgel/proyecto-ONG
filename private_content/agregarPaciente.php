@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Perfil Doctor</title>
+        <title>Agregar Paciente</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -73,10 +73,7 @@
         <div id="contenedor" class="container">
 
             <ul class="nav nav-tabs" id="myTab">
-                <li class="active"><a href="#Datos">Datos</a></li>
-                <li class=""><a href="#Expediente">Expediente</a></li>
-                <li class=""><a href="#Citas">Citas</a></li>
-
+                <li class="active"><a href="#Datos">Agregar Paciente</a></li>
             </ul>
             <div class="tab-content">
                 <div class="tab-pane active" id="Datos">
@@ -99,52 +96,53 @@
 
                                 <form action='' method='POST'> 
                                     <div class="form-group">
-                                        <div><p><b>Nombre Pa:</b><br /><input type='text' class="form-control" name='nombre_pa'/>
+                                        <div class="col-lg-4"><b>Nombre Paciente:</b><br /><input type='text' class="form-control" name='nombre_pa' required/>
                                         </div> 
 
                                     </div>
                                     <div class="form-group">
-                                        <div><p><b>Apellido Pa:</b><br /><input type='text' class="form-control" name='apellido_pa'/>
+                                        <div class="col-lg-4"><b>Apellido Paciente:</b><br /><input type='text' class="form-control" name='apellido_pa' required/>
                                         </div> 
 
                                     </div>
                                     <div class="form-group">
-                                        <div><p><b>Fecha Na Pa:</b><br /><input type='text' class="form-control" name='fecha_na_pa'/>
+                                        <div class="col-lg-4"><b>Fecha Na Paciente:</b><br /><input type='text' class="form-control" name='fecha_na_pa' required/>
                                         </div> 
 
                                     </div>
                                     <div class="form-group">
-                                        <div><p><b>Edad Pa:</b><br /><input type='text' class="form-control" name='edad_pa'/>
+                                        <div class="col-lg-4"><b>Edad Paciente:</b><br /><input type='text' class="form-control" name='edad_pa' required/>
                                         </div> 
 
                                     </div>
                                     <div class="form-group">
-                                        <div><p><b>Genero Pa:</b><br /><input type='text' class="form-control" name='genero_pa'/>
+                                        <div class="col-lg-4"><b>Genero Paciente:</b><br /><input type='text' class="form-control" name='genero_pa' required/>
                                         </div> 
 
                                     </div>
                                     <div class="form-group">
-                                        <div><p><b>Telefono Pa:</b><br /><input type='text' class="form-control" name='telefono_pa'/>
+                                        <div class="col-lg-4"><b>Telefono Paciente:</b><br /><input type='text' class="form-control" name='telefono_pa' required/>
                                         </div> 
 
                                     </div>
                                     <div class="form-group">
-                                        <div><p><b>Direccion Pa:</b><br /><input type='text' class="form-control" name='direccion_pa'/>
+                                        <div class="col-lg-4"><b>Direccion Paciente:</b><br /><input type='text' class="form-control" name='direccion_pa' required/>
                                         </div> 
 
                                     </div>
                                     <div class="form-group">
-                                        <div><p><b>Municipio Pa:</b><br /><input type='text' class="form-control" name='municipio_pa'/>
+                                        <div class="col-lg-4"><b>Municipio Paciente:</b><br /><input type='text' class="form-control" name='municipio_pa' required/>
                                         </div> 
 
                                     </div>
                                     <div class="form-group">
-                                        <div><p><b>Departamento Pa:</b><br /><input type='text' class="form-control" name='departamento_pa'/>
+                                        <div class="col-lg-4"><b>Departamento Paciente:</b><br /><input type='text' class="form-control" name='departamento_pa' required/>
                                         </div> 
 
                                     </div>
                                     <div class="form-group">
-                                        <div><p><input type='submit' value='Add Row' /><input type='hidden' value='1' name='submitted' />
+                                        <div class="col-lg-4">
+                                            <br><input type='submit' class="btn btn-info btn-large" value='Guardar Paciente' /><input type='hidden' value='1' name='submitted' />
                                         </div> 
 
                                     </div>
@@ -153,123 +151,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane" id="Expediente">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">Ficha</div>
-                        <div class="panel-body">
-
-                            <h1 align="center">FICHA PARA DIAGNOSTICO ORAL</h1>
-
-                            <form action="#" id="paciente" method="POST" class="form-horizontal">
-
-                                <div class="form-group">
-                                    <label for="Nombre" class="col-lg-3 control-label">Paciente</label>
-                                    <div class="col-lg-4">
-                                        <input type="text" name="nombre_pa" class="form-control" placeholder="" required>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="Edad Paciente" class="col-lg-3 control-label">Edad</label>
-                                    <div class="col-lg-3">
-                                        <input type="text" name="edad_pa" class="form-control" required><br>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="Expediente N°" class="col-lg-3 control-label">Expediente N°</label>
-                                    <div class="col-lg-3">
-                                        <input  type="text" name="no_ex" class="form-control"required><br>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="Lugar de origen°" class="col-lg-3 control-label">Lugar de origen</label>
-                                    <div class="col-lg-3">
-                                        <input  type="text" name="direccion_pa"class="form-control"required><br>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="Referido de" class="col-lg-3 control-label">Referido de</label>
-                                    <div class="col-lg-3">
-                                        <input  type="text" name="referido" class="form-control"required><br>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="Fecha" class="col-lg-3 control-label">Fecha</label>
-                                    <div class="col-lg-3">
-                                        <input  type="date" name="fecha_consulta" class="form-control"required><br>
-                                    </div>
-                                </div>
-                                <div class="form-group">    
-                                    <label for="Mensaje" class="col-lg-3 control-label">Motivo de consulta</label>
-                                    <div class="col-lg-6">
-                                        <textarea name="textarea" name="motivo_consulta" class="form-control col-lg-6" rows="4" required> </textarea>
-
-                                    </div>
-                                </div>
-
-
-                                <div class="form-group">    
-                                    <label for="Mensaje" class="col-lg-3 control-label">Antecedentes medicos</label>
-                                    <div class="col-lg-6">
-                                        <textarea name="textarea" class="form-control col-lg-6" rows="4" required> </textarea>
-
-                                    </div>
-                                </div>
-                                <br>
-                                <br>
-                                <br>
-                                <br>
-                                <center>
-                                    <a href="#" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-search"></i> Guardar</a>
-                                    <a href="#" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-search"></i> Modificar</a>
-                                </center>
-                            </form>
-
-                        </div>
-                    </div>
+                
                 </div>
 
-                <div class="tab-pane" id="Citas">
-                    <div class="panel panel-primary">
 
-                        <div class="panel-heading">Seleccione fecha para proxima cita</div>
-                        <div class="panel-body">
-                            <form action="#" id="busquedaCita" class="form-horizontal">
-                                <div class="form-group">
-                                    <label for="numero_expediente" class="col-lg-3 control-label">Numero de expediente:</label>
-                                    <div class="col-lg-3">
-                                        <input type="text" name="numero_exp" class="form-control "   placeholder="-----------" required>
-                                    </div>
-
-                                </div> 
-                                <div class="panel-body">
-                                    <div class="form-group">
-                                        <label for="Nombre_doc" class="col-lg-3 control-label">Doctor: </label>
-                                        <div class="col-lg-6">
-                                            <input type="text" name="nombre_doc" class="form-control" placeholder="Escriba nombre" required>
-                                        </div>
-                                    </div>
-                                </div>
-                                <label for="Fecha_Cita" class="col-lg-3 control-label">Proxima Cita:</label>
-                                <div class="col-lg-3">
-                                    <input type="date"  class="form-control"><br>
-                                    <br>
-                                    <label for="hora_Cita" class="col-lg-2 control-label">Hora:</label>
-                                    <div class="col-lg-10">
-                                        <input type="time"  class="form-control">  
-                                    </div>
-                                    <br>
-                                    <br>
-
-                                    <a href="#" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-search"></i> Guardar</a>
-                                    <a href="#" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-search"></i> Limpiar</a>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
                 </div>
                 <script>
                     $('#myTab a').click(function(e) {
