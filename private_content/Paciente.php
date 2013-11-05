@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Perfil Doctor</title>
+        <title>Perfil Paciente</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -68,10 +68,39 @@
         <div id="header" class="navbar navbar-default navbar-static-top">
             <?php
             include_once 'layout/private-header.php';
+            if (isset($_GET['cod_pa'])) {
+                include_once '../clases/db_connect.php';
+                $vcod_pa = $_GET['cod_pa'];
+                $getPaciente = mysql_query("SELECT * FROM paciente where cod_pa=$vcod_pa");
+                while ($row = mysql_fetch_array($getPaciente)) {
+                    $nombre = $row{'nombre_pa'};
+                    $apellido = $row{'apellido_pa'};
+                    $fechaNa = $row{'fecha_na_pa'};
+                    $edad = $row{'edad_pa'};
+                    $genero = $row{'genero_pa'};
+                    $telefono = $row{'telefono_pa'};
+                    $direccion = $row{'direccion_pa'};
+                    $municipio = $row{'municipio_pa'};
+                    $departamento = $row{'departamento_pa'};
+                }
+            }
             ?>
         </div>
         <div id="contenedor" class="container">
-
+            <div>
+                <?php
+                if (isset($_POST['submitted'])) {
+                    foreach ($_POST AS $key => $value) {
+                        $_POST[$key] = mysql_real_escape_string($value);
+                    }
+                    $sql = "UPDATE `paciente` SET  `nombre_pa` =  '{$_POST['nombre_pa']}' ,  `apellido_pa` =  '{$_POST['apellido_pa']}' ,  `fecha_na_pa` =  '{$_POST['fecha_na_pa']}' ,  `edad_pa` =  '{$_POST['edad_pa']}' ,  `genero_pa` =  '{$_POST['genero_pa']}' ,  `telefono_pa` =  '{$_POST['telefono_pa']}' ,  `direccion_pa` =  '{$_POST['direccion_pa']}' ,  `municipio_pa` =  '{$_POST['municipio_pa']}' ,  `departamento_pa` =  '{$_POST['departamento_pa']}'   WHERE `cod_pa` = '$vcod_pa' ";
+                    mysql_query($sql) or die(mysql_error());
+                    echo (mysql_affected_rows()) ? "Paciente actualizado correctamente!.<br />" : "Error al actualizar!. <br />";
+                } else {
+                    
+                }
+                ?>
+            </div>
             <ul class="nav nav-tabs" id="myTab">
                 <li class="active"><a href="#Datos">Datos</a></li>
                 <li class=""><a href="#Expediente">Expediente</a></li>
@@ -83,46 +112,44 @@
                     <div class="panel panel-primary">
                         <div class="panel-heading">Paciente</div>
                         <div class="panel-body">
-
+                            <a href=agregarPaciente.php>Nuevo Paciente</a>
                             <form action="#" id="paciente" method="POST" class="form-horizontal">
                                 <div class="form-group">
                                     <label for="Nombre" class="col-lg-3 control-label">Nombre</label>
                                     <div class="col-lg-4">
-                                        <input type="text" name="nombre_pa" class="form-control" placeholder="Escriba un nombre" required>
+                                        <input type="text" name="nombre_pa" value="<?php echo $nombre ?>"  class="form-control" placeholder="Escriba un nombre" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="Apellido" class="col-lg-3 control-label">Apellido</label>
                                     <div class="col-lg-4">
-                                        <input type="text" name="apellido_pa" class="form-control" placeholder="Escriba un nombre" required>
+                                        <input type="text" name="apellido_pa" value="<?php echo $apellido ?>"  class="form-control" placeholder="Escriba un nombre" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="fecha_na_pa" class="col-lg-3 control-label">Fecha de nacimiento:</label>
                                     <div class="col-lg-3">
-                                        <input type="date"  class="form-control"><br>
+                                        <input type="date" value="<?php echo $fechaNa ?>"   class="form-control"><br>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-lg-3 control-label">Genero</label>
                                     <div class="col-lg-4">
-                                        <input type="radio" name="geneno_pa" checked="" value="M">
-                                        Masculino
-                                        <input type="radio" name="genero_pa" value="F">
-                                        Femenino   
+                                        <input type="radio" name="genero_pa" value="Masculino" />Masculino<br />
+                                        <input type="radio" name="genero_pa" value="Femenino" />Femenino<br />
                                     </div>  
                                 </div>
 
                                 <div class="form-group">
                                     <label for="telefono" class="col-lg-3 control-label">Telefono</label>
                                     <div class="col-lg-4">
-                                        <input type="tel" name="telefono_pa" placeholder="Escriba un numero de telefono" class="form-control" required>
+                                        <input type="tel" value="<?php echo $telefono ?>"  name="telefono_pa" placeholder="Escriba un numero de telefono" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="form-group">    
                                     <label for="direccionPaciente" class="col-lg-3 control-label">Direccion actual</label>
                                     <div class="col-lg-6">
-                                        <input type="text" name="direccion_pa" class="form-control" placeholder="Escriba la direccion" required>
+                                        <input type="text" value="<?php echo $direccion ?>"  name="direccion_pa" class="form-control" placeholder="Escriba la direccion" required>
 
                                     </div>
                                 </div>
@@ -130,7 +157,7 @@
                                 <div class="form-group">    
                                     <label for="municipioPaciente" class="col-lg-3 control-label">Municipio</label>
                                     <div class="col-lg-6">
-                                        <input type="text" name="municipio_pa" class="form-control" placeholder="Municipio" required>
+                                        <input type="text" value="<?php echo $municipio ?>"  name="municipio_pa" class="form-control" placeholder="Municipio" required>
 
                                     </div>
                                 </div>
@@ -160,8 +187,7 @@
                                     <br>
                                     <br>
                                     <center>
-                                        <a href="#" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-search"></i> Guardar</a>
-                                        <a href="#" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-search"></i> Modificar</a>
+                                        <p><input type='submit' class="btn btn-primary btn-large" value='Guardar Cambios' /><input type='hidden' value='1' name='submitted' /> 
                                     </center>
                                 </div>
 
@@ -172,16 +198,16 @@
                                 $tabla = "table ";
                                 echo "<table class=" . $tabla . ">";
                                 echo "<tr>";
-                                echo "<td><b>Cod Pa</b></td>";
-                                echo "<td><b>Nombre Pa</b></td>";
-                                echo "<td><b>Apellido Pa</b></td>";
-                                echo "<td><b>Fecha Na Pa</b></td>";
-                                echo "<td><b>Edad Pa</b></td>";
-                                echo "<td><b>Genero Pa</b></td>";
-                                echo "<td><b>Telefono Pa</b></td>";
-                                echo "<td><b>Direccion Pa</b></td>";
-                                echo "<td><b>Municipio Pa</b></td>";
-                                echo "<td><b>Departamento Pa</b></td>";
+                                echo "<td><b>Codigo</b></td>";
+                                echo "<td><b>Nombre</b></td>";
+                                echo "<td><b>Apellido</b></td>";
+                                echo "<td><b>Fecha Na</b></td>";
+                                echo "<td><b>Edad</b></td>";
+                                echo "<td><b>Genero</b></td>";
+                                echo "<td><b>Telefono</b></td>";
+                                echo "<td><b>Direccion</b></td>";
+                                echo "<td><b>Municipio</b></td>";
+                                echo "<td><b>Departamento</b></td>";
                                 echo "</tr>";
                                 $result = mysql_query("SELECT * FROM `paciente`") or trigger_error(mysql_error());
                                 while ($row = mysql_fetch_array($result)) {
@@ -199,11 +225,10 @@
                                     echo "<td valign='top'>" . nl2br($row['direccion_pa']) . "</td>";
                                     echo "<td valign='top'>" . nl2br($row['municipio_pa']) . "</td>";
                                     echo "<td valign='top'>" . nl2br($row['departamento_pa']) . "</td>";
-                                    echo "<td valign='top'><a href=modificaraPaciente.php?cod_pa={$row['cod_pa']}>Edit</a></td><td><a href=eliminarPaciente.php?cod_pa={$row['cod_pa']}>Delete</a></td> ";
+                                    echo "<td valign='top'><a href=paciente.php?cod_pa={$row['cod_pa']}>Editar</a></td><td><a href=eliminarPaciente.php?cod_pa={$row['cod_pa']}>Eliminar</a></td> ";
                                     echo "</tr>";
                                 }
                                 echo "</table>";
-                                echo "<a href=agregarPaciente.php>Nuevo Paciente</a>";
                                 ?>
                             </div>
                         </div>
@@ -279,8 +304,7 @@
                                 <br>
                                 <br>
                                 <center>
-                                    <a href="#" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-search"></i> Guardar</a>
-                                    <a href="#" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-search"></i> Modificar</a>
+                                    <a href="#" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-search"></i> Guardar Cambios</a>
                                 </center>
                             </form>
 
