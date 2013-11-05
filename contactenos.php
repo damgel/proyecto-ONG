@@ -82,6 +82,21 @@ mail($para, $titulo, $mensaje, $cabeceras);
                                 </div>
                             </div>
 
+                                <div class="form-group">
+                                    <label for="motivo" class="col-lg-3 control-label">Motivo</label>
+                                    <div class="col-lg-4">
+                                        <select name="departamento_pa" class="form-control" required="">
+                                            <option value="NONE">- Seleccione -</option>
+                                            <option value="opcion1">Voluntario inscripcion</option>
+                                            <option value="opcion2">Duda general</option>
+                                            <option value="opcion3">Donaciones</option>
+                                            <option value="opcion4">Citas</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+
                             <div class="form-group">    
                                 <label for="Mensaje" class="col-lg-3 control-label">Mensaje</label>
                                 <div class="col-lg-6">
