@@ -14,14 +14,14 @@
         <link rel="stylesheet" href="../assets/css/bootstrap.css">
         <link rel="stylesheet" href="../assets/css/normalize.css">
         <link rel="stylesheet" href="../assets/css/jqueryUI.css">
-        <link rel="stylesheet" href="validacionStyle.css">
+        <link rel="stylesheet" href="../validacionStyle.css">
         <script src="../assets/js/jquery-v1.10.2.js"></script>
         <script src="../assets/js/bootstrap.min.js"></script>
         <script src="../assets/js/jquery-ui.js"></script>
         <script src="../assets/js/jquery.validate.js"></script>   
         <script src="../assets/js/modernizr2.6.2.js"></script>
         <script src="../assets/js/holder.js"></script>
-        <script src="../assets/js/validarRegEmpleador.js"></script>
+        <script src="../assets/js/validaragregarPaciente.js"></script>
 
 
         <style>
@@ -93,7 +93,7 @@
                                 }
                                 ?>
 
-                                <form action='' method='POST'> 
+                                <form action='' method='POST'  id="agregarPaciente"> 
                                     <a href='paciente.php'>Regresar</a><br><br>
                                     <div class="form-group">
                                         <div class="col-lg-4"><b>Nombre Paciente:</b><br /><input type='text' class="form-control" name='nombre_pa' required/>
@@ -117,7 +117,7 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="col-lg-4"><b>Genero Paciente:</b><br />
-                                            <select name="genero_doc" class="form-control" required="">
+                                            <select name="genero_pa" class="form-control" required="">
                                                 <option value="<?php echo $genero ?>" >- Seleccione -</option>
                                                 <option value="Masculino">Masculino</option>
                                                 <option value="Femenino">Femenino</option>

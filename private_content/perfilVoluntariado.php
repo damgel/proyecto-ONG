@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="../assets/css/bootstrap.css">
         <link rel="stylesheet" href="../assets/css/normalize.css">
         <link rel="stylesheet" href="../assets/css/jqueryUI.css">
-        <link rel="stylesheet" href="validacionStyle.css">
+        <link rel="stylesheet" href="../validacionStyle.css">
         <script src="../assets/js/jquery-v1.10.2.js"></script>
         <script src="../assets/js/bootstrap.min.js"></script>
         <script src="../assets/js/jquery-ui.js"></script>
@@ -150,7 +150,7 @@
                         </div>
                         <div class="panel-body">
 
-                            <form action="#" method="POST" class="form-horizontal">
+                            <form action="#" method="POST" class="form-horizontal" id="perfilVoluntariado">
                                 <div class="form-group">
                                     <label for="Nombre_doc" class="col-lg-3 control-label">Nombre</label>
                                     <div class="col-lg-4">
@@ -178,7 +178,7 @@
                                 <div class="form-group">
                                     <label for="sexo" class="col-lg-3 control-label">Sexo</label>
                                     <div class="col-lg-4">
-                                     <select name="genero_doc" class="form-control" required="">
+                                     <select name="genero_vo" class="form-control" required="">
                                             <option value="<?php echo $genero ?>" >- Seleccione -</option>
                                             <option value="M">Masculino</option>
                                             <option value="F">Femenino</option>

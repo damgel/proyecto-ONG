@@ -6,8 +6,8 @@ $(document).ready(function() {
             nombre_doc:
                     {
                         required: true,
-                        minlength: 3,
-                        maxlenght: 15,
+                        minlength: 6,
+                        maxlenght: 12,
                         patterner:[0,10]
                        
                     },
@@ -15,7 +15,7 @@ $(document).ready(function() {
                     {
                         required: true,
                         minlength: 6,
-                        maxlenght: 15,
+                        maxlenght: 12,
                         patterner:[0,10]
                         
                     },
@@ -35,7 +35,8 @@ $(document).ready(function() {
                     },
            fecha_na_doc:
                     {
-                        required: true
+                        required: true,
+						 date: true
                         
                     },
             password_doc:
